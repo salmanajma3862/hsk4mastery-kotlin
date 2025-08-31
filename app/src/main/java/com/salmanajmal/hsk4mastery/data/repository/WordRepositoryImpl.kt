@@ -1,0 +1,171 @@
+package com.salmanajmal.hsk4mastery.data.repository
+
+import android.content.Context
+import com.salmanajmal.hsk4mastery.data.local.dao.WordDao
+import com.salmanajmal.hsk4mastery.data.local.model.WordBasic
+import com.salmanajmal.hsk4mastery.data.local.model.WordEntity
+import com.salmanajmal.hsk4mastery.data.local.model.UserWordProgressEntity
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
+import org.json.JSONArray
+import org.json.JSONObject
+
+class WordRepositoryImpl @Inject constructor(
+    private val dao: WordDao,
+    @ApplicationContext private val context: Context,
+) : WordRepository {
+
+    override fun getAllWords(): Flow<List<WordBasic>> = dao.getAllWords()
+
+    override fun getWordDetails(wordId: String): Flow<WordEntity?> = flow {
+        emit(dao.getWordById(wordId))
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun startDatabaseSeedingIfNeeded() {
+        val count = dao.getWordCount()
+        if (count > 0) return
+        // Read JSON from assets: hsk4_data.json in app module's assets folder
+        // If not present, fallback to bundled hsk4_data_600.json relative path assumption
+        val assetManager = context.assets
+        // Prefer top-level asset named hsk4_data.json; adjust if different
+        val fileNameCandidates = listOf("hsk4_data.json", "hsk4_data_600.json")
+        var jsonText: String? = null
+        for (name in fileNameCandidates) {
+            try {
+                assetManager.open(name).use { inS ->
+                    jsonText = inS.bufferedReader().readText()
+                }
+                if (jsonText != null) break
+            } catch (_: Throwable) { /* try next */ }
+        }
+        if (jsonText.isNullOrBlank()) return
+        val array = JSONArray(jsonText)
+        val entities = ArrayList<WordEntity>(array.length())
+        for (i in 0 until array.length()) {
+            val obj = array.getJSONObject(i)
+            val id = when {
+                obj.has("_id") && !obj.isNull("_id") -> obj.get("_id").toString()
+                obj.has("id") && !obj.isNull("id") -> obj.get("id").toString()
+                obj.has("wordId") && !obj.isNull("wordId") -> obj.get("wordId").toString()
+                obj.has("hanzi") && !obj.isNull("hanzi") -> obj.getString("hanzi")
+                else -> i.toString()
+            }
+            val wordId = if (obj.has("wordId") && !obj.isNull("wordId")) obj.optInt("wordId") else null
+            val hanzi = obj.optString("hanzi")
+            val pinyin = obj.optString("pinyin")
+            val meaning = obj.optString("meaning")
+            // Save original JSON with enforced _id
+            val enforced = JSONObject(obj.toString())
+            enforced.put("_id", id)
+            entities.add(
+                WordEntity(
+                    id = id,
+                    wordId = wordId,
+                    hanzi = hanzi,
+                    pinyin = pinyin,
+                    meaning = meaning,
+                    fullData = enforced.toString(),
+                )
+            )
+        }
+        if (entities.isNotEmpty()) dao.insertWords(entities)
+    }
+
+    override suspend fun getRandomPracticeWord(): WordEntity? = dao.getRandomWord()
+
+    override fun getProgressStats(): Flow<ProgressStats> = flow {
+        val raw = dao.getProgressStatsInternal()
+        val mastered = raw?.mastered ?: 0
+        val learning = raw?.learning ?: 0
+        val reviewed = raw?.reviewed ?: 0
+        // unseen: total words minus seen (learning+mastered+reviewed)
+        val total = dao.getWordCount()
+        val seen = learning + mastered + reviewed
+        val unseen = (total - seen).coerceAtLeast(0)
+        emit(ProgressStats(learning = learning, reviewed = reviewed, mastered = mastered, unseen = unseen))
+    }.flowOn(Dispatchers.IO)
+
+    override fun getReviewDashboardData(): Flow<ReviewDashboardData> = flow {
+        val struggling = dao.getStrugglingWords()
+        val due = dao.getDueWordsAll(System.currentTimeMillis())
+        val reviewedRows = dao.getReviewedWithCounts()
+        val grouped: MutableMap<Int, MutableList<WordEntity>> = mutableMapOf()
+        for (row in reviewedRows) {
+            val list = grouped.getOrPut(row.reviewCount) { mutableListOf() }
+            list += WordEntity(
+                id = row._id,
+                wordId = row.wordId,
+                hanzi = row.hanzi,
+                pinyin = row.pinyin,
+                meaning = row.meaning,
+                fullData = row.fullData,
+            )
+        }
+        emit(ReviewDashboardData(strugglingWords = struggling, dueWords = due, reviewedWordsByCount = grouped))
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun updateWordComfort(wordId: String, comfortLevel: Int) {
+        dao.updateWordComfort(wordId, comfortLevel)
+    }
+
+    override suspend fun submitReviewAnswer(wordId: String, isCorrect: Boolean, markAsMastered: Boolean) {
+        val existing = dao.getWordProgress(wordId)
+        val status = existing?.status ?: "Learning"
+        val srsLevel = existing?.srsLevel ?: 0
+        val nextReviewAt = existing?.nextReviewAt ?: System.currentTimeMillis()
+        val updated = calculateNextReview(
+            Progress(
+                word_id = wordId,
+                status = status,
+                srsLevel = srsLevel,
+                nextReviewAt = nextReviewAt,
+            ),
+            isCorrect,
+            markAsMastered,
+        )
+        dao.updateWordProgress(
+            UserWordProgressEntity(
+                wordId = updated.word_id,
+                status = updated.status,
+                srsLevel = updated.srsLevel,
+                nextReviewAt = updated.nextReviewAt,
+                comfortLevel = existing?.comfortLevel,
+                reviewCount = existing?.reviewCount,
+                timesCorrect = existing?.timesCorrect,
+                timesIncorrect = existing?.timesIncorrect,
+                firstSeenAt = existing?.firstSeenAt,
+                isStruggling = existing?.isStruggling,
+            ),
+            isCorrect
+        )
+    }
+
+    // ----- SRS logic ported -----
+    data class Progress(
+        val word_id: String,
+        val status: String,
+        val srsLevel: Int,
+        val nextReviewAt: Long?,
+    )
+
+    private fun calculateNextReview(progress: Progress, isCorrect: Boolean, markAsMastered: Boolean = false): Progress {
+        if (markAsMastered) {
+            return progress.copy(srsLevel = 8, status = "Mastered", nextReviewAt = null)
+        }
+        var level = progress.srsLevel
+        level = if (isCorrect) (level + 1).coerceAtMost(8) else (level - 2).coerceAtLeast(0)
+        val status = if (level >= 8) "Mastered" else "Learning"
+        val next: Long? = if (status == "Learning") {
+            val intervals = intArrayOf(4, 8, 24, 72, 168, 336, 720, 2880) // hours
+            val idx = level.coerceIn(0, intervals.lastIndex)
+            System.currentTimeMillis() + intervals[idx] * 60L * 60L * 1000L
+        } else null
+        return progress.copy(srsLevel = level, status = status, nextReviewAt = next)
+    }
+}
+ 

@@ -1,0 +1,175 @@
+package com.salmanajmal.hsk4mastery.data.local.dao
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
+import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
+import com.salmanajmal.hsk4mastery.data.local.model.*
+
+@Dao
+interface WordDao {
+
+    // saveWords -> insert/upsert list
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertWords(words: List<WordEntity>)
+
+    // Upsert a single progress row
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun upsertProgress(progress: UserWordProgressEntity)
+
+    // getAllWords - lightweight list with progress join
+    @Query(
+        """
+        SELECT DISTINCT w._id, w.wordId, w.hanzi, w.pinyin, w.meaning,
+               p.status as status, p.comfortLevel as comfortLevel
+        FROM words w
+        LEFT JOIN user_word_progress p ON p.word_id = w._id
+        WHERE TRIM(w._id) <> '' AND TRIM(w.hanzi) <> '' AND TRIM(w.pinyin) <> '' AND TRIM(w.meaning) <> ''
+        ORDER BY COALESCE(w.wordId, 0) ASC, w._id ASC
+        """
+    )
+    fun getAllWords(): Flow<List<WordBasic>>
+
+    // getWordById - full entity by PK
+    @Query("SELECT * FROM words WHERE _id = :wordId LIMIT 1")
+    suspend fun getWordById(wordId: String): WordEntity?
+
+    // Progress by word id
+    @Query("SELECT * FROM user_word_progress WHERE word_id = :wordId LIMIT 1")
+    suspend fun getWordProgress(wordId: String): UserWordProgressEntity?
+
+    // updateWordProgress - mirror the Expo behavior using a read + upsert
+    @Transaction
+    suspend fun updateWordProgress(progress: UserWordProgressEntity, isCorrect: Boolean?) {
+        val prev = getWordProgress(progress.wordId)
+        val reviewCount = (prev?.reviewCount ?: 0) + 1
+        val timesCorrect = (prev?.timesCorrect ?: 0) + (if (isCorrect == true) 1 else 0)
+        val timesIncorrect = (prev?.timesIncorrect ?: 0) + (if (isCorrect == false) 1 else 0)
+        val isStruggling = if (isCorrect == true) 0 else 1
+
+        upsertProgress(
+            progress.copy(
+                reviewCount = reviewCount,
+                timesCorrect = timesCorrect,
+                timesIncorrect = timesIncorrect,
+                isStruggling = isStruggling,
+            )
+        )
+    }
+
+    // getProgressStats - returns mastered / reviewed / learning counts
+    @Query(
+        """
+        SELECT 
+          SUM(CASE WHEN LOWER(status) = 'mastered' THEN 1 ELSE 0 END) as mastered,
+          SUM(CASE WHEN LOWER(status) <> 'mastered' AND COALESCE(reviewCount, 0) > 0 THEN 1 ELSE 0 END) as reviewed,
+          SUM(CASE WHEN LOWER(status) <> 'mastered' AND COALESCE(reviewCount, 0) = 0 AND LOWER(status) = 'learning' THEN 1 ELSE 0 END) as learning
+        FROM user_word_progress
+        """
+    )
+    suspend fun getProgressStatsInternal(): ProgressStatsRow?
+
+    // Helper projection for stats
+    data class ProgressStatsRow(
+        val mastered: Int?,
+        val learning: Int?,
+        val reviewed: Int?,
+    )
+
+    // getWordsForReview(limit)
+    @Query(
+        """
+        SELECT w.* FROM user_word_progress p
+        JOIN words w ON w._id = p.word_id
+        WHERE p.nextReviewAt IS NOT NULL AND p.nextReviewAt <= :now
+        ORDER BY p.nextReviewAt ASC
+        LIMIT :limit
+        """
+    )
+    suspend fun getDueWords(now: Long, limit: Int): List<WordEntity>
+
+    @Query(
+        """
+        SELECT w.* FROM words w
+        LEFT JOIN user_word_progress p ON p.word_id = w._id
+        WHERE p.word_id IS NULL
+        ORDER BY w.wordId ASC
+        LIMIT :limit
+        """
+    )
+    suspend fun getNewWords(limit: Int): List<WordEntity>
+
+    // getWordCount
+    @Query("SELECT COUNT(*) FROM words WHERE TRIM(_id) <> '' AND TRIM(hanzi) <> '' AND TRIM(pinyin) <> '' AND TRIM(meaning) <> ''")
+    suspend fun getWordCount(): Int
+
+    // Random word
+    @Query("SELECT * FROM words ORDER BY RANDOM() LIMIT 1")
+    suspend fun getRandomWord(): WordEntity?
+
+    // updateWordComfort
+    @Transaction
+    suspend fun updateWordComfort(wordId: String, comfortLevel: Int) {
+        val existing = getWordProgress(wordId)
+        val now = System.currentTimeMillis()
+        val firstSeen = existing?.firstSeenAt ?: now
+        val status = existing?.status ?: "Learning"
+        val entity = UserWordProgressEntity(
+            wordId = wordId,
+            status = status,
+            srsLevel = existing?.srsLevel ?: 0,
+            nextReviewAt = existing?.nextReviewAt,
+            comfortLevel = comfortLevel,
+            reviewCount = existing?.reviewCount ?: 0,
+            timesCorrect = existing?.timesCorrect ?: 0,
+            timesIncorrect = existing?.timesIncorrect ?: 0,
+            firstSeenAt = firstSeen,
+            isStruggling = existing?.isStruggling ?: 0,
+        )
+        upsertProgress(entity)
+    }
+
+    // Review dashboard segments
+    @Query(
+        """
+        SELECT w.* FROM user_word_progress p
+        JOIN words w ON w._id = p.word_id
+        WHERE p.isStruggling = 1
+        ORDER BY COALESCE(p.timesIncorrect, 0) DESC, COALESCE(w.wordId, 0) ASC
+        """
+    )
+    suspend fun getStrugglingWords(): List<WordEntity>
+
+    @Query(
+        """
+        SELECT w.* FROM user_word_progress p
+        JOIN words w ON w._id = p.word_id
+        WHERE p.nextReviewAt IS NOT NULL AND p.nextReviewAt <= :now
+        ORDER BY p.nextReviewAt ASC
+        """
+    )
+    suspend fun getDueWordsAll(now: Long): List<WordEntity>
+
+    @Query(
+        """
+        SELECT w.*, COALESCE(p.reviewCount, 0) as reviewCount
+        FROM words w
+        JOIN user_word_progress p ON p.word_id = w._id
+        ORDER BY p.reviewCount DESC, COALESCE(w.wordId, 0) ASC
+        """
+    )
+    suspend fun getReviewedWithCounts(): List<ReviewedWordRow>
+
+    data class ReviewedWordRow(
+        val _id: String,
+        val wordId: Int?,
+        val hanzi: String,
+        val pinyin: String,
+        val meaning: String,
+        val fullData: String,
+        val reviewCount: Int,
+    )
+}

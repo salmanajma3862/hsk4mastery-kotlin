@@ -1,0 +1,60 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		}
+	]
+}
