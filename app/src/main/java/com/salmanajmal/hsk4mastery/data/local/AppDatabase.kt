@@ -16,4 +16,4 @@ import com.salmanajmal.hsk4mastery.data.local.model.WordEntity
 abstract class AppDatabase : RoomDatabase() {
     abstract fun wordDao(): WordDao
 }
-
+ 
