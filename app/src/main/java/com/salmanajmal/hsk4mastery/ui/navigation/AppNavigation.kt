@@ -28,7 +28,7 @@ fun AppNavigation() {
         ) { backStackEntry ->
             // Placeholder screen; will be implemented later
             val wordId = backStackEntry.arguments?.getString("wordId") ?: ""
-            androidx.compose.material3.Text("Word detail: $wordId")
+                com.salmanajmal.hsk4mastery.ui.worddetail.WordDetailScreen()
         }
     }
 }

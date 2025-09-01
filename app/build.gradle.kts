@@ -83,6 +83,7 @@ dependencies {
 
     // Media (Audio Playback)
     implementation(libs.media3.exoplayer)
+    implementation("androidx.media3:media3-common:${libs.versions.media3.get()}")
 
     // Navigation
     implementation(libs.navigation.compose)
