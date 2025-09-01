@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HSK4Mastery"
-        android:name="com.salmanajmal.hsk4mastery">
+        android:name=".H4skMasteryApp">
         <activity
             android:name="com.salmanajmal.hsk4mastery.MainActivity"
             android:exported="true"
