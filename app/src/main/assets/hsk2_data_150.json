@@ -1,0 +1,3720 @@
+[
+  {
+    "wordId": 2000,
+    "hanzi": "您",
+    "pinyin": "nín",
+    "meaning": "you (polite)",
+    "partOfSpeech": ["pronoun"],
+    "characterBreakdown": [
+      { "char": "您", "pinyin": "nín", "meaning": "you (polite)" }
+    ],
+    "examples": [
+      {
+        "hanzi": "老师，您好！",
+        "pinyin": "Lǎoshī, nín hǎo!",
+        "translation": "Hello, teacher! (polite)",
+        "tokens": [
+          { "word": "老师", "pinyin": "lǎoshī", "meaning": "teacher" },
+          { "word": "您", "pinyin": "nín", "meaning": "you (polite)" },
+          { "word": "好", "pinyin": "hǎo", "meaning": "good" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2001,
+    "hanzi": "它",
+    "pinyin": "tā",
+    "meaning": "it",
+    "partOfSpeech": ["pronoun"],
+    "characterBreakdown": [
+      { "char": "它", "pinyin": "tā", "meaning": "it" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你看，它在睡觉。",
+        "pinyin": "Nǐ kàn, tā zài shuìjiào.",
+        "translation": "Look, it is sleeping.",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "看", "pinyin": "kàn", "meaning": "look" },
+          { "word": "它", "pinyin": "tā", "meaning": "it" },
+          { "word": "在", "pinyin": "zài", "meaning": "in the process of" },
+          { "word": "睡觉", "pinyin": "shuìjiào", "meaning": "sleeping" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2002,
+    "hanzi": "大家",
+    "pinyin": "dàjiā",
+    "meaning": "everyone",
+    "partOfSpeech": ["pronoun"],
+    "characterBreakdown": [
+      { "char": "大", "pinyin": "dà", "meaning": "big" },
+      { "char": "家", "pinyin": "jiā", "meaning": "family" }
+    ],
+    "examples": [
+      {
+        "hanzi": "大家好！",
+        "pinyin": "Dàjiā hǎo!",
+        "translation": "Hello everyone!",
+        "tokens": [
+          { "word": "大家", "pinyin": "dàjiā", "meaning": "everyone" },
+          { "word": "好", "pinyin": "hǎo", "meaning": "good" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2003,
+    "hanzi": "每",
+    "pinyin": "měi",
+    "meaning": "every, each",
+    "partOfSpeech": ["pronoun"],
+    "characterBreakdown": [
+      { "char": "每", "pinyin": "měi", "meaning": "every" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我每天都喝茶。",
+        "pinyin": "Wǒ měi tiān dōu hē chá.",
+        "translation": "I drink tea every day.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "每", "pinyin": "měi", "meaning": "every" },
+          { "word": "天", "pinyin": "tiān", "meaning": "day" },
+          { "word": "都", "pinyin": "dōu", "meaning": "all" },
+          { "word": "喝", "pinyin": "hē", "meaning": "drink" },
+          { "word": "茶", "pinyin": "chá", "meaning": "tea" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2004,
+    "hanzi": "为什么",
+    "pinyin": "wèishénme",
+    "meaning": "why",
+    "partOfSpeech": ["pronoun"],
+    "characterBreakdown": [
+      { "char": "为", "pinyin": "wèi", "meaning": "for" },
+      { "char": "什", "pinyin": "shén", "meaning": "what" },
+      { "char": "么", "pinyin": "me", "meaning": "suffix" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你为什么没来学校？",
+        "pinyin": "Nǐ wèishénme méi lái xuéxiào?",
+        "translation": "Why didn't you come to school?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "为什么", "pinyin": "wèishénme", "meaning": "why" },
+          { "word": "没", "pinyin": "méi", "meaning": "not" },
+          { "word": "来", "pinyin": "lái", "meaning": "come" },
+          { "word": "学校", "pinyin": "xuéxiào", "meaning": "school" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2005,
+    "hanzi": "零",
+    "pinyin": "líng",
+    "meaning": "zero",
+    "partOfSpeech": ["numeral"],
+    "characterBreakdown": [
+      { "char": "零", "pinyin": "líng", "meaning": "zero" }
+    ],
+    "examples": [
+      {
+        "hanzi": "今天零度。",
+        "pinyin": "Jīntiān líng dù.",
+        "translation": "It is zero degrees today.",
+        "tokens": [
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "零", "pinyin": "líng", "meaning": "zero" },
+          { "word": "度", "pinyin": "dù", "meaning": "degree" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2006,
+    "hanzi": "两",
+    "pinyin": "liǎng",
+    "meaning": "two",
+    "partOfSpeech": ["numeral"],
+    "characterBreakdown": [
+      { "char": "两", "pinyin": "liǎng", "meaning": "two" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我有两本书。",
+        "pinyin": "Wǒ yǒu liǎng běn shū.",
+        "translation": "I have two books.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "有", "pinyin": "yǒu", "meaning": "have" },
+          { "word": "两", "pinyin": "liǎng", "meaning": "two" },
+          { "word": "本", "pinyin": "běn", "meaning": "measure word" },
+          { "word": "书", "pinyin": "shū", "meaning": "book" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2007,
+    "hanzi": "百",
+    "pinyin": "bǎi",
+    "meaning": "hundred",
+    "partOfSpeech": ["numeral"],
+    "characterBreakdown": [
+      { "char": "百", "pinyin": "bǎi", "meaning": "hundred" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这件衣服一百块钱。",
+        "pinyin": "Zhè jiàn yīfu yì bǎi kuài qián.",
+        "translation": "This piece of clothing is 100 yuan.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "件", "pinyin": "jiàn", "meaning": "measure word" },
+          { "word": "衣服", "pinyin": "yīfu", "meaning": "clothing" },
+          { "word": "一", "pinyin": "yì", "meaning": "one" },
+          { "word": "百", "pinyin": "bǎi", "meaning": "hundred" },
+          { "word": "块", "pinyin": "kuài", "meaning": "measure word" },
+          { "word": "钱", "pinyin": "qián", "meaning": "money" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2008,
+    "hanzi": "千",
+    "pinyin": "qiān",
+    "meaning": "thousand",
+    "partOfSpeech": ["numeral"],
+    "characterBreakdown": [
+      { "char": "千", "pinyin": "qiān", "meaning": "thousand" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这个电脑三千块。",
+        "pinyin": "Zhè ge diànnǎo sān qiān kuài.",
+        "translation": "This computer is 3000 yuan.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "电脑", "pinyin": "diànnǎo", "meaning": "computer" },
+          { "word": "三", "pinyin": "sān", "meaning": "three" },
+          { "word": "千", "pinyin": "qiān", "meaning": "thousand" },
+          { "word": "块", "pinyin": "kuài", "meaning": "yuan" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2009,
+    "hanzi": "第一",
+    "pinyin": "dìyī",
+    "meaning": "first",
+    "partOfSpeech": ["numeral"],
+    "characterBreakdown": [
+      { "char": "第", "pinyin": "dì", "meaning": "prefix for ordinal numbers" },
+      { "char": "一", "pinyin": "yī", "meaning": "one" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这是我第一次来中国。",
+        "pinyin": "Zhè shì wǒ dì yī cì lái Zhōngguó.",
+        "translation": "This is my first time coming to China.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "第一", "pinyin": "dì yī", "meaning": "first" },
+          { "word": "次", "pinyin": "cì", "meaning": "time" },
+          { "word": "来", "pinyin": "lái", "meaning": "come" },
+          { "word": "中国", "pinyin": "Zhōngguó", "meaning": "China" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2010,
+    "hanzi": "次",
+    "pinyin": "cì",
+    "meaning": "time (frequency)",
+    "partOfSpeech": ["measure word"],
+    "characterBreakdown": [
+      { "char": "次", "pinyin": "cì", "meaning": "time" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我吃过一次北京烤鸭。",
+        "pinyin": "Wǒ chī guo yī cì Běijīng kǎoyā.",
+        "translation": "I have eaten Beijing roast duck once.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "吃", "pinyin": "chī", "meaning": "eat" },
+          { "word": "过", "pinyin": "guo", "meaning": "particle for past experience" },
+          { "word": "一", "pinyin": "yī", "meaning": "one" },
+          { "word": "次", "pinyin": "cì", "meaning": "time" },
+          { "word": "北京烤鸭", "pinyin": "Běijīng kǎoyā", "meaning": "Beijing roast duck" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2011,
+    "hanzi": "件",
+    "pinyin": "jiàn",
+    "meaning": "piece (for clothes, matters)",
+    "partOfSpeech": ["measure word"],
+    "characterBreakdown": [
+      { "char": "件", "pinyin": "jiàn", "meaning": "piece" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我买了一件新衣服。",
+        "pinyin": "Wǒ mǎi le yī jiàn xīn yīfu.",
+        "translation": "I bought a new piece of clothing.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "买", "pinyin": "mǎi", "meaning": "bought" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "件", "pinyin": "jiàn", "meaning": "piece" },
+          { "word": "新", "pinyin": "xīn", "meaning": "new" },
+          { "word": "衣服", "pinyin": "yīfu", "meaning": "clothing" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2012,
+    "hanzi": "别",
+    "pinyin": "bié",
+    "meaning": "don't",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "别", "pinyin": "bié", "meaning": "don't" }
+    ],
+    "examples": [
+      {
+        "hanzi": "别说话了。",
+        "pinyin": "Bié shuōhuà le.",
+        "translation": "Stop talking.",
+        "tokens": [
+          { "word": "别", "pinyin": "bié", "meaning": "don't" },
+          { "word": "说话", "pinyin": "shuōhuà", "meaning": "talk" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2013,
+    "hanzi": "非常",
+    "pinyin": "fēicháng",
+    "meaning": "very, extremely",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "非", "pinyin": "fēi", "meaning": "not" },
+      { "char": "常", "pinyin": "cháng", "meaning": "ordinary" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这个电影非常好。",
+        "pinyin": "Zhè ge diànyǐng fēicháng hǎo.",
+        "translation": "This movie is extremely good.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "电影", "pinyin": "diànyǐng", "meaning": "movie" },
+          { "word": "非常", "pinyin": "fēicháng", "meaning": "extremely" },
+          { "word": "好", "pinyin": "hǎo", "meaning": "good" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2014,
+    "hanzi": "也",
+    "pinyin": "yě",
+    "meaning": "also, too",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "也", "pinyin": "yě", "meaning": "also" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我是学生，他也是学生。",
+        "pinyin": "Wǒ shì xuéshēng, tā yě shì xuéshēng.",
+        "translation": "I am a student, he is also a student.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "是", "pinyin": "shì", "meaning": "am" },
+          { "word": "学生", "pinyin": "xuéshēng", "meaning": "student" },
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "也", "pinyin": "yě", "meaning": "also" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "学生", "pinyin": "xuéshēng", "meaning": "student" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2015,
+    "hanzi": "还",
+    "pinyin": "hái",
+    "meaning": "still, also",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "还", "pinyin": "hái", "meaning": "still" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他还在睡觉。",
+        "pinyin": "Tā hái zài shuìjiào.",
+        "translation": "He is still sleeping.",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "还", "pinyin": "hái", "meaning": "still" },
+          { "word": "在", "pinyin": "zài", "meaning": "is" },
+          { "word": "睡觉", "pinyin": "shuìjiào", "meaning": "sleeping" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2016,
+    "hanzi": "最",
+    "pinyin": "zuì",
+    "meaning": "the most",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "最", "pinyin": "zuì", "meaning": "most" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你最喜欢什么水果？",
+        "pinyin": "Nǐ zuì xǐhuān shénme shuǐguǒ?",
+        "translation": "What fruit do you like the most?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "最", "pinyin": "zuì", "meaning": "most" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "like" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "what" },
+          { "word": "水果", "pinyin": "shuǐguǒ", "meaning": "fruit" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2017,
+    "hanzi": "真",
+    "pinyin": "zhēn",
+    "meaning": "really",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "真", "pinyin": "zhēn", "meaning": "real, true" }
+    ],
+    "examples": [
+      {
+        "hanzi": "今天真热！",
+        "pinyin": "Jīntiān zhēn rè!",
+        "translation": "It's really hot today!",
+        "tokens": [
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "真", "pinyin": "zhēn", "meaning": "really" },
+          { "word": "热", "pinyin": "rè", "meaning": "hot" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2018,
+    "hanzi": "正在",
+    "pinyin": "zhèngzài",
+    "meaning": "in the process of",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "正", "pinyin": "zhèng", "meaning": "just, right" },
+      { "char": "在", "pinyin": "zài", "meaning": "at" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我正在看书呢。",
+        "pinyin": "Wǒ zhèngzài kàn shū ne.",
+        "translation": "I am reading a book right now.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "正在", "pinyin": "zhèngzài", "meaning": "am" },
+          { "word": "看", "pinyin": "kàn", "meaning": "reading" },
+          { "word": "书", "pinyin": "shū", "meaning": "book" },
+          { "word": "呢", "pinyin": "ne", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2019,
+    "hanzi": "已经",
+    "pinyin": "yǐjīng",
+    "meaning": "already",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "已", "pinyin": "yǐ", "meaning": "already" },
+      { "char": "经", "pinyin": "jīng", "meaning": "to pass through" }
+    ],
+    "examples": [
+      {
+        "hanzi": "电影已经开始了。",
+        "pinyin": "Diànyǐng yǐjīng kāishǐ le.",
+        "translation": "The movie has already started.",
+        "tokens": [
+          { "word": "电影", "pinyin": "diànyǐng", "meaning": "movie" },
+          { "word": "已经", "pinyin": "yǐjīng", "meaning": "already" },
+          { "word": "开始", "pinyin": "kāishǐ", "meaning": "started" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2020,
+    "hanzi": "一起",
+    "pinyin": "yìqǐ",
+    "meaning": "together",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "一", "pinyin": "yì", "meaning": "one" },
+      { "char": "起", "pinyin": "qǐ", "meaning": "to rise" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我们一起去吃饭吧。",
+        "pinyin": "Wǒmen yìqǐ qù chīfàn ba.",
+        "translation": "Let's go eat together.",
+        "tokens": [
+          { "word": "我们", "pinyin": "wǒmen", "meaning": "we" },
+          { "word": "一起", "pinyin": "yìqǐ", "meaning": "together" },
+          { "word": "去", "pinyin": "qù", "meaning": "go" },
+          { "word": "吃饭", "pinyin": "chīfàn", "meaning": "eat" },
+          { "word": "吧", "pinyin": "ba", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2021,
+    "hanzi": "再",
+    "pinyin": "zài",
+    "meaning": "again",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "再", "pinyin": "zài", "meaning": "again" }
+    ],
+    "examples": [
+      {
+        "hanzi": "请再说一次。",
+        "pinyin": "Qǐng zài shuō yī cì.",
+        "translation": "Please say it one more time.",
+        "tokens": [
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "再", "pinyin": "zài", "meaning": "again" },
+          { "word": "说", "pinyin": "shuō", "meaning": "say" },
+          { "word": "一", "pinyin": "yī", "meaning": "one" },
+          { "word": "次", "pinyin": "cì", "meaning": "time" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2022,
+    "hanzi": "就",
+    "pinyin": "jiù",
+    "meaning": "then, at once",
+    "partOfSpeech": ["adverb"],
+    "characterBreakdown": [
+      { "char": "就", "pinyin": "jiù", "meaning": "then" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我吃了饭就去学校。",
+        "pinyin": "Wǒ chī le fàn jiù qù xuéxiào.",
+        "translation": "I'll go to school right after I eat.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "吃", "pinyin": "chī", "meaning": "eat" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "饭", "pinyin": "fàn", "meaning": "meal" },
+          { "word": "就", "pinyin": "jiù", "meaning": "then" },
+          { "word": "去", "pinyin": "qù", "meaning": "go to" },
+          { "word": "学校", "pinyin": "xuéxiào", "meaning": "school" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2023,
+    "hanzi": "因为……所以……",
+    "pinyin": "yīnwèi…suǒyǐ…",
+    "meaning": "because... so...",
+    "partOfSpeech": ["conjunction"],
+    "characterBreakdown": [
+      { "char": "因", "pinyin": "yīn", "meaning": "cause" },
+      { "char": "为", "pinyin": "wèi", "meaning": "for" },
+      { "char": "所", "pinyin": "suǒ", "meaning": "so" },
+      { "char": "以", "pinyin": "yǐ", "meaning": "by means of" }
+    ],
+    "examples": [
+      {
+        "hanzi": "因为下雨，所以他没来。",
+        "pinyin": "Yīnwèi xià yǔ, suǒyǐ tā méi lái.",
+        "translation": "Because it was raining, he didn't come.",
+        "tokens": [
+          { "word": "因为", "pinyin": "yīnwèi", "meaning": "because" },
+          { "word": "下雨", "pinyin": "xià yǔ", "meaning": "it's raining" },
+          { "word": "所以", "pinyin": "suǒyǐ", "meaning": "so" },
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "没", "pinyin": "méi", "meaning": "didn't" },
+          { "word": "来", "pinyin": "lái", "meaning": "come" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2024,
+    "hanzi": "虽然……但是……",
+    "pinyin": "suīrán…dànshì…",
+    "meaning": "although... but...",
+    "partOfSpeech": ["conjunction"],
+    "characterBreakdown": [
+      { "char": "虽", "pinyin": "suī", "meaning": "although" },
+      { "char": "然", "pinyin": "rán", "meaning": "so" },
+      { "char": "但", "pinyin": "dàn", "meaning": "but" },
+      { "char": "是", "pinyin": "shì", "meaning": "to be" }
+    ],
+    "examples": [
+      {
+        "hanzi": "虽然很累，但是他很高兴。",
+        "pinyin": "Suīrán hěn lèi, dànshì tā hěn gāoxìng.",
+        "translation": "Although he is tired, he is very happy.",
+        "tokens": [
+          { "word": "虽然", "pinyin": "suīrán", "meaning": "although" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "累", "pinyin": "lèi", "meaning": "tired" },
+          { "word": "但是", "pinyin": "dànshì", "meaning": "but" },
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "高兴", "pinyin": "gāoxìng", "meaning": "happy" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2025,
+    "hanzi": "从",
+    "pinyin": "cóng",
+    "meaning": "from",
+    "partOfSpeech": ["preposition"],
+    "characterBreakdown": [
+      { "char": "从", "pinyin": "cóng", "meaning": "from" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我从北京来。",
+        "pinyin": "Wǒ cóng Běijīng lái.",
+        "translation": "I come from Beijing.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "从", "pinyin": "cóng", "meaning": "from" },
+          { "word": "北京", "pinyin": "Běijīng", "meaning": "Beijing" },
+          { "word": "来", "pinyin": "lái", "meaning": "come" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2026,
+    "hanzi": "比",
+    "pinyin": "bǐ",
+    "meaning": "than (comparison)",
+    "partOfSpeech": ["preposition"],
+    "characterBreakdown": [
+      { "char": "比", "pinyin": "bǐ", "meaning": "to compare" }
+    ],
+    "examples": [
+      {
+        "hanzi": "哥哥比我高。",
+        "pinyin": "Gēge bǐ wǒ gāo.",
+        "translation": "My older brother is taller than me.",
+        "tokens": [
+          { "word": "哥哥", "pinyin": "gēge", "meaning": "older brother" },
+          { "word": "比", "pinyin": "bǐ", "meaning": "than" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "高", "pinyin": "gāo", "meaning": "tall" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2027,
+    "hanzi": "往",
+    "pinyin": "wǎng",
+    "meaning": "toward, to",
+    "partOfSpeech": ["preposition"],
+    "characterBreakdown": [
+      { "char": "往", "pinyin": "wǎng", "meaning": "toward" }
+    ],
+    "examples": [
+      {
+        "hanzi": "从这儿往右走。",
+        "pinyin": "Cóng zhèr wǎng yòu zǒu.",
+        "translation": "From here, go to the right.",
+        "tokens": [
+          { "word": "从", "pinyin": "cóng", "meaning": "from" },
+          { "word": "这儿", "pinyin": "zhèr", "meaning": "here" },
+          { "word": "往", "pinyin": "wǎng", "meaning": "toward" },
+          { "word": "右", "pinyin": "yòu", "meaning": "right" },
+          { "word": "走", "pinyin": "zǒu", "meaning": "walk" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2028,
+    "hanzi": "离",
+    "pinyin": "lí",
+    "meaning": "away from",
+    "partOfSpeech": ["preposition"],
+    "characterBreakdown": [
+      { "char": "离", "pinyin": "lí", "meaning": "to be away from" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我家离学校很近。",
+        "pinyin": "Wǒ jiā lí xuéxiào hěn jìn.",
+        "translation": "My home is very close to the school.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "家", "pinyin": "jiā", "meaning": "home" },
+          { "word": "离", "pinyin": "lí", "meaning": "from" },
+          { "word": "学校", "pinyin": "xuéxiào", "meaning": "school" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "近", "pinyin": "jìn", "meaning": "near" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2029,
+    "hanzi": "得",
+    "pinyin": "de",
+    "meaning": "structural particle",
+    "partOfSpeech": ["particle"],
+    "characterBreakdown": [
+      { "char": "得", "pinyin": "de", "meaning": "particle" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他跑得很快。",
+        "pinyin": "Tā pǎo de hěn kuài.",
+        "translation": "He runs very fast.",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "跑", "pinyin": "pǎo", "meaning": "runs" },
+          { "word": "得", "pinyin": "de", "meaning": "particle" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "快", "pinyin": "kuài", "meaning": "fast" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2030,
+    "hanzi": "着",
+    "pinyin": "zhe",
+    "meaning": "particle indicating continuous state",
+    "partOfSpeech": ["particle"],
+    "characterBreakdown": [
+      { "char": "着", "pinyin": "zhe", "meaning": "particle" }
+    ],
+    "examples": [
+      {
+        "hanzi": "门开着呢。",
+        "pinyin": "Mén kāi zhe ne.",
+        "translation": "The door is open.",
+        "tokens": [
+          { "word": "门", "pinyin": "mén", "meaning": "door" },
+          { "word": "开", "pinyin": "kāi", "meaning": "open" },
+          { "word": "着", "pinyin": "zhe", "meaning": "particle" },
+          { "word": "呢", "pinyin": "ne", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2031,
+    "hanzi": "过",
+    "pinyin": "guò",
+    "meaning": "particle for past experience",
+    "partOfSpeech": ["particle"],
+    "characterBreakdown": [
+      { "char": "过", "pinyin": "guò", "meaning": "to pass" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我去过北京。",
+        "pinyin": "Wǒ qù guo Běijīng.",
+        "translation": "I have been to Beijing.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "去", "pinyin": "qù", "meaning": "have been to" },
+          { "word": "过", "pinyin": "guo", "meaning": "particle" },
+          { "word": "北京", "pinyin": "Běijīng", "meaning": "Beijing" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2032,
+    "hanzi": "吧",
+    "pinyin": "ba",
+    "meaning": "suggestion particle",
+    "partOfSpeech": ["particle"],
+    "characterBreakdown": [
+      { "char": "吧", "pinyin": "ba", "meaning": "particle" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我们走吧。",
+        "pinyin": "Wǒmen zǒu ba.",
+        "translation": "Let's go.",
+        "tokens": [
+          { "word": "我们", "pinyin": "wǒmen", "meaning": "we" },
+          { "word": "走", "pinyin": "zǒu", "meaning": "go" },
+          { "word": "吧", "pinyin": "ba", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2033,
+    "hanzi": "机场",
+    "pinyin": "jīchǎng",
+    "meaning": "airport",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "机", "pinyin": "jī", "meaning": "machine" },
+      { "char": "场", "pinyin": "chǎng", "meaning": "field" }
+    ],
+    "examples": [
+      {
+        "hanzi": "爸爸在机场工作。",
+        "pinyin": "Bàba zài jīchǎng gōngzuò.",
+        "translation": "Dad works at the airport.",
+        "tokens": [
+          { "word": "爸爸", "pinyin": "bàba", "meaning": "dad" },
+          { "word": "在", "pinyin": "zài", "meaning": "at" },
+          { "word": "机场", "pinyin": "jīchǎng", "meaning": "airport" },
+          { "word": "工作", "pinyin": "gōngzuò", "meaning": "work" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2034,
+    "hanzi": "教室",
+    "pinyin": "jiàoshì",
+    "meaning": "classroom",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "教", "pinyin": "jiào", "meaning": "to teach" },
+      { "char": "室", "pinyin": "shì", "meaning": "room" }
+    ],
+    "examples": [
+      {
+        "hanzi": "教室里有很多学生。",
+        "pinyin": "Jiàoshì lǐ yǒu hěn duō xuéshēng.",
+        "translation": "There are many students in the classroom.",
+        "tokens": [
+          { "word": "教室", "pinyin": "jiàoshì", "meaning": "classroom" },
+          { "word": "里", "pinyin": "lǐ", "meaning": "inside" },
+          { "word": "有", "pinyin": "yǒu", "meaning": "there are" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "多", "pinyin": "duō", "meaning": "many" },
+          { "word": "学生", "pinyin": "xuéshēng", "meaning": "students" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2035,
+    "hanzi": "房间",
+    "pinyin": "fángjiān",
+    "meaning": "room",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "房", "pinyin": "fáng", "meaning": "house" },
+      { "char": "间", "pinyin": "jiān", "meaning": "room" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我的房间不小。",
+        "pinyin": "Wǒ de fángjiān bù xiǎo.",
+        "translation": "My room is not small.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "房间", "pinyin": "fángjiān", "meaning": "room" },
+          { "word": "不", "pinyin": "bù", "meaning": "not" },
+          { "word": "小", "pinyin": "xiǎo", "meaning": "small" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2036,
+    "hanzi": "路",
+    "pinyin": "lù",
+    "meaning": "road",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "路", "pinyin": "lù", "meaning": "road" }
+    ],
+    "examples": [
+      {
+        "hanzi": "去机场的路很远。",
+        "pinyin": "Qù jīchǎng de lù hěn yuǎn.",
+        "translation": "The road to the airport is very long.",
+        "tokens": [
+          { "word": "去", "pinyin": "qù", "meaning": "to go" },
+          { "word": "机场", "pinyin": "jīchǎng", "meaning": "airport" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" },
+          { "word": "路", "pinyin": "lù", "meaning": "road" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "远", "pinyin": "yuǎn", "meaning": "far" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2037,
+    "hanzi": "左边",
+    "pinyin": "zuǒbiān",
+    "meaning": "left side",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "左", "pinyin": "zuǒ", "meaning": "left" },
+      { "char": "边", "pinyin": "biān", "meaning": "side" }
+    ],
+    "examples": [
+      {
+        "hanzi": "学校在商店的左边。",
+        "pinyin": "Xuéxiào zài shāngdiàn de zuǒbiān.",
+        "translation": "The school is on the left of the store.",
+        "tokens": [
+          { "word": "学校", "pinyin": "xuéxiào", "meaning": "school" },
+          { "word": "在", "pinyin": "zài", "meaning": "is at" },
+          { "word": "商店", "pinyin": "shāngdiàn", "meaning": "store" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "左边", "pinyin": "zuǒbiān", "meaning": "left side" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2038,
+    "hanzi": "右边",
+    "pinyin": "yòubiān",
+    "meaning": "right side",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "右", "pinyin": "yòu", "meaning": "right" },
+      { "char": "边", "pinyin": "biān", "meaning": "side" }
+    ],
+    "examples": [
+      {
+        "hanzi": "医院在你的右边。",
+        "pinyin": "Yīyuàn zài nǐ de yòubiān.",
+        "translation": "The hospital is on your right.",
+        "tokens": [
+          { "word": "医院", "pinyin": "yīyuàn", "meaning": "hospital" },
+          { "word": "在", "pinyin": "zài", "meaning": "is at" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "your" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "右边", "pinyin": "yòubiān", "meaning": "right side" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2039,
+    "hanzi": "外",
+    "pinyin": "wài",
+    "meaning": "outside",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "外", "pinyin": "wài", "meaning": "outside" }
+    ],
+    "examples": [
+      {
+        "hanzi": "外面很冷，别出去。",
+        "pinyin": "Wàimiàn hěn lěng, bié chūqù.",
+        "translation": "It's cold outside, don't go out.",
+        "tokens": [
+          { "word": "外面", "pinyin": "wàimiàn", "meaning": "outside" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "冷", "pinyin": "lěng", "meaning": "cold" },
+          { "word": "别", "pinyin": "bié", "meaning": "don't" },
+          { "word": "出去", "pinyin": "chūqù", "meaning": "go out" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2040,
+    "hanzi": "旁边",
+    "pinyin": "pángbiān",
+    "meaning": "beside, next to",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "旁", "pinyin": "páng", "meaning": "side" },
+      { "char": "边", "pinyin": "biān", "meaning": "side" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他家就在学校旁边。",
+        "pinyin": "Tā jiā jiù zài xuéxiào pángbiān.",
+        "translation": "His home is right next to the school.",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "his" },
+          { "word": "家", "pinyin": "jiā", "meaning": "home" },
+          { "word": "就", "pinyin": "jiù", "meaning": "just" },
+          { "word": "在", "pinyin": "zài", "meaning": "at" },
+          { "word": "学校", "pinyin": "xuéxiào", "meaning": "school" },
+          { "word": "旁边", "pinyin": "pángbiān", "meaning": "beside" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2041,
+    "hanzi": "一下",
+    "pinyin": "yīxià",
+    "meaning": "a short while",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "一", "pinyin": "yī", "meaning": "one" },
+      { "char": "下", "pinyin": "xià", "meaning": "down" }
+    ],
+    "examples": [
+      {
+        "hanzi": "请等我一下。",
+        "pinyin": "Qǐng děng wǒ yīxià.",
+        "translation": "Please wait for me a moment.",
+        "tokens": [
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "等", "pinyin": "děng", "meaning": "wait" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "一下", "pinyin": "yīxià", "meaning": "a moment" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2042,
+    "hanzi": "早上",
+    "pinyin": "zǎoshang",
+    "meaning": "morning",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "早", "pinyin": "zǎo", "meaning": "early" },
+      { "char": "上", "pinyin": "shang", "meaning": "up" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我早上七点起床。",
+        "pinyin": "Wǒ zǎoshang qī diǎn qǐchuáng.",
+        "translation": "I get up at 7 in the morning.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "早上", "pinyin": "zǎoshang", "meaning": "morning" },
+          { "word": "七", "pinyin": "qī", "meaning": "seven" },
+          { "word": "点", "pinyin": "diǎn", "meaning": "o'clock" },
+          { "word": "起床", "pinyin": "qǐchuáng", "meaning": "get up" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2043,
+    "hanzi": "晚上",
+    "pinyin": "wǎnshang",
+    "meaning": "evening, night",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "晚", "pinyin": "wǎn", "meaning": "late" },
+      { "char": "上", "pinyin": "shang", "meaning": "up" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你晚上做什么？",
+        "pinyin": "Nǐ wǎnshang zuò shénme?",
+        "translation": "What do you do in the evening?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "晚上", "pinyin": "wǎnshang", "meaning": "evening" },
+          { "word": "做", "pinyin": "zuò", "meaning": "do" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "what" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2044,
+    "hanzi": "小时",
+    "pinyin": "xiǎoshí",
+    "meaning": "hour",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "小", "pinyin": "xiǎo", "meaning": "small" },
+      { "char": "时", "pinyin": "shí", "meaning": "time" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我看了一个小时的书。",
+        "pinyin": "Wǒ kàn le yī ge xiǎoshí de shū.",
+        "translation": "I read a book for one hour.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "看", "pinyin": "kàn", "meaning": "read" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "一", "pinyin": "yī", "meaning": "one" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "小时", "pinyin": "xiǎoshí", "meaning": "hour" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" },
+          { "word": "书", "pinyin": "shū", "meaning": "book" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2045,
+    "hanzi": "时间",
+    "pinyin": "shíjiān",
+    "meaning": "time",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "时", "pinyin": "shí", "meaning": "time" },
+      { "char": "间", "pinyin": "jiān", "meaning": "interval" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我没有时间去。",
+        "pinyin": "Wǒ méiyǒu shíjiān qù.",
+        "translation": "I don't have time to go.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "没有", "pinyin": "méiyǒu", "meaning": "don't have" },
+          { "word": "时间", "pinyin": "shíjiān", "meaning": "time" },
+          { "word": "去", "pinyin": "qù", "meaning": "go" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2046,
+    "hanzi": "去年",
+    "pinyin": "qùnián",
+    "meaning": "last year",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "去", "pinyin": "qù", "meaning": "to go" },
+      { "char": "年", "pinyin": "nián", "meaning": "year" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我去年在北京。",
+        "pinyin": "Wǒ qùnián zài Běijīng.",
+        "translation": "I was in Beijing last year.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "去年", "pinyin": "qùnián", "meaning": "last year" },
+          { "word": "在", "pinyin": "zài", "meaning": "was in" },
+          { "word": "北京", "pinyin": "Běijīng", "meaning": "Beijing" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2047,
+    "hanzi": "日",
+    "pinyin": "rì",
+    "meaning": "day, date",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "日", "pinyin": "rì", "meaning": "day, sun" }
+    ],
+    "examples": [
+      {
+        "hanzi": "今天是十月一日。",
+        "pinyin": "Jīntiān shì shí yuè yī rì.",
+        "translation": "Today is October 1st.",
+        "tokens": [
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "十", "pinyin": "shí", "meaning": "ten" },
+          { "word": "月", "pinyin": "yuè", "meaning": "month" },
+          { "word": "一", "pinyin": "yī", "meaning": "one" },
+          { "word": "日", "pinyin": "rì", "meaning": "day" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2048,
+    "hanzi": "生日",
+    "pinyin": "shēngrì",
+    "meaning": "birthday",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "生", "pinyin": "shēng", "meaning": "to be born" },
+      { "char": "日", "pinyin": "rì", "meaning": "day" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你的生日是几月几号？",
+        "pinyin": "Nǐ de shēngrì shì jǐ yuè jǐ hào?",
+        "translation": "When is your birthday?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "your" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "生日", "pinyin": "shēngrì", "meaning": "birthday" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "几", "pinyin": "jǐ", "meaning": "what" },
+          { "word": "月", "pinyin": "yuè", "meaning": "month" },
+          { "word": "几", "pinyin": "jǐ", "meaning": "what" },
+          { "word": "号", "pinyin": "hào", "meaning": "date" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2049,
+    "hanzi": "哥哥",
+    "pinyin": "gēge",
+    "meaning": "older brother",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "哥", "pinyin": "gē", "meaning": "older brother" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我哥哥比我大三岁。",
+        "pinyin": "Wǒ gēge bǐ wǒ dà sān suì.",
+        "translation": "My older brother is three years older than me.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "哥哥", "pinyin": "gēge", "meaning": "older brother" },
+          { "word": "比", "pinyin": "bǐ", "meaning": "than" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "大", "pinyin": "dà", "meaning": "older" },
+          { "word": "三", "pinyin": "sān", "meaning": "three" },
+          { "word": "岁", "pinyin": "suì", "meaning": "years old" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2050,
+    "hanzi": "姐姐",
+    "pinyin": "jiějie",
+    "meaning": "older sister",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "姐", "pinyin": "jiě", "meaning": "older sister" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我姐姐是医生。",
+        "pinyin": "Wǒ jiějie shì yīshēng.",
+        "translation": "My older sister is a doctor.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "姐姐", "pinyin": "jiějie", "meaning": "older sister" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "医生", "pinyin": "yīshēng", "meaning": "doctor" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2051,
+    "hanzi": "弟弟",
+    "pinyin": "dìdi",
+    "meaning": "younger brother",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "弟", "pinyin": "dì", "meaning": "younger brother" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你弟弟几岁了？",
+        "pinyin": "Nǐ dìdi jǐ suì le?",
+        "translation": "How old is your younger brother?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "your" },
+          { "word": "弟弟", "pinyin": "dìdi", "meaning": "younger brother" },
+          { "word": "几", "pinyin": "jǐ", "meaning": "how many" },
+          { "word": "岁", "pinyin": "suì", "meaning": "years old" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2052,
+    "hanzi": "妹妹",
+    "pinyin": "mèimei",
+    "meaning": "younger sister",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "妹", "pinyin": "mèi", "meaning": "younger sister" }
+    ],
+    "examples": [
+      {
+        "hanzi": "她妹妹非常漂亮。",
+        "pinyin": "Tā mèimei fēicháng piàoliang.",
+        "translation": "Her younger sister is very beautiful.",
+        "tokens": [
+          { "word": "她", "pinyin": "tā", "meaning": "her" },
+          { "word": "妹妹", "pinyin": "mèimei", "meaning": "younger sister" },
+          { "word": "非常", "pinyin": "fēicháng", "meaning": "very" },
+          { "word": "漂亮", "pinyin": "piàoliang", "meaning": "beautiful" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2053,
+    "hanzi": "丈夫",
+    "pinyin": "zhàngfu",
+    "meaning": "husband",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "丈", "pinyin": "zhàng", "meaning": "a measure of length, gentleman" },
+      { "char": "夫", "pinyin": "fu", "meaning": "man, husband" }
+    ],
+    "examples": [
+      {
+        "hanzi": "那是她的丈夫。",
+        "pinyin": "Nà shì tā de zhàngfu.",
+        "translation": "That is her husband.",
+        "tokens": [
+          { "word": "那", "pinyin": "nà", "meaning": "that" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "她", "pinyin": "tā", "meaning": "her" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "丈夫", "pinyin": "zhàngfu", "meaning": "husband" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2054,
+    "hanzi": "妻子",
+    "pinyin": "qīzi",
+    "meaning": "wife",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "妻", "pinyin": "qī", "meaning": "wife" },
+      { "char": "子", "pinyin": "zi", "meaning": "noun suffix" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我妻子喜欢看电影。",
+        "pinyin": "Wǒ qīzi xǐhuān kàn diànyǐng.",
+        "translation": "My wife likes to watch movies.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "妻子", "pinyin": "qīzi", "meaning": "wife" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "likes" },
+          { "word": "看", "pinyin": "kàn", "meaning": "to watch" },
+          { "word": "电影", "pinyin": "diànyǐng", "meaning": "movies" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2055,
+    "hanzi": "孩子",
+    "pinyin": "háizi",
+    "meaning": "child",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "孩", "pinyin": "hái", "meaning": "child" },
+      { "char": "子", "pinyin": "zi", "meaning": "noun suffix" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这个孩子很高兴。",
+        "pinyin": "Zhè ge háizi hěn gāoxìng.",
+        "translation": "This child is very happy.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "孩子", "pinyin": "háizi", "meaning": "child" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "高兴", "pinyin": "gāoxìng", "meaning": "happy" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2056,
+    "hanzi": "男人",
+    "pinyin": "nánrén",
+    "meaning": "man",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "男", "pinyin": "nán", "meaning": "male" },
+      { "char": "人", "pinyin": "rén", "meaning": "person" }
+    ],
+    "examples": [
+      {
+        "hanzi": "那个男人是谁？",
+        "pinyin": "Nà ge nánrén shì shéi?",
+        "translation": "Who is that man?",
+        "tokens": [
+          { "word": "那", "pinyin": "nà", "meaning": "that" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "男人", "pinyin": "nánrén", "meaning": "man" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "谁", "pinyin": "shéi", "meaning": "who" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2057,
+    "hanzi": "女人",
+    "pinyin": "nǚrén",
+    "meaning": "woman",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "女", "pinyin": "nǚ", "meaning": "female" },
+      { "char": "人", "pinyin": "rén", "meaning": "person" }
+    ],
+    "examples": [
+      {
+        "hanzi": "左边的女人是我妈妈。",
+        "pinyin": "Zuǒbiān de nǚrén shì wǒ māma.",
+        "translation": "The woman on the left is my mom.",
+        "tokens": [
+          { "word": "左边", "pinyin": "zuǒbiān", "meaning": "left side" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" },
+          { "word": "女人", "pinyin": "nǚrén", "meaning": "woman" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "妈妈", "pinyin": "māma", "meaning": "mom" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2058,
+    "hanzi": "服务员",
+    "pinyin": "fúwùyuán",
+    "meaning": "waiter, attendant",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "服", "pinyin": "fú", "meaning": "to serve" },
+      { "char": "务", "pinyin": "wù", "meaning": "affair, business" },
+      { "char": "员", "pinyin": "yuán", "meaning": "person, member" }
+    ],
+    "examples": [
+      {
+        "hanzi": "服务员，请给我一杯水。",
+        "pinyin": "Fúwùyuán, qǐng gěi wǒ yī bēi shuǐ.",
+        "translation": "Waiter, please give me a glass of water.",
+        "tokens": [
+          { "word": "服务员", "pinyin": "fúwùyuán", "meaning": "waiter" },
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "给", "pinyin": "gěi", "meaning": "give" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "杯", "pinyin": "bēi", "meaning": "glass of" },
+          { "word": "水", "pinyin": "shuǐ", "meaning": "water" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2059,
+    "hanzi": "鱼",
+    "pinyin": "yú",
+    "meaning": "fish",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "鱼", "pinyin": "yú", "meaning": "fish" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我今天想吃鱼。",
+        "pinyin": "Wǒ jīntiān xiǎng chī yú.",
+        "translation": "I want to eat fish today.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "想", "pinyin": "xiǎng", "meaning": "want" },
+          { "word": "吃", "pinyin": "chī", "meaning": "to eat" },
+          { "word": "鱼", "pinyin": "yú", "meaning": "fish" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2060,
+    "hanzi": "羊肉",
+    "pinyin": "yángròu",
+    "meaning": "mutton, lamb meat",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "羊", "pinyin": "yáng", "meaning": "sheep" },
+      { "char": "肉", "pinyin": "ròu", "meaning": "meat" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你喜欢吃羊肉吗？",
+        "pinyin": "Nǐ xǐhuān chī yángròu ma?",
+        "translation": "Do you like to eat mutton?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "like" },
+          { "word": "吃", "pinyin": "chī", "meaning": "to eat" },
+          { "word": "羊肉", "pinyin": "yángròu", "meaning": "mutton" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2061,
+    "hanzi": "牛奶",
+    "pinyin": "niúnǎi",
+    "meaning": "milk",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "牛", "pinyin": "niú", "meaning": "cow" },
+      { "char": "奶", "pinyin": "nǎi", "meaning": "milk" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他早上喝了一杯牛奶。",
+        "pinyin": "Tā zǎoshang hē le yī bēi niúnǎi.",
+        "translation": "He drank a glass of milk in the morning.",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "早上", "pinyin": "zǎoshang", "meaning": "morning" },
+          { "word": "喝", "pinyin": "hē", "meaning": "drank" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "杯", "pinyin": "bēi", "meaning": "glass of" },
+          { "word": "牛奶", "pinyin": "niúnǎi", "meaning": "milk" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2062,
+    "hanzi": "鸡蛋",
+    "pinyin": "jīdàn",
+    "meaning": "egg",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "鸡", "pinyin": "jī", "meaning": "chicken" },
+      { "char": "蛋", "pinyin": "dàn", "meaning": "egg" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我每天早上吃一个鸡蛋。",
+        "pinyin": "Wǒ měitiān zǎoshang chī yī ge jīdàn.",
+        "translation": "I eat one egg every morning.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "每天", "pinyin": "měitiān", "meaning": "every day" },
+          { "word": "早上", "pinyin": "zǎoshang", "meaning": "morning" },
+          { "word": "吃", "pinyin": "chī", "meaning": "eat" },
+          { "word": "一", "pinyin": "yī", "meaning": "one" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "鸡蛋", "pinyin": "jīdàn", "meaning": "egg" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2063,
+    "hanzi": "西瓜",
+    "pinyin": "xīguā",
+    "meaning": "watermelon",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "西", "pinyin": "xī", "meaning": "west" },
+      { "char": "瓜", "pinyin": "guā", "meaning": "melon" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这个西瓜真甜！",
+        "pinyin": "Zhè ge xīguā zhēn tián!",
+        "translation": "This watermelon is really sweet!",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "西瓜", "pinyin": "xīguā", "meaning": "watermelon" },
+          { "word": "真", "pinyin": "zhēn", "meaning": "really" },
+          { "word": "甜", "pinyin": "tián", "meaning": "sweet" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2064,
+    "hanzi": "咖啡",
+    "pinyin": "kāfēi",
+    "meaning": "coffee",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "咖", "pinyin": "kā", "meaning": "coffee (phonetic)" },
+      { "char": "啡", "pinyin": "fēi", "meaning": "coffee (phonetic)" }
+    ],
+    "examples": [
+      {
+        "hanzi": "她每天都喝咖啡。",
+        "pinyin": "Tā měi tiān dōu hē kāfēi.",
+        "translation": "She drinks coffee every day.",
+        "tokens": [
+          { "word": "她", "pinyin": "tā", "meaning": "she" },
+          { "word": "每", "pinyin": "měi", "meaning": "every" },
+          { "word": "天", "pinyin": "tiān", "meaning": "day" },
+          { "word": "都", "pinyin": "dōu", "meaning": "all" },
+          { "word": "喝", "pinyin": "hē", "meaning": "drinks" },
+          { "word": "咖啡", "pinyin": "kāfēi", "meaning": "coffee" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2065,
+    "hanzi": "雪",
+    "pinyin": "xuě",
+    "meaning": "snow",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "雪", "pinyin": "xuě", "meaning": "snow" }
+    ],
+    "examples": [
+      {
+        "hanzi": "外面下雪了。",
+        "pinyin": "Wàimiàn xià xuě le.",
+        "translation": "It's snowing outside.",
+        "tokens": [
+          { "word": "外面", "pinyin": "wàimiàn", "meaning": "outside" },
+          { "word": "下", "pinyin": "xià", "meaning": "to fall" },
+          { "word": "雪", "pinyin": "xuě", "meaning": "snow" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2066,
+    "hanzi": "药",
+    "pinyin": "yào",
+    "meaning": "medicine",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "药", "pinyin": "yào", "meaning": "medicine" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你吃药了吗？",
+        "pinyin": "Nǐ chī yào le ma?",
+        "translation": "Did you take your medicine?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "吃", "pinyin": "chī", "meaning": "take" },
+          { "word": "药", "pinyin": "yào", "meaning": "medicine" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2067,
+    "hanzi": "手机",
+    "pinyin": "shǒujī",
+    "meaning": "cellphone",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "手", "pinyin": "shǒu", "meaning": "hand" },
+      { "char": "机", "pinyin": "jī", "meaning": "machine" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我的手机在哪儿？",
+        "pinyin": "Wǒ de shǒujī zài nǎr?",
+        "translation": "Where is my cellphone?",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "手机", "pinyin": "shǒujī", "meaning": "cellphone" },
+          { "word": "在", "pinyin": "zài", "meaning": "is at" },
+          { "word": "哪儿", "pinyin": "nǎr", "meaning": "where" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2068,
+    "hanzi": "手表",
+    "pinyin": "shǒubiǎo",
+    "meaning": "watch",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "手", "pinyin": "shǒu", "meaning": "hand" },
+      { "char": "表", "pinyin": "biǎo", "meaning": "watch, meter" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这块手表是谁的？",
+        "pinyin": "Zhè kuài shǒubiǎo shì shéi de?",
+        "translation": "Whose watch is this?",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "块", "pinyin": "kuài", "meaning": "measure word" },
+          { "word": "手表", "pinyin": "shǒubiǎo", "meaning": "watch" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "谁", "pinyin": "shéi", "meaning": "who" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2069,
+    "hanzi": "眼睛",
+    "pinyin": "yǎnjīng",
+    "meaning": "eye",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "眼", "pinyin": "yǎn", "meaning": "eye" },
+      { "char": "睛", "pinyin": "jīng", "meaning": "eyeball" }
+    ],
+    "examples": [
+      {
+        "hanzi": "她的眼睛很漂亮。",
+        "pinyin": "Tā de yǎnjīng hěn piàoliang.",
+        "translation": "Her eyes are very beautiful.",
+        "tokens": [
+          { "word": "她", "pinyin": "tā", "meaning": "her" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "眼睛", "pinyin": "yǎnjīng", "meaning": "eyes" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "漂亮", "pinyin": "piàoliang", "meaning": "beautiful" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2070,
+    "hanzi": "身体",
+    "pinyin": "shēntǐ",
+    "meaning": "body, health",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "身", "pinyin": "shēn", "meaning": "body" },
+      { "char": "体", "pinyin": "tǐ", "meaning": "body" }
+    ],
+    "examples": [
+      {
+        "hanzi": "您身体怎么样？",
+        "pinyin": "Nín shēntǐ zěnmeyàng?",
+        "translation": "How is your health?",
+        "tokens": [
+          { "word": "您", "pinyin": "nín", "meaning": "your (polite)" },
+          { "word": "身体", "pinyin": "shēntǐ", "meaning": "health" },
+          { "word": "怎么样", "pinyin": "zěnmeyàng", "meaning": "how is it" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2071,
+    "hanzi": "公共汽车",
+    "pinyin": "gōnggòngqìchē",
+    "meaning": "bus",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "公", "pinyin": "gōng", "meaning": "public" },
+      { "char": "共", "pinyin": "gòng", "meaning": "common" },
+      { "char": "汽", "pinyin": "qì", "meaning": "steam, gas" },
+      { "char": "车", "pinyin": "chē", "meaning": "vehicle" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我坐公共汽车去公司。",
+        "pinyin": "Wǒ zuò gōnggòngqìchē qù gōngsī.",
+        "translation": "I take the bus to the company.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "坐", "pinyin": "zuò", "meaning": "take" },
+          { "word": "公共汽车", "pinyin": "gōnggòngqìchē", "meaning": "bus" },
+          { "word": "去", "pinyin": "qù", "meaning": "to go" },
+          { "word": "公司", "pinyin": "gōngsī", "meaning": "company" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2072,
+    "hanzi": "报纸",
+    "pinyin": "bàozhǐ",
+    "meaning": "newspaper",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "报", "pinyin": "bào", "meaning": "to report" },
+      { "char": "纸", "pinyin": "zhǐ", "meaning": "paper" }
+    ],
+    "examples": [
+      {
+        "hanzi": "爸爸每天看报纸。",
+        "pinyin": "Bàba měi tiān kàn bàozhǐ.",
+        "translation": "Dad reads the newspaper every day.",
+        "tokens": [
+          { "word": "爸爸", "pinyin": "bàba", "meaning": "dad" },
+          { "word": "每", "pinyin": "měi", "meaning": "every" },
+          { "word": "天", "pinyin": "tiān", "meaning": "day" },
+          { "word": "看", "pinyin": "kàn", "meaning": "reads" },
+          { "word": "报纸", "pinyin": "bàozhǐ", "meaning": "newspaper" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2073,
+    "hanzi": "门",
+    "pinyin": "mén",
+    "meaning": "door",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "门", "pinyin": "mén", "meaning": "door" }
+    ],
+    "examples": [
+      {
+        "hanzi": "请开门。",
+        "pinyin": "Qǐng kāi mén.",
+        "translation": "Please open the door.",
+        "tokens": [
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "开", "pinyin": "kāi", "meaning": "open" },
+          { "word": "门", "pinyin": "mén", "meaning": "door" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2074,
+    "hanzi": "题",
+    "pinyin": "tí",
+    "meaning": "question, topic",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "题", "pinyin": "tí", "meaning": "topic, question" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这道题我不会做。",
+        "pinyin": "Zhè dào tí wǒ bù huì zuò.",
+        "translation": "I don't know how to do this question.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "道", "pinyin": "dào", "meaning": "measure word" },
+          { "word": "题", "pinyin": "tí", "meaning": "question" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "不", "pinyin": "bù", "meaning": "don't" },
+          { "word": "会", "pinyin": "huì", "meaning": "know how" },
+          { "word": "做", "pinyin": "zuò", "meaning": "to do" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2075,
+    "hanzi": "课",
+    "pinyin": "kè",
+    "meaning": "lesson, class",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "课", "pinyin": "kè", "meaning": "class" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我们下午有汉语课。",
+        "pinyin": "Wǒmen xiàwǔ yǒu Hànyǔ kè.",
+        "translation": "We have Chinese class in the afternoon.",
+        "tokens": [
+          { "word": "我们", "pinyin": "wǒmen", "meaning": "we" },
+          { "word": "下午", "pinyin": "xiàwǔ", "meaning": "afternoon" },
+          { "word": "有", "pinyin": "yǒu", "meaning": "have" },
+          { "word": "汉语", "pinyin": "Hànyǔ", "meaning": "Chinese" },
+          { "word": "课", "pinyin": "kè", "meaning": "class" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2076,
+    "hanzi": "姓",
+    "pinyin": "xìng",
+    "meaning": "surname",
+    "partOfSpeech": ["noun", "verb"],
+    "characterBreakdown": [
+      { "char": "姓", "pinyin": "xìng", "meaning": "surname" }
+    ],
+    "examples": [
+      {
+        "hanzi": "您贵姓？",
+        "pinyin": "Nín guì xìng?",
+        "translation": "What is your honorable surname?",
+        "tokens": [
+          { "word": "您", "pinyin": "nín", "meaning": "you (polite)" },
+          { "word": "贵姓", "pinyin": "guì xìng", "meaning": "honorable surname" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2077,
+    "hanzi": "问题",
+    "pinyin": "wèntí",
+    "meaning": "question, problem",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "问", "pinyin": "wèn", "meaning": "to ask" },
+      { "char": "题", "pinyin": "tí", "meaning": "topic" }
+    ],
+    "examples": [
+      {
+        "hanzi": "老师，我有一个问题。",
+        "pinyin": "Lǎoshī, wǒ yǒu yī ge wèntí.",
+        "translation": "Teacher, I have a question.",
+        "tokens": [
+          { "word": "老师", "pinyin": "lǎoshī", "meaning": "teacher" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "有", "pinyin": "yǒu", "meaning": "have" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "问题", "pinyin": "wèntí", "meaning": "question" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2078,
+    "hanzi": "事情",
+    "pinyin": "shìqing",
+    "meaning": "matter, affair, thing",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "事", "pinyin": "shì", "meaning": "matter" },
+      { "char": "情", "pinyin": "qíng", "meaning": "situation" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你明天有什么事情吗？",
+        "pinyin": "Nǐ míngtiān yǒu shénme shìqing ma?",
+        "translation": "Do you have anything on tomorrow?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "明天", "pinyin": "míngtiān", "meaning": "tomorrow" },
+          { "word": "有", "pinyin": "yǒu", "meaning": "have" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "any" },
+          { "word": "事情", "pinyin": "shìqing", "meaning": "matters" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2079,
+    "hanzi": "考试",
+    "pinyin": "kǎoshì",
+    "meaning": "exam",
+    "partOfSpeech": ["noun", "verb"],
+    "characterBreakdown": [
+      { "char": "考", "pinyin": "kǎo", "meaning": "to test" },
+      { "char": "试", "pinyin": "shì", "meaning": "to try, test" }
+    ],
+    "examples": [
+      {
+        "hanzi": "明天的考试你准备好了吗？",
+        "pinyin": "Míngtiān de kǎoshì nǐ zhǔnbèi hǎo le ma?",
+        "translation": "Are you ready for tomorrow's exam?",
+        "tokens": [
+          { "word": "明天", "pinyin": "míngtiān", "meaning": "tomorrow" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "考试", "pinyin": "kǎoshì", "meaning": "exam" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "准备", "pinyin": "zhǔnbèi", "meaning": "prepare" },
+          { "word": "好", "pinyin": "hǎo", "meaning": "well" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2080,
+    "hanzi": "票",
+    "pinyin": "piào",
+    "meaning": "ticket",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "票", "pinyin": "piào", "meaning": "ticket" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这张电影票是我的。",
+        "pinyin": "Zhè zhāng diànyǐng piào shì wǒ de.",
+        "translation": "This movie ticket is mine.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "张", "pinyin": "zhāng", "meaning": "measure word" },
+          { "word": "电影", "pinyin": "diànyǐng", "meaning": "movie" },
+          { "word": "票", "pinyin": "piào", "meaning": "ticket" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2081,
+    "hanzi": "意思",
+    "pinyin": "yìsi",
+    "meaning": "meaning",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "意", "pinyin": "yì", "meaning": "meaning, idea" },
+      { "char": "思", "pinyin": "si", "meaning": "to think" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这是什么意思？",
+        "pinyin": "Zhè shì shénme yìsi?",
+        "translation": "What does this mean?",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "what" },
+          { "word": "意思", "pinyin": "yìsi", "meaning": "meaning" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2082,
+    "hanzi": "颜色",
+    "pinyin": "yánsè",
+    "meaning": "color",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "颜", "pinyin": "yán", "meaning": "face, color" },
+      { "char": "色", "pinyin": "sè", "meaning": "color" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你喜欢什么颜色？",
+        "pinyin": "Nǐ xǐhuān shénme yánsè?",
+        "translation": "What color do you like?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "like" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "what" },
+          { "word": "颜色", "pinyin": "yánsè", "meaning": "color" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2083,
+    "hanzi": "铅笔",
+    "pinyin": "qiānbǐ",
+    "meaning": "pencil",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "铅", "pinyin": "qiān", "meaning": "lead (metal)" },
+      { "char": "笔", "pinyin": "bǐ", "meaning": "pen" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我能用一下你的铅笔吗？",
+        "pinyin": "Wǒ néng yòng yīxià nǐ de qiānbǐ ma?",
+        "translation": "Can I use your pencil for a bit?",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "能", "pinyin": "néng", "meaning": "can" },
+          { "word": "用", "pinyin": "yòng", "meaning": "use" },
+          { "word": "一下", "pinyin": "yīxià", "meaning": "for a bit" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "your" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "铅笔", "pinyin": "qiānbǐ", "meaning": "pencil" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2084,
+    "hanzi": "面条",
+    "pinyin": "miàntiáo",
+    "meaning": "noodles",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "面", "pinyin": "miàn", "meaning": "flour, noodles" },
+      { "char": "条", "pinyin": "tiáo", "meaning": "strip" }
+    ],
+    "examples": [
+      {
+        "hanzi": "中午我们吃面条吧。",
+        "pinyin": "Zhōngwǔ wǒmen chī miàntiáo ba.",
+        "translation": "Let's eat noodles for lunch.",
+        "tokens": [
+          { "word": "中午", "pinyin": "zhōngwǔ", "meaning": "noon" },
+          { "word": "我们", "pinyin": "wǒmen", "meaning": "we" },
+          { "word": "吃", "pinyin": "chī", "meaning": "eat" },
+          { "word": "面条", "pinyin": "miàntiáo", "meaning": "noodles" },
+          { "word": "吧", "pinyin": "ba", "meaning": "suggestion particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2085,
+    "hanzi": "火车站",
+    "pinyin": "huǒchēzhàn",
+    "meaning": "train station",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "火", "pinyin": "huǒ", "meaning": "fire" },
+      { "char": "车", "pinyin": "chē", "meaning": "vehicle" },
+      { "char": "站", "pinyin": "zhàn", "meaning": "station" }
+    ],
+    "examples": [
+      {
+        "hanzi": "火车站离这儿远吗？",
+        "pinyin": "Huǒchēzhàn lí zhèr yuǎn ma?",
+        "translation": "Is the train station far from here?",
+        "tokens": [
+          { "word": "火车站", "pinyin": "huǒchēzhàn", "meaning": "train station" },
+          { "word": "离", "pinyin": "lí", "meaning": "from" },
+          { "word": "这儿", "pinyin": "zhèr", "meaning": "here" },
+          { "word": "远", "pinyin": "yuǎn", "meaning": "far" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2086,
+    "hanzi": "公司",
+    "pinyin": "gōngsī",
+    "meaning": "company",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "公", "pinyin": "gōng", "meaning": "public" },
+      { "char": "司", "pinyin": "sī", "meaning": "to manage" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我爸爸在这家公司工作。",
+        "pinyin": "Wǒ bàba zài zhè jiā gōngsī gōngzuò.",
+        "translation": "My dad works at this company.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "爸爸", "pinyin": "bàba", "meaning": "dad" },
+          { "word": "在", "pinyin": "zài", "meaning": "at" },
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "家", "pinyin": "jiā", "meaning": "measure word" },
+          { "word": "公司", "pinyin": "gōngsī", "meaning": "company" },
+          { "word": "工作", "pinyin": "gōngzuò", "meaning": "works" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2087,
+    "hanzi": "宾馆",
+    "pinyin": "bīngguǎn",
+    "meaning": "hotel",
+    "partOfSpeech": ["noun"],
+    "characterBreakdown": [
+      { "char": "宾", "pinyin": "bīn", "meaning": "guest" },
+      { "char": "馆", "pinyin": "guǎn", "meaning": "building, shop" }
+    ],
+    "examples": [
+      {
+        "hanzi": "机场旁边有一个宾馆。",
+        "pinyin": "Jīchǎng pángbiān yǒu yī ge bīngguǎn.",
+        "translation": "There is a hotel next to the airport.",
+        "tokens": [
+          { "word": "机场", "pinyin": "jīchǎng", "meaning": "airport" },
+          { "word": "旁边", "pinyin": "pángbiān", "meaning": "next to" },
+          { "word": "有", "pinyin": "yǒu", "meaning": "there is" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "宾馆", "pinyin": "bīngguǎn", "meaning": "hotel" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2088,
+    "hanzi": "说话",
+    "pinyin": "shuōhuà",
+    "meaning": "to talk, to speak",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "说", "pinyin": "shuō", "meaning": "to speak" },
+      { "char": "话", "pinyin": "huà", "meaning": "speech, talk" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他们正在说话。",
+        "pinyin": "Tāmen zhèngzài shuōhuà.",
+        "translation": "They are talking.",
+        "tokens": [
+          { "word": "他们", "pinyin": "tāmen", "meaning": "they" },
+          { "word": "正在", "pinyin": "zhèngzài", "meaning": "are" },
+          { "word": "说话", "pinyin": "shuōhuà", "meaning": "talking" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2089,
+    "hanzi": "卖",
+    "pinyin": "mài",
+    "meaning": "to sell",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "卖", "pinyin": "mài", "meaning": "to sell" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这个商店卖什么？",
+        "pinyin": "Zhè ge shāngdiàn mài shénme?",
+        "translation": "What does this store sell?",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "商店", "pinyin": "shāngdiàn", "meaning": "store" },
+          { "word": "卖", "pinyin": "mài", "meaning": "sell" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "what" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2090,
+    "hanzi": "问",
+    "pinyin": "wèn",
+    "meaning": "to ask",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "问", "pinyin": "wèn", "meaning": "to ask" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我想问你一个问题。",
+        "pinyin": "Wǒ xiǎng wèn nǐ yī ge wèntí.",
+        "translation": "I want to ask you a question.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "想", "pinyin": "xiǎng", "meaning": "want" },
+          { "word": "问", "pinyin": "wèn", "meaning": "to ask" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "问题", "pinyin": "wèntí", "meaning": "question" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2091,
+    "hanzi": "走",
+    "pinyin": "zǒu",
+    "meaning": "to walk",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "走", "pinyin": "zǒu", "meaning": "to walk" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我们走着去学校吧。",
+        "pinyin": "Wǒmen zǒu zhe qù xuéxiào ba.",
+        "translation": "Let's walk to school.",
+        "tokens": [
+          { "word": "我们", "pinyin": "wǒmen", "meaning": "we" },
+          { "word": "走", "pinyin": "zǒu", "meaning": "walk" },
+          { "word": "着", "pinyin": "zhe", "meaning": "particle" },
+          { "word": "去", "pinyin": "qù", "meaning": "to go" },
+          { "word": "学校", "pinyin": "xuéxiào", "meaning": "school" },
+          { "word": "吧", "pinyin": "ba", "meaning": "suggestion particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2092,
+    "hanzi": "进",
+    "pinyin": "jìn",
+    "meaning": "to enter",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "进", "pinyin": "jìn", "meaning": "to enter" }
+    ],
+    "examples": [
+      {
+        "hanzi": "请进！",
+        "pinyin": "Qǐng jìn!",
+        "translation": "Please come in!",
+        "tokens": [
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "进", "pinyin": "jìn", "meaning": "enter" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2093,
+    "hanzi": "出",
+    "pinyin": "chū",
+    "meaning": "to go out",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "出", "pinyin": "chū", "meaning": "to exit" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他什么时候出房间？",
+        "pinyin": "Tā shénme shíhou chū fángjiān?",
+        "translation": "When is he coming out of the room?",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "what" },
+          { "word": "时候", "pinyin": "shíhou", "meaning": "time" },
+          { "word": "出", "pinyin": "chū", "meaning": "exit" },
+          { "word": "房间", "pinyin": "fángjiān", "meaning": "room" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2094,
+    "hanzi": "跑步",
+    "pinyin": "pǎobù",
+    "meaning": "to run, to jog",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "跑", "pinyin": "pǎo", "meaning": "to run" },
+      { "char": "步", "pinyin": "bù", "meaning": "step" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我哥哥喜欢早上跑步。",
+        "pinyin": "Wǒ gēge xǐhuān zǎoshang pǎobù.",
+        "translation": "My older brother likes to run in the morning.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "哥哥", "pinyin": "gēge", "meaning": "older brother" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "likes" },
+          { "word": "早上", "pinyin": "zǎoshang", "meaning": "morning" },
+          { "word": "跑步", "pinyin": "pǎobù", "meaning": "to run" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2095,
+    "hanzi": "到",
+    "pinyin": "dào",
+    "meaning": "to arrive",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "到", "pinyin": "dào", "meaning": "to arrive" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我们九点到机场。",
+        "pinyin": "Wǒmen jiǔ diǎn dào jīchǎng.",
+        "translation": "We will arrive at the airport at 9 o'clock.",
+        "tokens": [
+          { "word": "我们", "pinyin": "wǒmen", "meaning": "we" },
+          { "word": "九", "pinyin": "jiǔ", "meaning": "nine" },
+          { "word": "点", "pinyin": "diǎn", "meaning": "o'clock" },
+          { "word": "到", "pinyin": "dào", "meaning": "arrive" },
+          { "word": "机场", "pinyin": "jīchǎng", "meaning": "airport" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2096,
+    "hanzi": "穿",
+    "pinyin": "chuān",
+    "meaning": "to wear",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "穿", "pinyin": "chuān", "meaning": "to wear" }
+    ],
+    "examples": [
+      {
+        "hanzi": "今天你穿得真漂亮。",
+        "pinyin": "Jīntiān nǐ chuān de zhēn piàoliang.",
+        "translation": "You are dressed so beautifully today.",
+        "tokens": [
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "穿", "pinyin": "chuān", "meaning": "wear" },
+          { "word": "得", "pinyin": "de", "meaning": "particle" },
+          { "word": "真", "pinyin": "zhēn", "meaning": "really" },
+          { "word": "漂亮", "pinyin": "piàoliang", "meaning": "beautiful" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2097,
+    "hanzi": "洗",
+    "pinyin": "xǐ",
+    "meaning": "to wash",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "洗", "pinyin": "xǐ", "meaning": "to wash" }
+    ],
+    "examples": [
+      {
+        "hanzi": "吃水果前要洗手。",
+        "pinyin": "Chī shuǐguǒ qián yào xǐ shǒu.",
+        "translation": "You should wash your hands before eating fruit.",
+        "tokens": [
+          { "word": "吃", "pinyin": "chī", "meaning": "eat" },
+          { "word": "水果", "pinyin": "shuǐguǒ", "meaning": "fruit" },
+          { "word": "前", "pinyin": "qián", "meaning": "before" },
+          { "word": "要", "pinyin": "yào", "meaning": "should" },
+          { "word": "洗", "pinyin": "xǐ", "meaning": "wash" },
+          { "word": "手", "pinyin": "shǒu", "meaning": "hands" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2098,
+    "hanzi": "给",
+    "pinyin": "gěi",
+    "meaning": "to give",
+    "partOfSpeech": ["verb", "preposition"],
+    "characterBreakdown": [
+      { "char": "给", "pinyin": "gěi", "meaning": "to give" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他给我打了一个电话。",
+        "pinyin": "Tā gěi wǒ dǎ le yī ge diànhuà.",
+        "translation": "He gave me a phone call.",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "给", "pinyin": "gěi", "meaning": "to" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "打", "pinyin": "dǎ", "meaning": "made" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "电话", "pinyin": "diànhuà", "meaning": "phone call" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2099,
+    "hanzi": "找",
+    "pinyin": "zhǎo",
+    "meaning": "to look for",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "找", "pinyin": "zhǎo", "meaning": "to look for" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我在找我的手机。",
+        "pinyin": "Wǒ zài zhǎo wǒ de shǒujī.",
+        "translation": "I am looking for my cellphone.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "在", "pinyin": "zài", "meaning": "am" },
+          { "word": "找", "pinyin": "zhǎo", "meaning": "looking for" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "手机", "pinyin": "shǒujī", "meaning": "cellphone" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2100,
+    "hanzi": "懂",
+    "pinyin": "dǒng",
+    "meaning": "to understand",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "懂", "pinyin": "dǒng", "meaning": "to understand" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我听懂了。",
+        "pinyin": "Wǒ tīng dǒng le.",
+        "translation": "I understood.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "听", "pinyin": "tīng", "meaning": "listen" },
+          { "word": "懂", "pinyin": "dǒng", "meaning": "understand" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2101,
+    "hanzi": "笑",
+    "pinyin": "xiào",
+    "meaning": "to smile, to laugh",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "笑", "pinyin": "xiào", "meaning": "to laugh" }
+    ],
+    "examples": [
+      {
+        "hanzi": "别笑了！",
+        "pinyin": "Bié xiào le!",
+        "translation": "Stop laughing!",
+        "tokens": [
+          { "word": "别", "pinyin": "bié", "meaning": "don't" },
+          { "word": "笑", "pinyin": "xiào", "meaning": "laugh" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2102,
+    "hanzi": "告诉",
+    "pinyin": "gàosù",
+    "meaning": "to tell",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "告", "pinyin": "gào", "meaning": "to tell" },
+      { "char": "诉", "pinyin": "sù", "meaning": "to inform" }
+    ],
+    "examples": [
+      {
+        "hanzi": "请告诉我为什么。",
+        "pinyin": "Qǐng gàosù wǒ wèishénme.",
+        "translation": "Please tell me why.",
+        "tokens": [
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "告诉", "pinyin": "gàosù", "meaning": "tell" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "为什么", "pinyin": "wèishénme", "meaning": "why" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2103,
+    "hanzi": "准备",
+    "pinyin": "zhǔnbèi",
+    "meaning": "to prepare",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "准", "pinyin": "zhǔn", "meaning": "to allow" },
+      { "char": "备", "pinyin": "bèi", "meaning": "to prepare" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我正在准备考试。",
+        "pinyin": "Wǒ zhèngzài zhǔnbèi kǎoshì.",
+        "translation": "I am preparing for the exam.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "正在", "pinyin": "zhèngzài", "meaning": "am" },
+          { "word": "准备", "pinyin": "zhǔnbèi", "meaning": "preparing for" },
+          { "word": "考试", "pinyin": "kǎoshì", "meaning": "exam" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2104,
+    "hanzi": "开始",
+    "pinyin": "kāishǐ",
+    "meaning": "to begin, to start",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "开", "pinyin": "kāi", "meaning": "to open" },
+      { "char": "始", "pinyin": "shǐ", "meaning": "to begin" }
+    ],
+    "examples": [
+      {
+        "hanzi": "电影已经开始了。",
+        "pinyin": "Diànyǐng yǐjīng kāishǐ le.",
+        "translation": "The movie has already started.",
+        "tokens": [
+          { "word": "电影", "pinyin": "diànyǐng", "meaning": "movie" },
+          { "word": "已经", "pinyin": "yǐjīng", "meaning": "already" },
+          { "word": "开始", "pinyin": "kāishǐ", "meaning": "started" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2105,
+    "hanzi": "介绍",
+    "pinyin": "jièshào",
+    "meaning": "to introduce",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "介", "pinyin": "jiè", "meaning": "to be situated between" },
+      { "char": "绍", "pinyin": "shào", "meaning": "to continue" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我来介绍一下我的朋友。",
+        "pinyin": "Wǒ lái jièshào yīxià wǒ de péngyǒu.",
+        "translation": "Let me introduce my friend.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "来", "pinyin": "lái", "meaning": "let me" },
+          { "word": "介绍", "pinyin": "jièshào", "meaning": "introduce" },
+          { "word": "一下", "pinyin": "yīxià", "meaning": "a bit" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "朋友", "pinyin": "péngyǒu", "meaning": "friend" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2106,
+    "hanzi": "帮助",
+    "pinyin": "bāngzhù",
+    "meaning": "to help",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "帮", "pinyin": "bāng", "meaning": "to help" },
+      { "char": "助", "pinyin": "zhù", "meaning": "to help" }
+    ],
+    "examples": [
+      {
+        "hanzi": "谢谢你的帮助。",
+        "pinyin": "Xièxie nǐ de bāngzhù.",
+        "translation": "Thank you for your help.",
+        "tokens": [
+          { "word": "谢谢", "pinyin": "xièxie", "meaning": "thank you" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "your" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "帮助", "pinyin": "bāngzhù", "meaning": "help" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2107,
+    "hanzi": "玩",
+    "pinyin": "wán",
+    "meaning": "to play",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "玩", "pinyin": "wán", "meaning": "to play" }
+    ],
+    "examples": [
+      {
+        "hanzi": "孩子喜欢出去玩。",
+        "pinyin": "Háizi xǐhuān chūqù wán.",
+        "translation": "Children like to go out to play.",
+        "tokens": [
+          { "word": "孩子", "pinyin": "háizi", "meaning": "child" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "like" },
+          { "word": "出去", "pinyin": "chūqù", "meaning": "go out" },
+          { "word": "玩", "pinyin": "wán", "meaning": "to play" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2108,
+    "hanzi": "送",
+    "pinyin": "sòng",
+    "meaning": "to give as a gift, to send",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "送", "pinyin": "sòng", "meaning": "to send" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这是我送你的生日礼物。",
+        "pinyin": "Zhè shì wǒ sòng nǐ de shēngrì lǐwù.",
+        "translation": "This is the birthday present I'm giving you.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "送", "pinyin": "sòng", "meaning": "give" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" },
+          { "word": "生日", "pinyin": "shēngrì", "meaning": "birthday" },
+          { "word": "礼物", "pinyin": "lǐwù", "meaning": "gift" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2109,
+    "hanzi": "等",
+    "pinyin": "děng",
+    "meaning": "to wait",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "等", "pinyin": "děng", "meaning": "to wait" }
+    ],
+    "examples": [
+      {
+        "hanzi": "请等我一下。",
+        "pinyin": "Qǐng děng wǒ yīxià.",
+        "translation": "Please wait for me a moment.",
+        "tokens": [
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "等", "pinyin": "děng", "meaning": "wait for" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "一下", "pinyin": "yīxià", "meaning": "a moment" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2110,
+    "hanzi": "让",
+    "pinyin": "ràng",
+    "meaning": "to let, to allow",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "让", "pinyin": "ràng", "meaning": "to let" }
+    ],
+    "examples": [
+      {
+        "hanzi": "妈妈不让我看电视。",
+        "pinyin": "Māma bù ràng wǒ kàn diànshì.",
+        "translation": "Mom doesn't let me watch TV.",
+        "tokens": [
+          { "word": "妈妈", "pinyin": "māma", "meaning": "mom" },
+          { "word": "不", "pinyin": "bù", "meaning": "not" },
+          { "word": "让", "pinyin": "ràng", "meaning": "let" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "看", "pinyin": "kàn", "meaning": "watch" },
+          { "word": "电视", "pinyin": "diànshì", "meaning": "TV" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2111,
+    "hanzi": "起床",
+    "pinyin": "qǐchuáng",
+    "meaning": "to get up",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "起", "pinyin": "qǐ", "meaning": "to rise" },
+      { "char": "床", "pinyin": "chuáng", "meaning": "bed" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你每天几点起床？",
+        "pinyin": "Nǐ měitiān jǐ diǎn qǐchuáng?",
+        "translation": "What time do you get up every day?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "每天", "pinyin": "měitiān", "meaning": "every day" },
+          { "word": "几", "pinyin": "jǐ", "meaning": "what" },
+          { "word": "点", "pinyin": "diǎn", "meaning": "o'clock" },
+          { "word": "起床", "pinyin": "qǐchuáng", "meaning": "get up" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2112,
+    "hanzi": "唱歌",
+    "pinyin": "chànggē",
+    "meaning": "to sing",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "唱", "pinyin": "chàng", "meaning": "to sing" },
+      { "char": "歌", "pinyin": "gē", "meaning": "song" }
+    ],
+    "examples": [
+      {
+        "hanzi": "她唱歌唱得很好。",
+        "pinyin": "Tā chànggē chàng de hěn hǎo.",
+        "translation": "She sings very well.",
+        "tokens": [
+          { "word": "她", "pinyin": "tā", "meaning": "she" },
+          { "word": "唱歌", "pinyin": "chànggē", "meaning": "sings" },
+          { "word": "唱", "pinyin": "chàng", "meaning": "sing" },
+          { "word": "得", "pinyin": "de", "meaning": "particle" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "好", "pinyin": "hǎo", "meaning": "well" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2113,
+    "hanzi": "跳舞",
+    "pinyin": "tiàowǔ",
+    "meaning": "to dance",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "跳", "pinyin": "tiào", "meaning": "to jump" },
+      { "char": "舞", "pinyin": "wǔ", "meaning": "dance" }
+    ],
+    "examples": [
+      {
+        "hanzi": "妹妹喜欢跳舞。",
+        "pinyin": "Mèimei xǐhuān tiàowǔ.",
+        "translation": "Younger sister likes to dance.",
+        "tokens": [
+          { "word": "妹妹", "pinyin": "mèimei", "meaning": "younger sister" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "likes" },
+          { "word": "跳舞", "pinyin": "tiàowǔ", "meaning": "to dance" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2114,
+    "hanzi": "旅游",
+    "pinyin": "lǚyóu",
+    "meaning": "to travel",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "旅", "pinyin": "lǚ", "meaning": "trip" },
+      { "char": "游", "pinyin": "yóu", "meaning": "to travel" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我去年去中国旅游了。",
+        "pinyin": "Wǒ qùnián qù Zhōngguó lǚyóu le.",
+        "translation": "I went to travel in China last year.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "去年", "pinyin": "qùnián", "meaning": "last year" },
+          { "word": "去", "pinyin": "qù", "meaning": "went to" },
+          { "word": "中国", "pinyin": "Zhōngguó", "meaning": "China" },
+          { "word": "旅游", "pinyin": "lǚyóu", "meaning": "to travel" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2115,
+    "hanzi": "上班",
+    "pinyin": "shàngbān",
+    "meaning": "to go to work",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "上", "pinyin": "shàng", "meaning": "on, up" },
+      { "char": "班", "pinyin": "bān", "meaning": "class, work shift" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你爸爸每天怎么去上班？",
+        "pinyin": "Nǐ bàba měitiān zěnme qù shàngbān?",
+        "translation": "How does your dad go to work every day?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "your" },
+          { "word": "爸爸", "pinyin": "bàba", "meaning": "dad" },
+          { "word": "每天", "pinyin": "měitiān", "meaning": "every day" },
+          { "word": "怎么", "pinyin": "zěnme", "meaning": "how" },
+          { "word": "去", "pinyin": "qù", "meaning": "go to" },
+          { "word": "上班", "pinyin": "shàngbān", "meaning": "work" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2116,
+    "hanzi": "生病",
+    "pinyin": "shēngbìng",
+    "meaning": "to get sick",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "生", "pinyin": "shēng", "meaning": "to be born, to give rise to" },
+      { "char": "病", "pinyin": "bìng", "meaning": "illness" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我生病了，不能去学校。",
+        "pinyin": "Wǒ shēngbìng le, bù néng qù xuéxiào.",
+        "translation": "I am sick, I can't go to school.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "生病", "pinyin": "shēngbìng", "meaning": "am sick" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "不", "pinyin": "bù", "meaning": "not" },
+          { "word": "能", "pinyin": "néng", "meaning": "can" },
+          { "word": "去", "pinyin": "qù", "meaning": "go to" },
+          { "word": "学校", "pinyin": "xuéxiào", "meaning": "school" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2117,
+    "hanzi": "休息",
+    "pinyin": "xiūxi",
+    "meaning": "to rest",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "休", "pinyin": "xiū", "meaning": "to rest" },
+      { "char": "息", "pinyin": "xi", "meaning": "to rest, breath" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我太累了，想休息一下。",
+        "pinyin": "Wǒ tài lèi le, xiǎng xiūxi yīxià.",
+        "translation": "I'm too tired, I want to rest for a bit.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "太", "pinyin": "tài", "meaning": "too" },
+          { "word": "累", "pinyin": "lèi", "meaning": "tired" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "想", "pinyin": "xiǎng", "meaning": "want to" },
+          { "word": "休息", "pinyin": "xiūxi", "meaning": "rest" },
+          { "word": "一下", "pinyin": "yīxià", "meaning": "a bit" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2118,
+    "hanzi": "运动",
+    "pinyin": "yùndòng",
+    "meaning": "sports, exercise",
+    "partOfSpeech": ["verb", "noun"],
+    "characterBreakdown": [
+      { "char": "运", "pinyin": "yùn", "meaning": "to move" },
+      { "char": "动", "pinyin": "dòng", "meaning": "to move" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你喜欢什么运动？",
+        "pinyin": "Nǐ xǐhuān shénme yùndòng?",
+        "translation": "What sports do you like?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "like" },
+          { "word": "什么", "pinyin": "shénme", "meaning": "what" },
+          { "word": "运动", "pinyin": "yùndòng", "meaning": "sports" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2119,
+    "hanzi": "游泳",
+    "pinyin": "yóuyǒng",
+    "meaning": "to swim",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "游", "pinyin": "yóu", "meaning": "to swim" },
+      { "char": "泳", "pinyin": "yǒng", "meaning": "to swim" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你会游泳吗？",
+        "pinyin": "Nǐ huì yóuyǒng ma?",
+        "translation": "Can you swim?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "会", "pinyin": "huì", "meaning": "can" },
+          { "word": "游泳", "pinyin": "yóuyǒng", "meaning": "swim" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2120,
+    "hanzi": "踢足球",
+    "pinyin": "tīzúqiú",
+    "meaning": "to play football",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "踢", "pinyin": "tī", "meaning": "to kick" },
+      { "char": "足", "pinyin": "zú", "meaning": "foot" },
+      { "char": "球", "pinyin": "qiú", "meaning": "ball" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他和同学一起去踢足球。",
+        "pinyin": "Tā hé tóngxué yīqǐ qù tī zúqiú.",
+        "translation": "He goes to play football with his classmates.",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "和", "pinyin": "hé", "meaning": "with" },
+          { "word": "同学", "pinyin": "tóngxué", "meaning": "classmates" },
+          { "word": "一起", "pinyin": "yīqǐ", "meaning": "together" },
+          { "word": "去", "pinyin": "qù", "meaning": "goes to" },
+          { "word": "踢足球", "pinyin": "tī zúqiú", "meaning": "play football" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2121,
+    "hanzi": "打篮球",
+    "pinyin": "dǎlánqiú",
+    "meaning": "to play basketball",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "打", "pinyin": "dǎ", "meaning": "to hit" },
+      { "char": "篮", "pinyin": "lán", "meaning": "basket" },
+      { "char": "球", "pinyin": "qiú", "meaning": "ball" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你喜欢打篮球吗？",
+        "pinyin": "Nǐ xǐhuān dǎ lánqiú ma?",
+        "translation": "Do you like to play basketball?",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "喜欢", "pinyin": "xǐhuān", "meaning": "like" },
+          { "word": "打篮球", "pinyin": "dǎ lánqiú", "meaning": "to play basketball" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2122,
+    "hanzi": "完",
+    "pinyin": "wán",
+    "meaning": "to finish",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "完", "pinyin": "wán", "meaning": "to finish" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我吃完饭了。",
+        "pinyin": "Wǒ chī wán fàn le.",
+        "translation": "I have finished eating.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "吃", "pinyin": "chī", "meaning": "eat" },
+          { "word": "完", "pinyin": "wán", "meaning": "finished" },
+          { "word": "饭", "pinyin": "fàn", "meaning": "meal" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2123,
+    "hanzi": "觉得",
+    "pinyin": "juéde",
+    "meaning": "to feel, to think",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "觉", "pinyin": "jué", "meaning": "to feel" },
+      { "char": "得", "pinyin": "de", "meaning": "particle" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我觉得今天有点儿冷。",
+        "pinyin": "Wǒ juéde jīntiān yǒudiǎnr lěng.",
+        "translation": "I think it's a little cold today.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "觉得", "pinyin": "juéde", "meaning": "think" },
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "有点儿", "pinyin": "yǒudiǎnr", "meaning": "a little bit" },
+          { "word": "冷", "pinyin": "lěng", "meaning": "cold" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2124,
+    "hanzi": "知道",
+    "pinyin": "zhīdao",
+    "meaning": "to know",
+    "partOfSpeech": ["verb"],
+    "characterBreakdown": [
+      { "char": "知", "pinyin": "zhī", "meaning": "to know" },
+      { "char": "道", "pinyin": "dào", "meaning": "way, path" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我不认识他，也不知道他的名字。",
+        "pinyin": "Wǒ bù rènshi tā, yě bù zhīdao tā de míngzi.",
+        "translation": "I don't know him, and I also don't know his name.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "不", "pinyin": "bù", "meaning": "not" },
+          { "word": "认识", "pinyin": "rènshi", "meaning": "know (person)" },
+          { "word": "他", "pinyin": "tā", "meaning": "him" },
+          { "word": "也", "pinyin": "yě", "meaning": "also" },
+          { "word": "不", "pinyin": "bù", "meaning": "not" },
+          { "word": "知道", "pinyin": "zhīdao", "meaning": "know (fact)" },
+          { "word": "他", "pinyin": "tā", "meaning": "his" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "名字", "pinyin": "míngzi", "meaning": "name" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2125,
+    "hanzi": "希望",
+    "pinyin": "xīwàng",
+    "meaning": "to hope",
+    "partOfSpeech": ["verb", "noun"],
+    "characterBreakdown": [
+      { "char": "希", "pinyin": "xī", "meaning": "to hope" },
+      { "char": "望", "pinyin": "wàng", "meaning": "to look towards" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我希望明天是晴天。",
+        "pinyin": "Wǒ xīwàng míngtiān shì qíngtiān.",
+        "translation": "I hope tomorrow is a sunny day.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "希望", "pinyin": "xīwàng", "meaning": "hope" },
+          { "word": "明天", "pinyin": "míngtiān", "meaning": "tomorrow" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "晴天", "pinyin": "qíngtiān", "meaning": "sunny day" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2126,
+    "hanzi": "可以",
+    "pinyin": "kěyǐ",
+    "meaning": "can, may",
+    "partOfSpeech": ["modal verb"],
+    "characterBreakdown": [
+      { "char": "可", "pinyin": "kě", "meaning": "can" },
+      { "char": "以", "pinyin": "yǐ", "meaning": "by means of" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我可以坐在这儿吗？",
+        "pinyin": "Wǒ kěyǐ zuò zài zhèr ma?",
+        "translation": "May I sit here?",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "可以", "pinyin": "kěyǐ", "meaning": "may" },
+          { "word": "坐", "pinyin": "zuò", "meaning": "sit" },
+          { "word": "在", "pinyin": "zài", "meaning": "at" },
+          { "word": "这儿", "pinyin": "zhèr", "meaning": "here" },
+          { "word": "吗", "pinyin": "ma", "meaning": "question particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2127,
+    "hanzi": "要",
+    "pinyin": "yào",
+    "meaning": "to want, to need",
+    "partOfSpeech": ["modal verb", "verb"],
+    "characterBreakdown": [
+      { "char": "要", "pinyin": "yào", "meaning": "to want" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我要去买些鸡蛋。",
+        "pinyin": "Wǒ yào qù mǎi xiē jīdàn.",
+        "translation": "I want to go buy some eggs.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "要", "pinyin": "yào", "meaning": "want to" },
+          { "word": "去", "pinyin": "qù", "meaning": "go" },
+          { "word": "买", "pinyin": "mǎi", "meaning": "buy" },
+          { "word": "些", "pinyin": "xiē", "meaning": "some" },
+          { "word": "鸡蛋", "pinyin": "jīdàn", "meaning": "eggs" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2128,
+    "hanzi": "可能",
+    "pinyin": "kěnéng",
+    "meaning": "may, possible",
+    "partOfSpeech": ["modal verb", "adjective"],
+    "characterBreakdown": [
+      { "char": "可", "pinyin": "kě", "meaning": "can" },
+      { "char": "能", "pinyin": "néng", "meaning": "be able to" }
+    ],
+    "examples": [
+      {
+        "hanzi": "外面可能会下雨。",
+        "pinyin": "Wàimiàn kěnéng huì xià yǔ.",
+        "translation": "It might rain outside.",
+        "tokens": [
+          { "word": "外面", "pinyin": "wàimiàn", "meaning": "outside" },
+          { "word": "可能", "pinyin": "kěnéng", "meaning": "might" },
+          { "word": "会", "pinyin": "huì", "meaning": "will" },
+          { "word": "下雨", "pinyin": "xià yǔ", "meaning": "rain" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2129,
+    "hanzi": "高",
+    "pinyin": "gāo",
+    "meaning": "tall, high",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "高", "pinyin": "gāo", "meaning": "high, tall" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我哥哥比我高。",
+        "pinyin": "Wǒ gēge bǐ wǒ gāo.",
+        "translation": "My older brother is taller than me.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "哥哥", "pinyin": "gēge", "meaning": "older brother" },
+          { "word": "比", "pinyin": "bǐ", "meaning": "than" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "高", "pinyin": "gāo", "meaning": "taller" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2130,
+    "hanzi": "红",
+    "pinyin": "hóng",
+    "meaning": "red",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "红", "pinyin": "hóng", "meaning": "red" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你的自行车是红色的。",
+        "pinyin": "Nǐ de zìxíngchē shì hóngsè de.",
+        "translation": "Your bicycle is red.",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "your" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "自行车", "pinyin": "zìxíngchē", "meaning": "bicycle" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "红色", "pinyin": "hóngsè", "meaning": "red color" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2131,
+    "hanzi": "白",
+    "pinyin": "bái",
+    "meaning": "white",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "白", "pinyin": "bái", "meaning": "white" }
+    ],
+    "examples": [
+      {
+        "hanzi": "今天下雪了，外面都是白的。",
+        "pinyin": "Jīntiān xià xuě le, wàimiàn dōu shì bái de.",
+        "translation": "It snowed today, it's all white outside.",
+        "tokens": [
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "下雪", "pinyin": "xià xuě", "meaning": "snowed" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" },
+          { "word": "外面", "pinyin": "wàimiàn", "meaning": "outside" },
+          { "word": "都", "pinyin": "dōu", "meaning": "all" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "白", "pinyin": "bái", "meaning": "white" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2132,
+    "hanzi": "黑",
+    "pinyin": "hēi",
+    "meaning": "black",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "黑", "pinyin": "hēi", "meaning": "black" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我有一只黑色的狗。",
+        "pinyin": "Wǒ yǒu yī zhī hēisè de gǒu.",
+        "translation": "I have a black dog.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "有", "pinyin": "yǒu", "meaning": "have" },
+          { "word": "一", "pinyin": "yī", "meaning": "a" },
+          { "word": "只", "pinyin": "zhī", "meaning": "measure word" },
+          { "word": "黑色", "pinyin": "hēisè", "meaning": "black color" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" },
+          { "word": "狗", "pinyin": "gǒu", "meaning": "dog" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2133,
+    "hanzi": "忙",
+    "pinyin": "máng",
+    "meaning": "busy",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "忙", "pinyin": "máng", "meaning": "busy" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这个星期我很忙。",
+        "pinyin": "Zhè ge xīngqī wǒ hěn máng.",
+        "translation": "I am very busy this week.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "个", "pinyin": "ge", "meaning": "measure word" },
+          { "word": "星期", "pinyin": "xīngqī", "meaning": "week" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "忙", "pinyin": "máng", "meaning": "busy" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2134,
+    "hanzi": "快",
+    "pinyin": "kuài",
+    "meaning": "fast, quick",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "快", "pinyin": "kuài", "meaning": "fast" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他跑得真快！",
+        "pinyin": "Tā pǎo de zhēn kuài!",
+        "translation": "He runs really fast!",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "跑", "pinyin": "pǎo", "meaning": "runs" },
+          { "word": "得", "pinyin": "de", "meaning": "particle" },
+          { "word": "真", "pinyin": "zhēn", "meaning": "really" },
+          { "word": "快", "pinyin": "kuài", "meaning": "fast" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2135,
+    "hanzi": "慢",
+    "pinyin": "màn",
+    "meaning": "slow",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "慢", "pinyin": "màn", "meaning": "slow" }
+    ],
+    "examples": [
+      {
+        "hanzi": "请说慢一点儿。",
+        "pinyin": "Qǐng shuō màn yīdiǎnr.",
+        "translation": "Please speak a little slower.",
+        "tokens": [
+          { "word": "请", "pinyin": "qǐng", "meaning": "please" },
+          { "word": "说", "pinyin": "shuō", "meaning": "speak" },
+          { "word": "慢", "pinyin": "màn", "meaning": "slower" },
+          { "word": "一点儿", "pinyin": "yīdiǎnr", "meaning": "a little" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2136,
+    "hanzi": "远",
+    "pinyin": "yuǎn",
+    "meaning": "far",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "远", "pinyin": "yuǎn", "meaning": "far" }
+    ],
+    "examples": [
+      {
+        "hanzi": "火车站离这儿不远。",
+        "pinyin": "Huǒchēzhàn lí zhèr bù yuǎn.",
+        "translation": "The train station is not far from here.",
+        "tokens": [
+          { "word": "火车站", "pinyin": "huǒchēzhàn", "meaning": "train station" },
+          { "word": "离", "pinyin": "lí", "meaning": "from" },
+          { "word": "这儿", "pinyin": "zhèr", "meaning": "here" },
+          { "word": "不", "pinyin": "bù", "meaning": "not" },
+          { "word": "远", "pinyin": "yuǎn", "meaning": "far" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2137,
+    "hanzi": "近",
+    "pinyin": "jìn",
+    "meaning": "close, near",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "近", "pinyin": "jìn", "meaning": "near" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我家离公司很近。",
+        "pinyin": "Wǒ jiā lí gōngsī hěn jìn.",
+        "translation": "My home is very close to the company.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "家", "pinyin": "jiā", "meaning": "home" },
+          { "word": "离", "pinyin": "lí", "meaning": "from" },
+          { "word": "公司", "pinyin": "gōngsī", "meaning": "company" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "近", "pinyin": "jìn", "meaning": "close" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2138,
+    "hanzi": "好吃",
+    "pinyin": "hǎochī",
+    "meaning": "delicious",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "好", "pinyin": "hǎo", "meaning": "good" },
+      { "char": "吃", "pinyin": "chī", "meaning": "to eat" }
+    ],
+    "examples": [
+      {
+        "hanzi": "妈妈做的饭很好吃。",
+        "pinyin": "Māma zuò de fàn hěn hǎochī.",
+        "translation": "The food mom makes is delicious.",
+        "tokens": [
+          { "word": "妈妈", "pinyin": "māma", "meaning": "mom" },
+          { "word": "做", "pinyin": "zuò", "meaning": "makes" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" },
+          { "word": "饭", "pinyin": "fàn", "meaning": "food" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "好吃", "pinyin": "hǎochī", "meaning": "delicious" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2139,
+    "hanzi": "累",
+    "pinyin": "lèi",
+    "meaning": "tired",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "累", "pinyin": "lèi", "meaning": "tired" }
+    ],
+    "examples": [
+      {
+        "hanzi": "我今天工作很累。",
+        "pinyin": "Wǒ jīntiān gōngzuò hěn lèi.",
+        "translation": "I'm very tired from work today.",
+        "tokens": [
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "工作", "pinyin": "gōngzuò", "meaning": "work" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "累", "pinyin": "lèi", "meaning": "tired" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2140,
+    "hanzi": "长",
+    "pinyin": "cháng",
+    "meaning": "long",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "长", "pinyin": "cháng", "meaning": "long" }
+    ],
+    "examples": [
+      {
+        "hanzi": "姐姐的头发很长。",
+        "pinyin": "Jiějie de tóufa hěn cháng.",
+        "translation": "Older sister's hair is very long.",
+        "tokens": [
+          { "word": "姐姐", "pinyin": "jiějie", "meaning": "older sister" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "头发", "pinyin": "tóufa", "meaning": "hair" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "长", "pinyin": "cháng", "meaning": "long" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2141,
+    "hanzi": "新",
+    "pinyin": "xīn",
+    "meaning": "new",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "新", "pinyin": "xīn", "meaning": "new" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这是我的新手机。",
+        "pinyin": "Zhè shì wǒ de xīn shǒujī.",
+        "translation": "This is my new cellphone.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "my" },
+          { "word": "的", "pinyin": "de", "meaning": "possessive particle" },
+          { "word": "新", "pinyin": "xīn", "meaning": "new" },
+          { "word": "手机", "pinyin": "shǒujī", "meaning": "cellphone" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2142,
+    "hanzi": "贵",
+    "pinyin": "guì",
+    "meaning": "expensive",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "贵", "pinyin": "guì", "meaning": "expensive" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这件衣服太贵了。",
+        "pinyin": "Zhè jiàn yīfu tài guì le.",
+        "translation": "This piece of clothing is too expensive.",
+        "tokens": [
+          { "word": "这", "pinyin": "zhè", "meaning": "this" },
+          { "word": "件", "pinyin": "jiàn", "meaning": "measure word" },
+          { "word": "衣服", "pinyin": "yīfu", "meaning": "clothing" },
+          { "word": "太", "pinyin": "tài", "meaning": "too" },
+          { "word": "贵", "pinyin": "guì", "meaning": "expensive" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2143,
+    "hanzi": "便宜",
+    "pinyin": "piányi",
+    "meaning": "cheap, inexpensive",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "便", "pinyin": "pián", "meaning": "advantageous" },
+      { "char": "宜", "pinyin": "yi", "meaning": "suitable" }
+    ],
+    "examples": [
+      {
+        "hanzi": "这儿的水果很便宜。",
+        "pinyin": "Zhèr de shuǐguǒ hěn piányi.",
+        "translation": "The fruit here is very cheap.",
+        "tokens": [
+          { "word": "这儿", "pinyin": "zhèr", "meaning": "here" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" },
+          { "word": "水果", "pinyin": "shuǐguǒ", "meaning": "fruit" },
+          { "word": "很", "pinyin": "hěn", "meaning": "very" },
+          { "word": "便宜", "pinyin": "piányi", "meaning": "cheap" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2144,
+    "hanzi": "晴",
+    "pinyin": "qíng",
+    "meaning": "sunny, fine",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "晴", "pinyin": "qíng", "meaning": "fine, clear" }
+    ],
+    "examples": [
+      {
+        "hanzi": "明天是晴天。",
+        "pinyin": "Míngtiān shì qíngtiān.",
+        "translation": "Tomorrow will be a sunny day.",
+        "tokens": [
+          { "word": "明天", "pinyin": "míngtiān", "meaning": "tomorrow" },
+          { "word": "是", "pinyin": "shì", "meaning": "will be" },
+          { "word": "晴天", "pinyin": "qíngtiān", "meaning": "sunny day" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2145,
+    "hanzi": "阴",
+    "pinyin": "yīn",
+    "meaning": "cloudy",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "阴", "pinyin": "yīn", "meaning": "overcast" }
+    ],
+    "examples": [
+      {
+        "hanzi": "今天天气是阴的。",
+        "pinyin": "Jīntiān tiānqì shì yīn de.",
+        "translation": "The weather is cloudy today.",
+        "tokens": [
+          { "word": "今天", "pinyin": "jīntiān", "meaning": "today" },
+          { "word": "天气", "pinyin": "tiānqì", "meaning": "weather" },
+          { "word": "是", "pinyin": "shì", "meaning": "is" },
+          { "word": "阴", "pinyin": "yīn", "meaning": "cloudy" },
+          { "word": "的", "pinyin": "de", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2146,
+    "hanzi": "错",
+    "pinyin": "cuò",
+    "meaning": "wrong",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "错", "pinyin": "cuò", "meaning": "wrong" }
+    ],
+    "examples": [
+      {
+        "hanzi": "对不起，我错了。",
+        "pinyin": "Duìbùqǐ, wǒ cuò le.",
+        "translation": "Sorry, I was wrong.",
+        "tokens": [
+          { "word": "对不起", "pinyin": "duìbùqǐ", "meaning": "sorry" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "I" },
+          { "word": "错", "pinyin": "cuò", "meaning": "wrong" },
+          { "word": "了", "pinyin": "le", "meaning": "particle" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2147,
+    "hanzi": "快乐",
+    "pinyin": "kuàilè",
+    "meaning": "happy",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "快", "pinyin": "kuài", "meaning": "fast, quick" },
+      { "char": "乐", "pinyin": "lè", "meaning": "happy" }
+    ],
+    "examples": [
+      {
+        "hanzi": "祝你生日快乐！",
+        "pinyin": "Zhù nǐ shēngrì kuàilè!",
+        "translation": "Happy birthday to you!",
+        "tokens": [
+          { "word": "祝", "pinyin": "zhù", "meaning": "wish" },
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "生日", "pinyin": "shēngrì", "meaning": "birthday" },
+          { "word": "快乐", "pinyin": "kuàilè", "meaning": "happy" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2148,
+    "hanzi": "对",
+    "pinyin": "duì",
+    "meaning": "to, towards",
+    "partOfSpeech": ["preposition"],
+    "characterBreakdown": [
+      { "char": "对", "pinyin": "duì", "meaning": "to face, correct" }
+    ],
+    "examples": [
+      {
+        "hanzi": "他对我说，谢谢。",
+        "pinyin": "Tā duì wǒ shuō, xièxie.",
+        "translation": "He said 'thank you' to me.",
+        "tokens": [
+          { "word": "他", "pinyin": "tā", "meaning": "he" },
+          { "word": "对", "pinyin": "duì", "meaning": "to" },
+          { "word": "我", "pinyin": "wǒ", "meaning": "me" },
+          { "word": "说", "pinyin": "shuō", "meaning": "said" },
+          { "word": "谢谢", "pinyin": "xièxie", "meaning": "thank you" }
+        ]
+      }
+    ]
+  },
+  {
+    "wordId": 2149,
+    "hanzi": "对",
+    "pinyin": "duì",
+    "meaning": "right, correct",
+    "partOfSpeech": ["adjective"],
+    "characterBreakdown": [
+      { "char": "对", "pinyin": "duì", "meaning": "correct" }
+    ],
+    "examples": [
+      {
+        "hanzi": "你说得对。",
+        "pinyin": "Nǐ shuō de duì.",
+        "translation": "What you said is right.",
+        "tokens": [
+          { "word": "你", "pinyin": "nǐ", "meaning": "you" },
+          { "word": "说", "pinyin": "shuō", "meaning": "said" },
+          { "word": "得", "pinyin": "de", "meaning": "particle" },
+          { "word": "对", "pinyin": "duì", "meaning": "right" }
+        ]
+      }
+    ]
+  }
+]
