@@ -27,25 +27,27 @@ class WordRepositoryImpl @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
     override suspend fun startDatabaseSeedingIfNeeded() {
-        val count = dao.getWordCount()
-        if (count > 0) return
-        // Read JSON from assets: hsk4_data.json in app module's assets folder
-        // If not present, fallback to bundled hsk4_data_600.json relative path assumption
+        // Read JSON from assets; prefer full 600 words file if available
         val assetManager = context.assets
-        // Prefer top-level asset named hsk4_data.json; adjust if different
-        val fileNameCandidates = listOf("hsk4_data.json", "hsk4_data_600.json")
+        val fileNameCandidates = listOf("hsk4_data_600.json", "hsk4_data.json")
         var jsonText: String? = null
         for (name in fileNameCandidates) {
             try {
                 assetManager.open(name).use { inS ->
                     jsonText = inS.bufferedReader().readText()
                 }
-                if (jsonText != null) break
+                if (!jsonText.isNullOrBlank()) break
             } catch (_: Throwable) { /* try next */ }
         }
         if (jsonText.isNullOrBlank()) return
+
         val array = JSONArray(jsonText)
-        val entities = ArrayList<WordEntity>(array.length())
+        val targetCount = array.length()
+        val existingCount = try { dao.getWordCount() } catch (_: Throwable) { 0 }
+        if (existingCount >= targetCount) return // already seeded with full set (or more)
+
+        // Upsert all words from asset to ensure we have the complete set
+        val entities = ArrayList<WordEntity>(targetCount)
         for (i in 0 until array.length()) {
             val obj = array.getJSONObject(i)
             val id = when {
@@ -59,9 +61,7 @@ class WordRepositoryImpl @Inject constructor(
             val hanzi = obj.optString("hanzi")
             val pinyin = obj.optString("pinyin")
             val meaning = obj.optString("meaning")
-            // Save original JSON with enforced _id
-            val enforced = JSONObject(obj.toString())
-            enforced.put("_id", id)
+            val enforced = JSONObject(obj.toString()).apply { put("_id", id) }
             entities.add(
                 WordEntity(
                     id = id,
