@@ -1,15 +1,13 @@
 package com.salmanajmal.hsk4mastery.ui.worddetail
 
 import android.content.Context
-import android.net.Uri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackParameters
-import androidx.media3.exoplayer.ExoPlayer
 import com.salmanajmal.hsk4mastery.data.local.model.WordEntity
 import com.salmanajmal.hsk4mastery.data.repository.WordRepository
+import com.salmanajmal.hsk4mastery.media.AudioPlayerService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -45,13 +43,14 @@ data class WordDetailUiState(
 @HiltViewModel
 class WordDetailViewModel @Inject constructor(
     private val wordRepository: WordRepository,
+    private val audioPlayer: AudioPlayerService,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(WordDetailUiState())
     val uiState: StateFlow<WordDetailUiState> = _uiState.asStateFlow()
 
-    private var lastPlayer: ExoPlayer? = null
+    // central player is managed by AudioPlayerService
 
     private val wordId: String = savedStateHandle.get<String>("wordId") ?: ""
 
@@ -78,13 +77,12 @@ class WordDetailViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-    try { lastPlayer?.release() } catch (_: Throwable) {}
-        lastPlayer = null
+    try { audioPlayer.release() } catch (_: Throwable) {}
     }
 
     fun onAudioSpeedChange(speed: Float) {
         _uiState.update { it.copy(audioSpeed = speed) }
-    lastPlayer?.playbackParameters = PlaybackParameters(speed)
+    try { audioPlayer.setSpeed(speed) } catch (_: Throwable) {}
     }
 
     fun onComfortLevelSelected(level: Int) {
@@ -97,20 +95,14 @@ class WordDetailViewModel @Inject constructor(
         }
     }
 
-    fun playAudio(context: Context, filename: String?) {
-        if (filename.isNullOrBlank()) return
-        // expect filenames like "audio/sentences/一切_ex1.mp3" or "audio/words/xxx.mp3"
-        val uriStr = if (filename.startsWith("asset:///")) filename else "asset:///$filename"
-    val mediaItem = MediaItem.fromUri(Uri.parse(uriStr))
-        try {
-            lastPlayer?.release()
-        } catch (_: Throwable) {}
-    val player = ExoPlayer.Builder(context).build()
-        player.setMediaItem(mediaItem)
-        player.prepare()
-        player.playWhenReady = true
-    player.playbackParameters = PlaybackParameters(uiState.value.audioSpeed)
-        lastPlayer = player
+    fun playWordAudio() {
+        val word = uiState.value.word ?: return
+        audioPlayer.playWord(word.hanzi, uiState.value.audioSpeed)
+    }
+
+    fun playSentenceAudio(exampleIndex1Based: Int) {
+        val word = uiState.value.word ?: return
+        audioPlayer.playSentence(word.hanzi, exampleIndex1Based, uiState.value.audioSpeed)
     }
 
     private fun parseFullData(fullData: String?): WordDetailParsed {

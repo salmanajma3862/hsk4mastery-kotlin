@@ -68,10 +68,7 @@ fun WordDetailScreen(
                                 label = { Text("${spd}x") }
                             )
                         }
-                        val mainAudio = state.parsed.mainAudioUrl
-                        Button(onClick = { if (!mainAudio.isNullOrBlank()) viewModel.playAudio(context, mainAudio) }, enabled = !mainAudio.isNullOrBlank()) {
-                            Text("Play")
-                        }
+                        Button(onClick = { viewModel.playWordAudio() }) { Text("Play word") }
                     }
                 }
             }
@@ -79,7 +76,8 @@ fun WordDetailScreen(
             if (state.parsed.examples.isNotEmpty()) {
                 item("examples-title") { Text("Examples", style = MaterialTheme.typography.titleMedium) }
             }
-            items(state.parsed.examples) { ex ->
+            items(state.parsed.examples.withIndex().toList()) { pair ->
+                val (idx, ex) = pair
                 Card { 
                     Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -92,9 +90,7 @@ fun WordDetailScreen(
                             }
                         }
                         Text(ex.translation ?: "", style = MaterialTheme.typography.bodySmall)
-                        if (!ex.audioUrl.isNullOrBlank()) {
-                            TextButton(onClick = { viewModel.playAudio(context, ex.audioUrl) }) { Text("Play sentence") }
-                        }
+                        TextButton(onClick = { viewModel.playSentenceAudio(idx + 1) }) { Text("Play sentence") }
                     }
                 }
             }
