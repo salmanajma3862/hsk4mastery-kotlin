@@ -2,8 +2,11 @@ package com.salmanajmal.hsk4mastery.ui.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Repeat
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.TrendingUp
+import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -33,7 +36,7 @@ object Routes {
 fun AppNavigation() {
     val navController = rememberNavController()
     val items = listOf(
-        Routes.WordList to "Words",
+        Routes.WordList to "Vocabulary",
         Routes.ReviewDashboard to "Review",
         Routes.Practice to "Practice",
         Routes.Progress to "Progress",
@@ -61,14 +64,14 @@ fun AppNavigation() {
                                     restoreState = true
                                 }
                             },
-                            icon = { Text(
+                            icon = {
                                 when (route) {
-                                    Routes.ReviewDashboard -> "🔁"
-                                    Routes.Practice -> "🧩"
-                                    Routes.Progress -> "📈"
-                                    else -> "📚"
+                                    Routes.ReviewDashboard -> Icon(imageVector = Icons.Default.Repeat, contentDescription = "Review")
+                                    Routes.Practice -> Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Practice")
+                                    Routes.Progress -> Icon(imageVector = Icons.Default.TrendingUp, contentDescription = "Progress")
+                                    else -> Icon(imageVector = Icons.Default.List, contentDescription = "Words")
                                 }
-                            ) },
+                            },
                             label = { Text(label) }
                         )
                     }

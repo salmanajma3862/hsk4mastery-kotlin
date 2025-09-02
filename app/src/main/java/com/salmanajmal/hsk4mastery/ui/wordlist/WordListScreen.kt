@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -87,40 +88,42 @@ fun WordListScreen(
             )
         }
     ) { padding ->
-        // Background gradient approximation
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
-            if (uiState.isLoading) {
-                Column(
-                    Modifier.fillMaxSize(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    CircularProgressIndicator(color = Color(0xFF6366F1))
-                    Spacer(Modifier.height(12.dp))
-                    Text(
-                        text = "Loading words...",
-                        style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFF6B7280))
-                    )
-                }
-            } else {
-                Column(Modifier.fillMaxSize()) {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        // Add extra bottom padding so last items are not obscured by bottom bar
-                        contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 80.dp)
+        // Use a white Surface like PracticeScreen
+        Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+            ) {
+                if (uiState.isLoading) {
+                    Column(
+                        Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
                     ) {
-                        items(uiState.words, key = { it.id }) { w ->
-                            WordListItem(
-                                word = w,
-                                onClick = { onWordClick(w.id) },
-                                modifier = Modifier.padding(bottom = 12.dp)
-                            )
+                        CircularProgressIndicator(color = Color(0xFF6366F1))
+                        Spacer(Modifier.height(12.dp))
+                        Text(
+                            text = "Loading words...",
+                            style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFF6B7280))
+                        )
+                    }
+                } else {
+                    Column(Modifier.fillMaxSize().padding(top = 24.dp)) {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize(),
+                            // Add extra bottom padding so last items are not obscured by bottom bar
+                            contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 80.dp)
+                        ) {
+                            items(uiState.words, key = { it.id }) { w ->
+                                WordListItem(
+                                    word = w,
+                                    onClick = { onWordClick(w.id) },
+                                    modifier = Modifier.padding(bottom = 12.dp)
+                                )
+                            }
+                            item { Spacer(Modifier.height(20.dp)) }
                         }
-                        item { Spacer(Modifier.height(20.dp)) }
                     }
                 }
             }
