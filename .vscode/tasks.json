@@ -139,6 +139,60 @@
 				"assembleDebug"
 			],
 			"group": "build"
+		},
+		{
+			"label": "Gradle clean assemble (HSK4Mastery)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"clean",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Gradle build (assemble debug)",
+			"type": "shell",
+			"command": "gradlew.bat",
+			"args": [
+				"-p",
+				"app",
+				"assembleDebug"
+			],
+			"group": "build"
 		}
 	]
 }

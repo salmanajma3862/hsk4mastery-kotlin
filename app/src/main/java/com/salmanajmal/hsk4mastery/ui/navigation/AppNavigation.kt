@@ -25,6 +25,8 @@ object Routes {
     const val WordDetail = "word_detail/{wordId}"
     const val ReviewDashboard = "review_dashboard"
     const val ActiveReview = "active_review/{wordIds}"
+    const val Practice = "practice"
+    const val Progress = "progress"
 }
 
 @Composable
@@ -33,6 +35,8 @@ fun AppNavigation() {
     val items = listOf(
         Routes.WordList to "Words",
         Routes.ReviewDashboard to "Review",
+        Routes.Practice to "Practice",
+        Routes.Progress to "Progress",
     )
     Scaffold(
         bottomBar = {
@@ -50,7 +54,14 @@ fun AppNavigation() {
                                 restoreState = true
                             }
                         },
-                        icon = { Text(if (route == Routes.ReviewDashboard) "🔁" else "📚") },
+                        icon = { Text(
+                            when (route) {
+                                Routes.ReviewDashboard -> "🔁"
+                                Routes.Practice -> "🧩"
+                                Routes.Progress -> "📈"
+                                else -> "📚"
+                            }
+                        ) },
                         label = { Text(label) }
                     )
                 }
@@ -81,6 +92,12 @@ fun AppNavigation() {
             }
             composable(Routes.ReviewDashboard) {
                 com.salmanajmal.hsk4mastery.ui.review.ReviewDashboardScreenForNav(navController)
+            }
+            composable(Routes.Practice) {
+                com.salmanajmal.hsk4mastery.ui.practice.PracticeScreen()
+            }
+            composable(Routes.Progress) {
+                com.salmanajmal.hsk4mastery.ui.progress.ProgressScreen()
             }
         }
     }
