@@ -42,28 +42,36 @@ fun AppNavigation() {
         bottomBar = {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
-            NavigationBar {
-                items.forEach { (route, label) ->
-                    val selected = currentRoute == route
-                    NavigationBarItem(
-                        selected = selected,
-                        onClick = {
-                            navController.navigate(route) {
-                                popUpTo(navController.graph.startDestinationId) { saveState = true }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        icon = { Text(
-                            when (route) {
-                                Routes.ReviewDashboard -> "🔁"
-                                Routes.Practice -> "🧩"
-                                Routes.Progress -> "📈"
-                                else -> "📚"
-                            }
-                        ) },
-                        label = { Text(label) }
-                    )
+            val showBottomBar = when (currentRoute) {
+                Routes.WordList, Routes.ReviewDashboard, Routes.Practice, Routes.Progress -> true
+                // Hide on detail and active review screens
+                Routes.WordDetail, Routes.ActiveReview -> false
+                else -> false
+            }
+            if (showBottomBar) {
+                NavigationBar {
+                    items.forEach { (route, label) ->
+                        val selected = currentRoute == route
+                        NavigationBarItem(
+                            selected = selected,
+                            onClick = {
+                                navController.navigate(route) {
+                                    popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            },
+                            icon = { Text(
+                                when (route) {
+                                    Routes.ReviewDashboard -> "🔁"
+                                    Routes.Practice -> "🧩"
+                                    Routes.Progress -> "📈"
+                                    else -> "📚"
+                                }
+                            ) },
+                            label = { Text(label) }
+                        )
+                    }
                 }
             }
         }

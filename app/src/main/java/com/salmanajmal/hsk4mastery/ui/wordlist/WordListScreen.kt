@@ -110,7 +110,8 @@ fun WordListScreen(
                 Column(Modifier.fillMaxSize()) {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 0.dp)
+                        // Add extra bottom padding so last items are not obscured by bottom bar
+                        contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 80.dp)
                     ) {
                         items(uiState.words, key = { it.id }) { w ->
                             WordListItem(
