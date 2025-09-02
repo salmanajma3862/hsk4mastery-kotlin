@@ -24,6 +24,7 @@ object Routes {
     const val WordList = "word_list"
     const val WordDetail = "word_detail/{wordId}"
     const val ReviewDashboard = "review_dashboard"
+    const val ActiveReview = "active_review/{wordIds}"
 }
 
 @Composable
@@ -72,8 +73,14 @@ fun AppNavigation() {
             ) {
                 com.salmanajmal.hsk4mastery.ui.worddetail.WordDetailScreen()
             }
+            composable(
+                route = Routes.ActiveReview,
+                arguments = listOf(navArgument("wordIds") { type = NavType.StringType })
+            ) {
+                com.salmanajmal.hsk4mastery.ui.review.ActiveReviewScreen(navController)
+            }
             composable(Routes.ReviewDashboard) {
-                ReviewDashboardScreen()
+                com.salmanajmal.hsk4mastery.ui.review.ReviewDashboardScreenForNav(navController)
             }
         }
     }

@@ -9,6 +9,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
@@ -91,24 +92,28 @@ class WordRepositoryImpl @Inject constructor(
         emit(ProgressStats(learning = learning, reviewed = reviewed, mastered = mastered, unseen = unseen))
     }.flowOn(Dispatchers.IO)
 
-    override fun getReviewDashboardData(): Flow<ReviewDashboardData> = flow {
-        val struggling = dao.getStrugglingWords()
-        val due = dao.getDueWordsAll(System.currentTimeMillis())
-        val reviewedRows = dao.getReviewedWithCounts()
-        val grouped: MutableMap<Int, MutableList<WordEntity>> = mutableMapOf()
-        for (row in reviewedRows) {
-            val list = grouped.getOrPut(row.reviewCount) { mutableListOf() }
-            list += WordEntity(
-                id = row._id,
-                wordId = row.wordId,
-                hanzi = row.hanzi,
-                pinyin = row.pinyin,
-                meaning = row.meaning,
-                fullData = row.fullData,
-            )
-        }
-        emit(ReviewDashboardData(strugglingWords = struggling, dueWords = due, reviewedWordsByCount = grouped))
-    }.flowOn(Dispatchers.IO)
+    override fun getReviewDashboardData(): Flow<ReviewDashboardData> {
+        val nowFlow = flow { emit(System.currentTimeMillis()) }
+        val strugglingFlow = dao.observeStrugglingWords()
+        val dueFlow = dao.observeDueWordsAll(System.currentTimeMillis())
+        val reviewedFlow = dao.observeReviewedWithCounts()
+
+        return combine(strugglingFlow, dueFlow, reviewedFlow) { struggling, due, reviewedRows ->
+            val grouped: MutableMap<Int, MutableList<WordEntity>> = mutableMapOf()
+            for (row in reviewedRows) {
+                val list = grouped.getOrPut(row.reviewCount) { mutableListOf() }
+                list += WordEntity(
+                    id = row._id,
+                    wordId = row.wordId,
+                    hanzi = row.hanzi,
+                    pinyin = row.pinyin,
+                    meaning = row.meaning,
+                    fullData = row.fullData,
+                )
+            }
+            ReviewDashboardData(strugglingWords = struggling, dueWords = due, reviewedWordsByCount = grouped)
+        }.flowOn(Dispatchers.IO)
+    }
 
     override suspend fun updateWordComfort(wordId: String, comfortLevel: Int) {
         dao.updateWordComfort(wordId, comfortLevel)

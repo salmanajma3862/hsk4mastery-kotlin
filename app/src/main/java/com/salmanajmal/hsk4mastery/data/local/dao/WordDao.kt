@@ -172,4 +172,35 @@ interface WordDao {
         val fullData: String,
         val reviewCount: Int,
     )
+
+    // Reactive variants for live updates in dashboard
+    @Query(
+        """
+        SELECT w.* FROM user_word_progress p
+        JOIN words w ON w._id = p.word_id
+        WHERE p.isStruggling = 1
+        ORDER BY COALESCE(p.timesIncorrect, 0) DESC, COALESCE(w.wordId, 0) ASC
+        """
+    )
+    fun observeStrugglingWords(): Flow<List<WordEntity>>
+
+    @Query(
+        """
+        SELECT w.* FROM user_word_progress p
+        JOIN words w ON w._id = p.word_id
+        WHERE p.nextReviewAt IS NOT NULL AND p.nextReviewAt <= :now
+        ORDER BY p.nextReviewAt ASC
+        """
+    )
+    fun observeDueWordsAll(now: Long): Flow<List<WordEntity>>
+
+    @Query(
+        """
+        SELECT w.*, COALESCE(p.reviewCount, 0) as reviewCount
+        FROM words w
+        JOIN user_word_progress p ON p.word_id = w._id
+        ORDER BY p.reviewCount DESC, COALESCE(w.wordId, 0) ASC
+        """
+    )
+    fun observeReviewedWithCounts(): Flow<List<ReviewedWordRow>>
 }
