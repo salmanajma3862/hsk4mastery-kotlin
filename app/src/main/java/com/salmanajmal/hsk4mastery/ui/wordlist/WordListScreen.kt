@@ -9,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -44,6 +45,8 @@ fun WordListScreen(
                     // Dynamic title reflecting selected level
                     Text(text = "HSK${uiState.selectedLevel} Vocabulary")
                 },
+                // match the list Surface background so header appears seamless
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White),
                 actions = {
                     // Dropdown anchored to the top-right action icon
                     Box {
