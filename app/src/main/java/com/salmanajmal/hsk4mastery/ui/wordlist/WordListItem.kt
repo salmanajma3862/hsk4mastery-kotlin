@@ -34,59 +34,88 @@ fun WordListItem(
         shape = RoundedCornerShape(12.dp),
         border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFF1F5F9))
     ) {
-        Row(
-            Modifier
-                .padding(vertical = 16.dp, horizontal = 16.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Left
-            Column(Modifier.weight(2f).padding(end = 12.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    val color = statusColor(word.status, word.comfortLevel)
-                    Box(
-                        Modifier
-                            .size(8.dp)
-                            .clip(RoundedCornerShape(50))
-                            .background(color)
-                    )
-                    Spacer(Modifier.width(8.dp))
+        Box(modifier = Modifier.fillMaxWidth()) {
+            // Reserve space to avoid overlap with the right-side pill
+            Row(
+                Modifier
+                    .padding(vertical = 16.dp, horizontal = 16.dp)
+                    .fillMaxWidth()
+                    .padding(end = 56.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Left
+                Column(Modifier.weight(2f).padding(end = 12.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        val color = statusColor(word.status, word.comfortLevel)
+                        // show the small status dot for non-confident levels
+                        if (word.comfortLevel != 3) {
+                            Box(
+                                Modifier
+                                    .size(8.dp)
+                                    .clip(RoundedCornerShape(50))
+                                    .background(color)
+                            )
+                            Spacer(Modifier.width(8.dp))
+                        }
+                        Text(
+                            text = word.hanzi,
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                color = Color(0xFF1E293B),
+                                fontWeight = FontWeight.ExtraBold
+                            )
+                        )
+                    }
+                    Spacer(Modifier.height(4.dp))
                     Text(
-                        text = word.hanzi,
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            color = Color(0xFF1E293B),
-                            fontWeight = FontWeight.ExtraBold
+                        text = word.pinyin,
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            color = Color(0xFF6366F1),
+                            fontWeight = FontWeight.SemiBold
                         )
                     )
                 }
-                Spacer(Modifier.height(4.dp))
-                Text(
-                    text = word.pinyin,
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        color = Color(0xFF6366F1),
-                        fontWeight = FontWeight.SemiBold
-                    )
-                )
-            }
-            // Right
-            Column(Modifier.weight(3f)) {
-                Text(
-                    text = word.meaning,
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = Color(0xFF475569),
-                        fontWeight = FontWeight.Medium,
-                        lineHeight = 22.sp
-                    )
-                )
-                if (word.wordId != null) {
-                    Spacer(Modifier.height(4.dp))
+                // Right
+                Column(Modifier.weight(3f)) {
                     Text(
-                        text = "#${word.wordId}",
-                        style = MaterialTheme.typography.labelSmall.copy(
-                            color = Color(0xFF94A3B8),
-                            fontWeight = FontWeight.Medium
+                        text = word.meaning,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            color = Color(0xFF475569),
+                            fontWeight = FontWeight.Medium,
+                            lineHeight = 22.sp
                         )
                     )
+                    if (word.wordId != null) {
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text = "#${word.wordId}",
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                color = Color(0xFF94A3B8),
+                                fontWeight = FontWeight.Medium
+                            )
+                        )
+                    }
+                }
+            }
+
+            // Confident pill shown at center-right when comfortLevel == 3
+            if (word.comfortLevel == 3) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .padding(end = 12.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .background(Color(0xFF10B981), RoundedCornerShape(8.dp))
+                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = "Confident",
+                            color = Color.White,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Medium
+                        )
+                    }
                 }
             }
         }
