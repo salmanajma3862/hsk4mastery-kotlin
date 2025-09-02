@@ -27,11 +27,11 @@ interface WordDao {
                p.status as status, p.comfortLevel as comfortLevel
         FROM words w
         LEFT JOIN user_word_progress p ON p.word_id = w._id
-        WHERE TRIM(w._id) <> '' AND TRIM(w.hanzi) <> '' AND TRIM(w.pinyin) <> '' AND TRIM(w.meaning) <> ''
-        ORDER BY COALESCE(w.wordId, 0) ASC, w._id ASC
+        WHERE w.wordId >= :minId AND w.wordId <= :maxId
+        ORDER BY w.wordId ASC
         """
     )
-    fun getAllWords(): Flow<List<WordBasic>>
+    fun getAllWords(minId: Int, maxId: Int): Flow<List<WordBasic>>
 
     // getWordById - full entity by PK
     @Query("SELECT * FROM words WHERE _id = :wordId LIMIT 1")

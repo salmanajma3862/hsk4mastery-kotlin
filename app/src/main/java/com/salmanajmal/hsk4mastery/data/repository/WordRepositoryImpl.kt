@@ -20,58 +20,59 @@ class WordRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
 ) : WordRepository {
 
-    override fun getAllWords(): Flow<List<WordBasic>> = dao.getAllWords()
+    override fun getAllWords(minId: Int, maxId: Int): Flow<List<WordBasic>> = dao.getAllWords(minId, maxId)
 
     override fun getWordDetails(wordId: String): Flow<WordEntity?> = flow {
         emit(dao.getWordById(wordId))
     }.flowOn(Dispatchers.IO)
 
     override suspend fun startDatabaseSeedingIfNeeded() {
-        // Read JSON from assets; prefer full 600 words file if available
+        // Read all HSK JSON assets and seed once
         val assetManager = context.assets
-        val fileNameCandidates = listOf("hsk4_data_600.json", "hsk4_data.json")
-        var jsonText: String? = null
-        for (name in fileNameCandidates) {
-            try {
-                assetManager.open(name).use { inS ->
-                    jsonText = inS.bufferedReader().readText()
-                }
-                if (!jsonText.isNullOrBlank()) break
-            } catch (_: Throwable) { /* try next */ }
-        }
-        if (jsonText.isNullOrBlank()) return
+        val files = listOf(
+            "hsk1_data_150.json",
+            "hsk2_data_150.json",
+            "hsk3_data_300.json",
+            "hsk4_data_600.json",
+        )
 
-        val array = JSONArray(jsonText)
-        val targetCount = array.length()
+        // If DB already has at least the total expected, skip
+        val expectedTotal = 150 + 150 + 300 + 600
         val existingCount = try { dao.getWordCount() } catch (_: Throwable) { 0 }
-        if (existingCount >= targetCount) return // already seeded with full set (or more)
+        if (existingCount >= expectedTotal) return
 
-        // Upsert all words from asset to ensure we have the complete set
-        val entities = ArrayList<WordEntity>(targetCount)
-        for (i in 0 until array.length()) {
-            val obj = array.getJSONObject(i)
-            val id = when {
-                obj.has("_id") && !obj.isNull("_id") -> obj.get("_id").toString()
-                obj.has("id") && !obj.isNull("id") -> obj.get("id").toString()
-                obj.has("wordId") && !obj.isNull("wordId") -> obj.get("wordId").toString()
-                obj.has("hanzi") && !obj.isNull("hanzi") -> obj.getString("hanzi")
-                else -> i.toString()
-            }
-            val wordId = if (obj.has("wordId") && !obj.isNull("wordId")) obj.optInt("wordId") else null
-            val hanzi = obj.optString("hanzi")
-            val pinyin = obj.optString("pinyin")
-            val meaning = obj.optString("meaning")
-            val enforced = JSONObject(obj.toString()).apply { put("_id", id) }
-            entities.add(
-                WordEntity(
-                    id = id,
-                    wordId = wordId,
-                    hanzi = hanzi,
-                    pinyin = pinyin,
-                    meaning = meaning,
-                    fullData = enforced.toString(),
+        val entities = mutableListOf<WordEntity>()
+        for (name in files) {
+            val jsonText = try {
+                assetManager.open(name).use { it.bufferedReader().readText() }
+            } catch (_: Throwable) { null }
+            if (jsonText.isNullOrBlank()) continue
+            val array = JSONArray(jsonText)
+            for (i in 0 until array.length()) {
+                val obj = array.getJSONObject(i)
+                val id = when {
+                    obj.has("_id") && !obj.isNull("_id") -> obj.get("_id").toString()
+                    obj.has("id") && !obj.isNull("id") -> obj.get("id").toString()
+                    obj.has("wordId") && !obj.isNull("wordId") -> obj.get("wordId").toString()
+                    obj.has("hanzi") && !obj.isNull("hanzi") -> obj.getString("hanzi")
+                    else -> "${name}#$i"
+                }
+                val wordId = if (obj.has("wordId") && !obj.isNull("wordId")) obj.optInt("wordId") else null
+                val hanzi = obj.optString("hanzi")
+                val pinyin = obj.optString("pinyin")
+                val meaning = obj.optString("meaning")
+                val enforced = JSONObject(obj.toString()).apply { put("_id", id) }
+                entities.add(
+                    WordEntity(
+                        id = id,
+                        wordId = wordId,
+                        hanzi = hanzi,
+                        pinyin = pinyin,
+                        meaning = meaning,
+                        fullData = enforced.toString(),
+                    )
                 )
-            )
+            }
         }
         if (entities.isNotEmpty()) dao.insertWords(entities)
     }

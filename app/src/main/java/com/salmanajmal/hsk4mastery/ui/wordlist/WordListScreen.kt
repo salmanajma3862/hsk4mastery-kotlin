@@ -3,6 +3,8 @@ package com.salmanajmal.hsk4mastery.ui.wordlist
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -58,6 +60,18 @@ fun WordListScreen(
                             text = "${uiState.words.size} words to master",
                             style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFF64748B))
                         )
+                        Spacer(Modifier.height(12.dp))
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            val levels = listOf(1, 2, 3, 4)
+                            levels.forEach { level ->
+                                val selected = uiState.selectedLevel == level
+                                if (selected) {
+                                    Button(onClick = { /* no-op */ }) { Text("HSK $level") }
+                                } else {
+                                    OutlinedButton(onClick = { viewModel.onLevelSelected(level) }) { Text("HSK $level") }
+                                }
+                            }
+                        }
                     }
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),

@@ -2,13 +2,14 @@ package com.salmanajmal.hsk4mastery.ui.worddetail.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.filled.Undo
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.*
@@ -35,19 +36,23 @@ fun HandwritingCanvas(
     var paths by remember { mutableStateOf(listOf<List<Offset>>()) }
     var currentPath by remember { mutableStateOf<List<Offset>>(emptyList()) }
 
-    val strokeColor = Color(0xFF0F172A)
-    val guideColor = Color(0x201E293B)
+    val strokeColor = Color(0xFF34D399)
+    val currentStrokeColor = Color(0xFFA7F3D0)
+    val guideGrid = Color(0xFF374151)
+    val canvasBg = Color(0xFF0B0F15)
 
     Box(
         modifier = Modifier
-            .size(width.dp, height.dp)
-            .background(Color(0xFFF8FAFC), RoundedCornerShape(12.dp)),
+            .fillMaxWidth()
+            .aspectRatio(1f)
+            .border(1.dp, Color(0xFF374151), RoundedCornerShape(12.dp))
+            .background(canvasBg, RoundedCornerShape(12.dp)),
         contentAlignment = Alignment.TopEnd
     ) {
-    val characterSnapshot = character
-    Canvas(
+        val characterSnapshot = character
+        Canvas(
             modifier = Modifier
-                .matchParentSize()
+                .fillMaxSize()
                 .pointerInput(Unit) {
                     coroutineScope {
                         awaitPointerEventScope {
@@ -73,8 +78,8 @@ fun HandwritingCanvas(
             // Guide grid
             val w = size.width
             val h = size.height
-            drawLine(Color(0xFFE2E8F0), start = Offset(w/2, 0f), end = Offset(w/2, h))
-            drawLine(Color(0xFFE2E8F0), start = Offset(0f, h/2), end = Offset(w, h/2))
+            drawLine(guideGrid.copy(alpha = 0.35f), start = Offset(w/2, 0f), end = Offset(w/2, h))
+            drawLine(guideGrid.copy(alpha = 0.35f), start = Offset(0f, h/2), end = Offset(w, h/2))
 
             if (showGuide && characterSnapshot.isNotEmpty()) {
                 // draw simple guide character using native canvas drawText is not available directly; skip text measurer in draw scope
@@ -89,18 +94,40 @@ fun HandwritingCanvas(
                     val pt = points[i]
                     p.lineTo(pt.x, pt.y)
                 }
-                drawPath(p, color = strokeColor, alpha = 0.9f, style = Stroke(width = 8f))
+                drawPath(p, color = strokeColor, alpha = 0.9f, style = Stroke(width = 6f))
             }
 
             paths.forEach { drawStroke(it) }
-            drawStroke(currentPath)
+            if (currentPath.isNotEmpty()) {
+                val p = Path().apply {
+                    moveTo(currentPath.first().x, currentPath.first().y)
+                    currentPath.drop(1).forEach { lineTo(it.x, it.y) }
+                }
+                drawPath(p, color = currentStrokeColor, alpha = 1f, style = Stroke(width = 9f))
+            }
         }
 
-        IconButton(onClick = { paths = emptyList(); currentPath = emptyList() }, modifier = Modifier.align(Alignment.TopEnd)) {
-            Icon(Icons.Default.Clear, contentDescription = "Clear", tint = Color(0xFF334155))
-        }
-        IconButton(onClick = { showGuide = !showGuide }, modifier = Modifier.align(Alignment.TopStart)) {
-            Icon(if (showGuide) Icons.Default.VisibilityOff else Icons.Default.Visibility, contentDescription = "Toggle", tint = Color(0xFF334155))
+        Row(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            IconButton(onClick = { showGuide = !showGuide }) {
+                Icon(
+                    if (showGuide) Icons.Default.VisibilityOff else Icons.Default.Visibility,
+                    contentDescription = "Toggle guide",
+                    tint = Color.White
+                )
+            }
+            IconButton(onClick = {
+                if (currentPath.isNotEmpty()) currentPath = emptyList() else if (paths.isNotEmpty()) paths = paths.dropLast(1)
+            }) {
+                Icon(Icons.Default.Undo, contentDescription = "Undo", tint = Color.White)
+            }
+            IconButton(onClick = { paths = emptyList(); currentPath = emptyList() }) {
+                Icon(Icons.Default.Clear, contentDescription = "Clear", tint = Color.White)
+            }
         }
     }
 }

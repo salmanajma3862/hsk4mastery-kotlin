@@ -1,8 +1,10 @@
 package com.salmanajmal.hsk4mastery.ui.worddetail.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -10,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
@@ -19,17 +22,19 @@ data class SentenceTokenModel(val word: String?, val pinyin: String?, val meanin
 fun SentenceToken(token: SentenceTokenModel, onClick: (() -> Unit)? = null) {
     Column(
         modifier = Modifier
-            .background(Color(0xFFF1F5F9), shape = RoundedCornerShape(6.dp))
+            .background(Color(0xFFF8FAFC), shape = RoundedCornerShape(8.dp))
+            .border(width = 1.dp, color = Color(0xFFE2E8F0), shape = RoundedCornerShape(8.dp))
+            .then(Modifier)
             .clickable(enabled = onClick != null) { onClick?.invoke() }
-            .padding(vertical = 6.dp, horizontal = 8.dp)
+            .padding(vertical = 8.dp, horizontal = 10.dp)
     ) {
         Text(
             text = token.pinyin ?: "",
-            style = MaterialTheme.typography.labelSmall.copy(color = Color(0xFF64748B), fontWeight = FontWeight.SemiBold)
+            style = MaterialTheme.typography.labelSmall.copy(color = Color(0xFF6366F1), fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
         )
         Text(
             text = token.word ?: "",
-            style = MaterialTheme.typography.bodyMedium.copy(color = Color(0xFF1E293B), fontWeight = FontWeight.Medium)
+            style = MaterialTheme.typography.bodyLarge.copy(color = Color(0xFF1E293B), fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
         )
     }
 }

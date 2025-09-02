@@ -9,6 +9,9 @@ import androidx.compose.material3.*
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -26,8 +29,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.shadow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun WordDetailScreen(
     viewModel: WordDetailViewModel = hiltViewModel(),
@@ -95,6 +100,9 @@ fun WordDetailScreen(
                 return@Scaffold
             }
 
+            // Selected token dialog state
+            var dialogToken: com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceTokenModel? by remember { mutableStateOf(null) }
+
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
@@ -133,24 +141,23 @@ fun WordDetailScreen(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                                 ) {
-                                    if (state.parsed.mainAudioUrl != null) {
-                                        Box(
-                                            modifier = Modifier
-                                                .size(32.dp)
-                                                .background(
-                                                    Color(0xFF1E40AF),
-                                                    RoundedCornerShape(16.dp)
-                                                )
-                                                .clickable { viewModel.playWordAudio() },
-                                            contentAlignment = Alignment.Center
-                                        ) {
-                                            Icon(
-                                                Icons.Default.VolumeUp,
-                                                contentDescription = "Play audio",
-                                                tint = Color.White,
-                                                modifier = Modifier.size(18.dp)
+                                    // Always-visible audio button like Expo
+                    Box(
+                                        modifier = Modifier
+                                            .size(32.dp)
+                                            .background(
+                                                Color(0xFF1E40AF),
+                                                RoundedCornerShape(16.dp)
                                             )
-                                        }
+                        .clickable { viewModel.playAudio(state.parsed.mainAudioUrl) },
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(
+                                            Icons.Default.VolumeUp,
+                                            contentDescription = "Play audio",
+                                            tint = Color.White,
+                                            modifier = Modifier.size(18.dp)
+                                        )
                                     }
                                     Text(
                                         word.hanzi,
@@ -254,7 +261,7 @@ fun WordDetailScreen(
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
-                                        "Example Sentences",
+                                        "Example Sentence",
                                         color = Color(0xFF1E293B),
                                         fontSize = 18.sp,
                                         fontWeight = FontWeight.W700
@@ -320,8 +327,9 @@ fun WordDetailScreen(
                                                     )
                                                 }
                                             }
-                                            Row(
+                                            FlowRow(
                                                 horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                                verticalArrangement = Arrangement.spacedBy(8.dp),
                                                 modifier = Modifier.fillMaxWidth()
                                             ) {
                                                 ex.tokens.forEach { token ->
@@ -330,7 +338,14 @@ fun WordDetailScreen(
                                                             word = token.word,
                                                             pinyin = token.pinyin,
                                                             meaning = token.meaning
-                                                        )
+                                                        ),
+                                                        onClick = {
+                                                            dialogToken = com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceTokenModel(
+                                                                word = token.word,
+                                                                pinyin = token.pinyin,
+                                                                meaning = token.meaning
+                                                            )
+                                                        }
                                                     )
                                                 }
                                             }
@@ -428,6 +443,24 @@ fun WordDetailScreen(
                         }
                     }
                 }
+            }
+
+            // Token detail dialog
+            val token = dialogToken
+            if (token != null) {
+                AlertDialog(
+                    onDismissRequest = { dialogToken = null },
+                    confirmButton = {
+                        TextButton(onClick = { dialogToken = null }) { Text("Dismiss") }
+                    },
+                    title = { Text(text = token.word ?: "") },
+                    text = {
+                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            if (!token.pinyin.isNullOrBlank()) Text(token.pinyin!!, color = Color(0xFF6366F1))
+                            if (!token.meaning.isNullOrBlank()) Text(token.meaning!!, color = Color(0xFF475569))
+                        }
+                    }
+                )
             }
         }
     }

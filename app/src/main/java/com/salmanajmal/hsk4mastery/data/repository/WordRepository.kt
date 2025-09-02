@@ -6,7 +6,7 @@ import com.salmanajmal.hsk4mastery.data.local.model.WordEntity
 
 interface WordRepository {
     // Words
-    fun getAllWords(): Flow<List<WordBasic>>
+    fun getAllWords(minId: Int, maxId: Int): Flow<List<WordBasic>>
     fun getWordDetails(wordId: String): Flow<WordEntity?>
 
     // Seeding

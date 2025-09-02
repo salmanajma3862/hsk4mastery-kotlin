@@ -65,7 +65,8 @@ class WordDetailViewModel @Inject constructor(
             }
             // also observe comfort level via list stream to match ID
             viewModelScope.launch {
-                wordRepository.getAllWords().collect { list ->
+                // Observe across all likely ID ranges (HSK1-4)
+                wordRepository.getAllWords(1, 3999).collect { list ->
                     val match = list.firstOrNull { it.id == wordId }
                     _uiState.update { it.copy(comfortLevel = match?.comfortLevel) }
                 }
@@ -85,6 +86,19 @@ class WordDetailViewModel @Inject constructor(
     try { audioPlayer.setSpeed(speed) } catch (_: Throwable) {}
     }
 
+    // Play audio from an explicit asset filename if provided; otherwise fall back to hanzi-based asset
+    fun playAudio(filename: String?) {
+        val speed = uiState.value.audioSpeed
+        if (!filename.isNullOrBlank()) {
+            // Normalize to relative asset path expected by AudioPlayerService
+            val rel = if (filename.startsWith("audio/")) filename else "audio/words/$filename"
+            audioPlayer.playAsset(rel, speed)
+            return
+        }
+        // Fallback: derive from hanzi
+        playWordAudio()
+    }
+
     fun onComfortLevelSelected(level: Int) {
         val id = uiState.value.word?.id ?: return
         viewModelScope.launch {
@@ -97,7 +111,13 @@ class WordDetailViewModel @Inject constructor(
 
     fun playWordAudio() {
         val word = uiState.value.word ?: return
-        audioPlayer.playWord(word.hanzi, uiState.value.audioSpeed)
+        // Prefer explicit filename if present
+        val file = uiState.value.parsed.mainAudioUrl
+        if (!file.isNullOrBlank()) {
+            playAudio(file)
+        } else {
+            audioPlayer.playWord(word.hanzi, uiState.value.audioSpeed)
+        }
     }
 
     fun playSentenceAudio(exampleIndex1Based: Int) {
