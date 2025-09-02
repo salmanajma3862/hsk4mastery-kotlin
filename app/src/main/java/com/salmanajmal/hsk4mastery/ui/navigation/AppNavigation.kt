@@ -76,10 +76,12 @@ fun AppNavigation() {
             }
         }
     ) { innerPadding ->
+        // Do not apply outer Scaffold innerPadding to NavHost directly to avoid double-padding
+        // Individual screens should manage their own content padding (e.g. WordList adds bottom padding)
         NavHost(
             navController = navController,
             startDestination = Routes.WordList,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
         ) {
             composable(Routes.WordList) {
                 WordListScreen(onWordClick = { id ->
