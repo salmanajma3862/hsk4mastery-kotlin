@@ -90,9 +90,10 @@ class WordDetailViewModel @Inject constructor(
     fun playAudio(filename: String?) {
         val speed = uiState.value.audioSpeed
         if (!filename.isNullOrBlank()) {
-            // Normalize to relative asset path expected by AudioPlayerService
-            val rel = if (filename.startsWith("audio/")) filename else "audio/words/$filename"
-            audioPlayer.playAsset(rel, speed)
+            // Assume provided filename is the file under words folder unless it already contains subdir
+            val isSentence = filename.contains("_ex") || filename.contains("/sentences/")
+            val clean = filename.substringAfterLast('/')
+            audioPlayer.play(clean, isSentence = isSentence, speed = speed)
             return
         }
         // Fallback: derive from hanzi
