@@ -82,7 +82,7 @@ fun AppNavigation() {
                 Routes.WordDetail,
                 arguments = listOf(navArgument("wordId") { type = NavType.StringType })
             ) {
-                com.salmanajmal.hsk4mastery.ui.worddetail.WordDetailScreen()
+                com.salmanajmal.hsk4mastery.ui.worddetail.WordDetailScreen(navController)
             }
             composable(
                 route = Routes.ActiveReview,

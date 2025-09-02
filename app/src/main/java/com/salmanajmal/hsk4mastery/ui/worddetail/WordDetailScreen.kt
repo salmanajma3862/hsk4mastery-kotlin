@@ -27,14 +27,18 @@ import com.salmanajmal.hsk4mastery.ui.worddetail.components.HandwritingCanvas
 import com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceToken
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.shadow
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.navigation.NavController
+import androidx.compose.ui.graphics.vector.ImageVector
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun WordDetailScreen(
+    navController: NavController,
     viewModel: WordDetailViewModel = hiltViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
@@ -51,6 +55,14 @@ fun WordDetailScreen(
         topBar = {
             TopAppBar(
                 title = { Text(text = state.word?.hanzi ?: "Word Detail") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Transparent
                 )
@@ -105,7 +117,7 @@ fun WordDetailScreen(
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(16.dp),
+                contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 48.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // Hero Section
@@ -113,75 +125,55 @@ fun WordDetailScreen(
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .shadow(
-                                elevation = 6.dp,
-                                spotColor = Color(0xFF6366F1),
-                                ambientColor = Color(0xFF6366F1)
-                            ),
+                            .height(240.dp),
                         shape = RoundedCornerShape(16.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color.Transparent)
+                        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                     ) {
                         Box(
                             modifier = Modifier
+                                .fillMaxSize()
                                 .background(
-                                    Brush.linearGradient(
+                                    Brush.verticalGradient(
                                         colors = listOf(
-                                            Color(0xFFF0F9FF),
-                                            Color(0xFFE0F2FE)
+                                            Color(0xFFE3F2FD), // light blue top
+                                            Color.White // fade to white
                                         )
                                     )
                                 )
                                 .padding(24.dp)
                         ) {
                             Column(
+                                modifier = Modifier.fillMaxSize(),
                                 horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                                verticalArrangement = Arrangement.Center
                             ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                                ) {
-                                    // Always-visible audio button like Expo
-                    Box(
-                                        modifier = Modifier
-                                            .size(32.dp)
-                                            .background(
-                                                Color(0xFF1E40AF),
-                                                RoundedCornerShape(16.dp)
-                                            )
-                        .clickable { viewModel.playAudio(state.parsed.mainAudioUrl) },
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Icon(
-                                            Icons.Default.VolumeUp,
-                                            contentDescription = "Play audio",
-                                            tint = Color.White,
-                                            modifier = Modifier.size(18.dp)
-                                        )
-                                    }
-                                    Text(
-                                        word.hanzi,
-                                        fontSize = 56.sp,
-                                        color = Color(0xFF1E40AF),
-                                        fontWeight = FontWeight.W900,
-                                        textAlign = TextAlign.Center,
-                                        letterSpacing = 2.sp
+                                IconButton(onClick = { viewModel.playAudio(state.parsed.mainAudioUrl) }) {
+                                    Icon(
+                                        imageVector = Icons.Filled.VolumeUp,
+                                        contentDescription = "Play audio",
+                                        tint = Color(0xFF1E40AF)
                                     )
                                 }
                                 Text(
-                                    word.pinyin,
-                                    fontSize = 22.sp,
+                                    text = word.hanzi,
+                                    style = MaterialTheme.typography.displayMedium,
                                     color = Color(0xFF1E40AF),
-                                    fontWeight = FontWeight.W600,
                                     textAlign = TextAlign.Center
                                 )
+                                Spacer(Modifier.height(4.dp))
                                 Text(
-                                    word.meaning,
-                                    fontSize = 20.sp,
+                                    text = word.pinyin,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = Color(0xFF1E40AF),
+                                    textAlign = TextAlign.Center
+                                )
+                                Spacer(Modifier.height(2.dp))
+                                Text(
+                                    text = word.meaning,
+                                    style = MaterialTheme.typography.bodyMedium,
                                     color = Color(0xFF475569),
-                                    fontWeight = FontWeight.W500,
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(top = 8.dp)
+                                    textAlign = TextAlign.Center
                                 )
                             }
                         }
@@ -190,23 +182,23 @@ fun WordDetailScreen(
 
                 // Character Breakdown
                 if (state.parsed.characterBreakdown.isNotEmpty()) {
-                    item("character-breakdown") {
+                    item("character-breakdown-header") {
+                        Text(
+                            text = "Character Breakdown",
+                            color = Color(0xFF1E293B),
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.W700,
+                            modifier = Modifier.padding(vertical = 4.dp)
+                        )
+                    }
+                    item("character-breakdown-card") {
                         Card(
                             modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(16.dp),
-                            colors = CardDefaults.cardColors(
-                                containerColor = Color.White
-                            ),
-                            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+                            shape = RoundedCornerShape(12.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
-                                Text(
-                                    "Character Breakdown",
-                                    color = Color(0xFF1E293B),
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.W700,
-                                    modifier = Modifier.padding(bottom = 12.dp)
-                                )
                                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                     state.parsed.characterBreakdown.forEach { char ->
                                         Row(
@@ -245,27 +237,28 @@ fun WordDetailScreen(
 
                 // Example Sentences
                 if (state.parsed.examples.isNotEmpty()) {
-                    item("examples-header") {
+                    item("examples-header-text") {
+                        Text(
+                            text = "Example Sentence",
+                            color = Color(0xFF1E293B),
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.W700,
+                            modifier = Modifier.padding(vertical = 4.dp)
+                        )
+                    }
+                    item("examples-card") {
                         Card(
                             modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(16.dp),
-                            colors = CardDefaults.cardColors(
-                                containerColor = Color.White
-                            ),
-                            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+                            shape = RoundedCornerShape(12.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Row(
                                     modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    horizontalArrangement = Arrangement.End,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text(
-                                        "Example Sentence",
-                                        color = Color(0xFF1E293B),
-                                        fontSize = 18.sp,
-                                        fontWeight = FontWeight.W700
-                                    )
                                     Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                                         listOf(0.5f, 0.75f, 1.0f).forEach { speed ->
                                             val isSelected = state.audioSpeed == speed
@@ -279,7 +272,7 @@ fun WordDetailScreen(
                                                     .padding(vertical = 6.dp, horizontal = 12.dp)
                                             ) {
                                                 Text(
-                                                    "${speed}x",
+                                                    text = "${speed}x",
                                                     color = if (isSelected) Color.White else Color(0xFF64748B),
                                                     fontWeight = FontWeight.W600,
                                                     fontSize = 12.sp
@@ -312,13 +305,13 @@ fun WordDetailScreen(
                                                     contentAlignment = Alignment.Center
                                                 ) {
                                                     Text(
-                                                        "🔊",
+                                                        text = "🔊",
                                                         fontSize = 14.sp
                                                     )
                                                 }
                                                 if (ex.translation != null) {
                                                     Text(
-                                                        ex.translation,
+                                                        text = ex.translation,
                                                         color = Color(0xFF1E40AF),
                                                         fontSize = 16.sp,
                                                         fontWeight = FontWeight.W500,
@@ -367,26 +360,15 @@ fun WordDetailScreen(
 
                 // Writing Practice
                 item("writing-practice") {
-                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         Text(
-                            "✍️ Practice Writing",
+                            text = "Practice Writing",
                             color = Color(0xFF1E293B),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.W700,
-                            modifier = Modifier.padding(horizontal = 16.dp)
+                            modifier = Modifier.padding(vertical = 4.dp)
                         )
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(
-                                    Color(0xFFF8FAFC),
-                                    RoundedCornerShape(12.dp)
-                                )
-                                .padding(16.dp),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            HandwritingCanvas(character = word.hanzi)
-                        }
+                        HandwritingCanvas(character = word.hanzi)
                     }
                 }
 
@@ -394,11 +376,11 @@ fun WordDetailScreen(
                 item("comfort") {
                     Card(
                         modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(12.dp),
                         colors = CardDefaults.cardColors(
                             containerColor = Color.White
                         ),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+                        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(
