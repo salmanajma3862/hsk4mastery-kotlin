@@ -1,11 +1,14 @@
 package com.salmanajmal.hsk4mastery.ui.worddetail.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -24,17 +27,23 @@ import com.salmanajmal.hsk4mastery.data.local.model.WordBasic
 fun WordPill(
     word: WordBasic,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Card(
         shape = RoundedCornerShape(percent = 50),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFF8FAFC)),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        modifier = Modifier
+        modifier = modifier
             .clickable { onClick() }
             .padding(4.dp)
+            .fillMaxWidth() // allow pill to take full row width if needed
             .widthIn(min = 140.dp)
     ) {
-        Column(modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 14.dp, vertical = 10.dp)
+        ) {
             Text(
                 text = word.hanzi,
                 style = MaterialTheme.typography.titleMedium,
@@ -42,21 +51,26 @@ fun WordPill(
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.widthIn(max = 72.dp)
             )
+            Spacer(Modifier.width(8.dp))
             Text(
                 text = word.pinyin,
                 style = MaterialTheme.typography.labelMedium,
                 color = Color(0xFF4F46E5),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.widthIn(max = 140.dp)
             )
+            Spacer(Modifier.width(8.dp))
             Text(
                 text = word.meaning,
                 style = MaterialTheme.typography.bodySmall,
                 color = Color(0xFF475569),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                fontSize = 12.sp
+                fontSize = 12.sp,
+                modifier = Modifier.weight(1f, fill = true)
             )
         }
     }

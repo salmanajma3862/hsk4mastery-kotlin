@@ -427,6 +427,48 @@ fun WordDetailScreen(
                         }
                     }
                 }
+
+                // Nearby Words (moved from floating overlay to end section)
+                val neighbors = state.neighboringWords
+                if (neighbors != null && (neighbors.previous.isNotEmpty() || neighbors.next.isNotEmpty())) {
+                    item("neighbors-header") {
+                        Text(
+                            text = "Nearby Words",
+                            color = Color(0xFF1E293B),
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.W700,
+                            modifier = Modifier.padding(vertical = 4.dp)
+                        )
+                    }
+                    item("neighbors-row") {
+                        // Build ordered list: [previous (reverse)], center (first next or fallback to first previous), then remaining next
+                        val center = neighbors.next.firstOrNull() ?: neighbors.previous.firstOrNull()
+                        val nextAfterCenter = if (neighbors.next.isNotEmpty()) neighbors.next.drop(1).take(4) else emptyList()
+                        val previousReversed = neighbors.previous.take(5).asReversed()
+
+                        val ordered = buildList {
+                            addAll(previousReversed)
+                            if (center != null) add(center)
+                            addAll(nextAfterCenter)
+                        }
+
+                        LazyRow(
+                            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 12.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            items(ordered) { w ->
+                                WordPill(
+                                    word = w,
+                                    onClick = {
+                                        // Push a new instance so SavedStateHandle gets new wordId
+                                        navController.navigate("word_detail/${w.id}")
+                                    },
+                                    modifier = Modifier.fillParentMaxWidth()
+                                )
+                            }
+                        }
+                    }
+                }
             }
 
             // Token detail dialog
@@ -447,62 +489,7 @@ fun WordDetailScreen(
                 )
             }
 
-            // Contextual Navigator overlay at bottom
-            val neighbors = state.neighboringWords
-            if (neighbors != null && (neighbors.previous.isNotEmpty() || neighbors.next.isNotEmpty())) {
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .fillMaxWidth()
-                        .background(
-                            Brush.verticalGradient(
-                                listOf(Color.Transparent, Color(0xCCFFFFFF))
-                            )
-                        )
-                        .padding(vertical = 12.dp)
-                ) {
-                    Text(
-                        text = "Explore Nearby Words",
-                        color = Color(0xFF1E293B),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.W700,
-                        modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
-                    )
-                    LazyRow(
-                        contentPadding = PaddingValues(horizontal = 12.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        // Previous words first
-                        items(neighbors.previous) { w ->
-                            WordPill(word = w) {
-                                // Navigate to selected word detail by its primary key string id
-                                navController.popBackStack()
-                                navController.navigate("word_detail/${w.id}") {
-                                    launchSingleTop = true
-                                }
-                            }
-                        }
-                        // Optionally, a subtle separator (current)
-                        item(key = "sep") {
-                            Box(
-                                modifier = Modifier
-                                    .width(1.dp)
-                                    .height(32.dp)
-                                    .background(Color(0xFFE2E8F0))
-                            )
-                        }
-                        // Next words
-                        items(neighbors.next) { w ->
-                            WordPill(word = w) {
-                                navController.popBackStack()
-                                navController.navigate("word_detail/${w.id}") {
-                                    launchSingleTop = true
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            // Floating overlay removed; neighboring words now shown as a section at the end
         }
     }
 }
