@@ -46,17 +46,17 @@ fun WordListItem(
                 // Left
                 Column(Modifier.weight(2f).padding(end = 12.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        val color = statusColor(word.status, word.comfortLevel)
-                        // show the small status dot for non-confident levels
-                        if (word.comfortLevel != 3) {
-                            Box(
-                                Modifier
-                                    .size(8.dp)
-                                    .clip(RoundedCornerShape(50))
-                                    .background(color)
-                            )
-                            Spacer(Modifier.width(8.dp))
-                        }
+                            val color = statusColor(word.status, word.comfortLevel)
+                            // show the small status dot only for comfort level 1
+                            if (word.comfortLevel == 1) {
+                                Box(
+                                    Modifier
+                                        .size(8.dp)
+                                        .clip(RoundedCornerShape(50))
+                                        .background(color)
+                                )
+                                Spacer(Modifier.width(8.dp))
+                            }
                         Text(
                             text = word.hanzi,
                             style = MaterialTheme.typography.titleLarge.copy(
@@ -92,6 +92,28 @@ fun WordListItem(
                                 color = Color(0xFF94A3B8),
                                 fontWeight = FontWeight.Medium
                             )
+                        )
+                    }
+                }
+            }
+
+            // Getting There pill shown at center-right when comfortLevel == 2
+            if (word.comfortLevel == 2) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.CenterEnd)
+                        .padding(end = 12.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .background(Color(0xFFF59E0B), RoundedCornerShape(8.dp))
+                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = "Getting There",
+                            color = Color.White,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Medium
                         )
                     }
                 }
