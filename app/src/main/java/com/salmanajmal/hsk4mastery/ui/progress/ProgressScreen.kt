@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,7 +35,8 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
     LaunchedEffect(Unit) { viewModel.fetchStats() }
 
     Scaffold() { padding ->
-        Column(modifier = Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
+        Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
+            Column(modifier = Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
             // Simple stable header replacing experimental TopAppBar
             Text("My Progress", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
             androidx.compose.foundation.layout.Spacer(modifier = Modifier.padding(6.dp))
@@ -64,6 +66,7 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
                 }
             } else {
                 Text("No stats available", color = Color(0xFF64748B))
+            }
             }
         }
     }

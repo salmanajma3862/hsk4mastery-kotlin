@@ -14,6 +14,7 @@ interface WordRepository {
 
     // Random/practice
     suspend fun getRandomPracticeWord(): WordEntity?
+    suspend fun getRandomPracticeWord(level: Int): WordEntity?
 
     // Progress & stats
     fun getProgressStats(): Flow<ProgressStats>

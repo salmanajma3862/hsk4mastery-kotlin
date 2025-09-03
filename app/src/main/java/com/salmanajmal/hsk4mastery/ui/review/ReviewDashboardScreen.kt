@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,7 +38,8 @@ fun ReviewDashboardScreen(
     val ctx = LocalContext.current
 
     Scaffold { padding ->
-        Box(modifier = Modifier.fillMaxSize().padding(padding)) {
+        Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             if (uiState.isLoading) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -146,6 +148,7 @@ fun ReviewDashboardScreen(
                     item { Spacer(Modifier.padding(bottom = 24.dp)) }
                 }
             }
+            }
         }
     }
 }
@@ -160,7 +163,8 @@ fun ReviewDashboardScreenForNav(
 
     // Delegate to the existing UI but with navigation-enabled onClicks
     Scaffold { padding ->
-        Box(modifier = Modifier.fillMaxSize().padding(padding)) {
+        Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             if (uiState.isLoading) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -248,6 +252,7 @@ fun ReviewDashboardScreenForNav(
 
                     item { Spacer(Modifier.padding(bottom = 24.dp)) }
                 }
+            }
             }
         }
     }

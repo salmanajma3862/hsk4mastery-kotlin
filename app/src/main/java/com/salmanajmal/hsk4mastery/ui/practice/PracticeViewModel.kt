@@ -32,6 +32,7 @@ data class PracticeUiState(
     val isCorrect: Boolean? = null,
     val isLoading: Boolean = false,
     val activeExampleTranslation: String? = null,
+    val selectedLevel: Int = 1,
 )
 
 @HiltViewModel
@@ -50,7 +51,8 @@ class PracticeViewModel @Inject constructor(
     fun fetchNewPuzzle() {
         _uiState.update { it.copy(isLoading = true, isCorrect = null) }
         viewModelScope.launch {
-            val word = try { wordRepository.getRandomPracticeWord() } catch (_: Throwable) { null }
+            val level = _uiState.value.selectedLevel
+            val word = try { wordRepository.getRandomPracticeWord(level) } catch (_: Throwable) { null }
             if (word == null) {
                 _uiState.update { it.copy(isLoading = false) }
                 return@launch
@@ -69,6 +71,12 @@ class PracticeViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    fun onLevelSelected(level: Int) {
+        if (level == _uiState.value.selectedLevel) return
+        _uiState.update { it.copy(selectedLevel = level) }
+        fetchNewPuzzle()
     }
 
     fun onWordBankTap(index: Int) {

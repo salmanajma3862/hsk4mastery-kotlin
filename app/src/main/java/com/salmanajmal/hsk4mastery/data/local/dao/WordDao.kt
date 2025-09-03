@@ -110,6 +110,10 @@ interface WordDao {
     @Query("SELECT * FROM words ORDER BY RANDOM() LIMIT 1")
     suspend fun getRandomWord(): WordEntity?
 
+    // Random word by HSK level range
+    @Query("SELECT * FROM words WHERE wordId >= :minId AND wordId <= :maxId ORDER BY RANDOM() LIMIT 1")
+    suspend fun getRandomWordByLevel(minId: Int, maxId: Int): WordEntity?
+
     // updateWordComfort
     @Transaction
     suspend fun updateWordComfort(wordId: String, comfortLevel: Int) {

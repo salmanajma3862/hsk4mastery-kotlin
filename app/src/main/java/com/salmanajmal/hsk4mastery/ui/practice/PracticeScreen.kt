@@ -23,9 +23,22 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,16 +49,47 @@ import com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceToken
 import com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceTokenModel
 
 @Composable
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
     val state by viewModel.uiState.collectAsState()
     val scroll = rememberScrollState()
 
-    Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-        Column(modifier = Modifier.fillMaxSize().verticalScroll(scroll).padding(top = 24.dp)) {
+    var isMenuExpanded by remember { mutableStateOf(false) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "HSK ${state.selectedLevel} Practice") },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White),
+                actions = {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        // Level picker action identical to WordListScreen
+                        IconButton(onClick = { isMenuExpanded = !isMenuExpanded }) {
+                            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "Select HSK level")
+                        }
+                        DropdownMenu(expanded = isMenuExpanded, onDismissRequest = { isMenuExpanded = false }) {
+                            DropdownMenuItem(text = { Text("HSK 1") }, onClick = {
+                                viewModel.onLevelSelected(1); isMenuExpanded = false
+                            })
+                            DropdownMenuItem(text = { Text("HSK 2") }, onClick = {
+                                viewModel.onLevelSelected(2); isMenuExpanded = false
+                            })
+                            DropdownMenuItem(text = { Text("HSK 3") }, onClick = {
+                                viewModel.onLevelSelected(3); isMenuExpanded = false
+                            })
+                            DropdownMenuItem(text = { Text("HSK 4") }, onClick = {
+                                viewModel.onLevelSelected(4); isMenuExpanded = false
+                            })
+                        }
+                    }
+                }
+            )
+        }
+    ) { padding ->
+        Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
+        Column(modifier = Modifier.fillMaxSize().verticalScroll(scroll).padding(top = 24.dp).padding(padding)) {
             // Header
             Column(Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
-                Text(text = "Practice Hub", style = MaterialTheme.typography.titleLarge.copy(color = Color(0xFF1e293b), fontWeight = FontWeight.Bold))
                 val hanzi = state.practiceWord?.hanzi
                 if (!hanzi.isNullOrBlank()) {
                     Text(text = hanzi, color = Color(0xFF475569))
@@ -142,6 +186,7 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
                 }
                 Spacer(Modifier.height(10.dp))
             }
+        }
         }
     }
 }
