@@ -102,7 +102,7 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
                     selected = state.practiceMode == PracticeMode.TRANSLATION,
                     onClick = { viewModel.onModeSelected(PracticeMode.TRANSLATION) },
                     text = { Text("Translation Challenge", color = if (state.practiceMode == PracticeMode.TRANSLATION) Color.White else Color(0xFF111827)) },
-                    selectedContentColor = Color.White,
+                    selectedContentColor = Color(0xFF111827),
                     unselectedContentColor = Color(0xFF111827)
                 )
                 Tab(
