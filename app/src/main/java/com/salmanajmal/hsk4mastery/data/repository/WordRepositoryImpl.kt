@@ -27,6 +27,13 @@ class WordRepositoryImpl @Inject constructor(
         emit(dao.getWordById(wordId))
     }.flowOn(Dispatchers.IO)
 
+    override suspend fun getNeighboringWords(wordId: Int): NeighboringWords {
+        val prev = dao.getPreviousWords(wordId, 10)
+        val next = dao.getNextWords(wordId, 10)
+        // Reverse previous so it shows ascending order from older->current neighbor
+        return NeighboringWords(previous = prev.reversed(), next = next)
+    }
+
     override suspend fun startDatabaseSeedingIfNeeded() {
         // Read all HSK JSON assets and seed once
         val assetManager = context.assets

@@ -34,6 +34,8 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.navigation.NavController
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.foundation.lazy.LazyRow
+import com.salmanajmal.hsk4mastery.ui.worddetail.components.WordPill
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -117,7 +119,7 @@ fun WordDetailScreen(
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 48.dp),
+                contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 140.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // Hero Section
@@ -443,6 +445,63 @@ fun WordDetailScreen(
                         }
                     }
                 )
+            }
+
+            // Contextual Navigator overlay at bottom
+            val neighbors = state.neighboringWords
+            if (neighbors != null && (neighbors.previous.isNotEmpty() || neighbors.next.isNotEmpty())) {
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .fillMaxWidth()
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(Color.Transparent, Color(0xCCFFFFFF))
+                            )
+                        )
+                        .padding(vertical = 12.dp)
+                ) {
+                    Text(
+                        text = "Explore Nearby Words",
+                        color = Color(0xFF1E293B),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.W700,
+                        modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)
+                    )
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        // Previous words first
+                        items(neighbors.previous) { w ->
+                            WordPill(word = w) {
+                                // Navigate to selected word detail by its primary key string id
+                                navController.popBackStack()
+                                navController.navigate("word_detail/${w.id}") {
+                                    launchSingleTop = true
+                                }
+                            }
+                        }
+                        // Optionally, a subtle separator (current)
+                        item(key = "sep") {
+                            Box(
+                                modifier = Modifier
+                                    .width(1.dp)
+                                    .height(32.dp)
+                                    .background(Color(0xFFE2E8F0))
+                            )
+                        }
+                        // Next words
+                        items(neighbors.next) { w ->
+                            WordPill(word = w) {
+                                navController.popBackStack()
+                                navController.navigate("word_detail/${w.id}") {
+                                    launchSingleTop = true
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

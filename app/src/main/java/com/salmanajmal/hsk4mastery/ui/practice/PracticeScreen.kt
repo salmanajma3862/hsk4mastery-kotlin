@@ -87,7 +87,7 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
         }
     ) { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-        Column(modifier = Modifier.fillMaxSize().verticalScroll(scroll).padding(top = 24.dp).padding(padding)) {
+        Column(modifier = Modifier.fillMaxSize().verticalScroll(scroll).padding(top = 8.dp).padding(padding)) {
             // Header
             Column(Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
                 val hanzi = state.practiceWord?.hanzi
@@ -98,20 +98,20 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
 
             // Mode selector
             TabRow(selectedTabIndex = if (state.practiceMode == PracticeMode.TRANSLATION) 0 else 1, containerColor = Color(0xFFE5E7EB)) {
+                    Tab(
+                        selected = state.practiceMode == PracticeMode.TRANSLATION,
+                        onClick = { viewModel.onModeSelected(PracticeMode.TRANSLATION) },
+                        text = { Text("Translation Challenge", color = Color(0xFF111827)) },
+                        selectedContentColor = Color(0xFF111827),
+                        unselectedContentColor = Color(0xFF111827)
+                    )
                 Tab(
-                    selected = state.practiceMode == PracticeMode.TRANSLATION,
-                    onClick = { viewModel.onModeSelected(PracticeMode.TRANSLATION) },
-                    text = { Text("Translation Challenge", color = if (state.practiceMode == PracticeMode.TRANSLATION) Color.White else Color(0xFF111827)) },
-                    selectedContentColor = Color.White,
-                    unselectedContentColor = Color(0xFF111827)
-                )
-                Tab(
-                    selected = state.practiceMode == PracticeMode.SCRAMBLE,
-                    onClick = { viewModel.onModeSelected(PracticeMode.SCRAMBLE) },
-                    text = { Text("Pure Scramble", color = if (state.practiceMode == PracticeMode.SCRAMBLE) Color.White else Color(0xFF111827)) },
-                    selectedContentColor = Color.White,
-                    unselectedContentColor = Color(0xFF111827)
-                )
+                        selected = state.practiceMode == PracticeMode.SCRAMBLE,
+                        onClick = { viewModel.onModeSelected(PracticeMode.SCRAMBLE) },
+                        text = { Text("Pure Scramble", color = Color(0xFF111827)) },
+                        selectedContentColor = Color(0xFF111827),
+                        unselectedContentColor = Color(0xFF111827)
+                    )
             }
 
             // Clue area

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.media3.common.PlaybackParameters
 import com.salmanajmal.hsk4mastery.data.local.model.WordEntity
 import com.salmanajmal.hsk4mastery.data.repository.WordRepository
+import com.salmanajmal.hsk4mastery.data.repository.NeighboringWords
 import com.salmanajmal.hsk4mastery.media.AudioPlayerService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -38,6 +39,7 @@ data class WordDetailUiState(
     val comfortLevel: Int? = null,
     val audioSpeed: Float = 1.0f,
     val isLoading: Boolean = true,
+    val neighboringWords: NeighboringWords? = null,
 )
 
 @HiltViewModel
@@ -61,6 +63,14 @@ class WordDetailViewModel @Inject constructor(
                 wordRepository.getWordDetails(wordId).collect { entity ->
                     val parsed = parseFullData(entity?.fullData)
                     _uiState.update { it.copy(word = entity, parsed = parsed, isLoading = false) }
+                    // After we have entity, fetch neighboring words using numeric wordId if available
+                    val numericId = entity?.wordId
+                    if (numericId != null) {
+                        try {
+                            val neighbors = wordRepository.getNeighboringWords(numericId)
+                            _uiState.update { st -> st.copy(neighboringWords = neighbors) }
+                        } catch (_: Throwable) { /* ignore */ }
+                    }
                 }
             }
             // also observe comfort level via list stream to match ID

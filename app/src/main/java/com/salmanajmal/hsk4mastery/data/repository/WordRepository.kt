@@ -8,6 +8,7 @@ interface WordRepository {
     // Words
     fun getAllWords(minId: Int, maxId: Int): Flow<List<WordBasic>>
     fun getWordDetails(wordId: String): Flow<WordEntity?>
+    suspend fun getNeighboringWords(wordId: Int): NeighboringWords
 
     // Seeding
     suspend fun startDatabaseSeedingIfNeeded()
@@ -38,5 +39,10 @@ data class ReviewDashboardData(
     val strugglingWords: List<WordEntity>,
     val dueWords: List<WordEntity>,
     val reviewedWordsByCount: Map<Int, List<WordEntity>>,
+)
+ 
+data class NeighboringWords(
+    val previous: List<WordBasic>,
+    val next: List<WordBasic>,
 )
  

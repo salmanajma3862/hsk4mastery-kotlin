@@ -207,4 +207,15 @@ interface WordDao {
         """
     )
     fun observeReviewedWithCounts(): Flow<List<ReviewedWordRow>>
+
+    // Neighboring words by numeric wordId for contextual navigation
+    @Query(
+        "SELECT _id, wordId, hanzi, pinyin, meaning FROM words WHERE wordId < :wordId ORDER BY wordId DESC LIMIT :limit"
+    )
+    suspend fun getPreviousWords(wordId: Int, limit: Int): List<WordBasic>
+
+    @Query(
+        "SELECT _id, wordId, hanzi, pinyin, meaning FROM words WHERE wordId > :wordId ORDER BY wordId ASC LIMIT :limit"
+    )
+    suspend fun getNextWords(wordId: Int, limit: Int): List<WordBasic>
 }
