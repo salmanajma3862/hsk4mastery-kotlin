@@ -34,7 +34,6 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.navigation.NavController
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.foundation.lazy.LazyRow
 import com.salmanajmal.hsk4mastery.ui.worddetail.components.WordPill
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -441,30 +440,38 @@ fun WordDetailScreen(
                         )
                     }
                     item("neighbors-row") {
-                        // Build ordered list: [previous (reverse)], center (first next or fallback to first previous), then remaining next
-                        val center = neighbors.next.firstOrNull() ?: neighbors.previous.firstOrNull()
-                        val nextAfterCenter = if (neighbors.next.isNotEmpty()) neighbors.next.drop(1).take(4) else emptyList()
-                        val previousReversed = neighbors.previous.take(5).asReversed()
+                        // Only show one previous and one next word
+                        val previousWord = neighbors.previous.firstOrNull()
+                        val nextWord = neighbors.next.firstOrNull()
 
-                        val ordered = buildList {
-                            addAll(previousReversed)
-                            if (center != null) add(center)
-                            addAll(nextAfterCenter)
-                        }
-
-                        LazyRow(
-                            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 12.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            items(ordered) { w ->
+                            // Previous word pill
+                            if (previousWord != null) {
                                 WordPill(
-                                    word = w,
+                                    word = previousWord,
                                     onClick = {
-                                        // Push a new instance so SavedStateHandle gets new wordId
-                                        navController.navigate("word_detail/${w.id}")
+                                        navController.navigate("word_detail/${previousWord.id}")
                                     },
-                                    modifier = Modifier.fillParentMaxWidth()
+                                    modifier = Modifier.weight(1f)
                                 )
+                            } else {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
+                            
+                            // Next word pill
+                            if (nextWord != null) {
+                                WordPill(
+                                    word = nextWord,
+                                    onClick = {
+                                        navController.navigate("word_detail/${nextWord.id}")
+                                    },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            } else {
+                                Spacer(modifier = Modifier.weight(1f))
                             }
                         }
                     }

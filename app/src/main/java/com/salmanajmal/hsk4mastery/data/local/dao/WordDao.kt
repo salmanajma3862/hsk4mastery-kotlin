@@ -208,14 +208,36 @@ interface WordDao {
     )
     fun observeReviewedWithCounts(): Flow<List<ReviewedWordRow>>
 
-    // Neighboring words by numeric wordId for contextual navigation
+    // Neighboring words by numeric wordId for contextual navigation within the same HSK level
     @Query(
-        "SELECT _id, wordId, hanzi, pinyin, meaning FROM words WHERE wordId < :wordId ORDER BY wordId DESC LIMIT :limit"
+        """
+        SELECT _id, wordId, hanzi, pinyin, meaning FROM words 
+        WHERE wordId < :wordId 
+        AND CASE 
+            WHEN :wordId BETWEEN 1 AND 600 THEN wordId BETWEEN 1 AND 600
+            WHEN :wordId BETWEEN 1000 AND 1149 THEN wordId BETWEEN 1000 AND 1149
+            WHEN :wordId BETWEEN 2000 AND 2149 THEN wordId BETWEEN 2000 AND 2149
+            WHEN :wordId BETWEEN 3000 AND 3299 THEN wordId BETWEEN 3000 AND 3299
+            ELSE 1=1
+        END
+        ORDER BY wordId DESC LIMIT :limit
+        """
     )
     suspend fun getPreviousWords(wordId: Int, limit: Int): List<WordBasic>
 
     @Query(
-        "SELECT _id, wordId, hanzi, pinyin, meaning FROM words WHERE wordId > :wordId ORDER BY wordId ASC LIMIT :limit"
+        """
+        SELECT _id, wordId, hanzi, pinyin, meaning FROM words 
+        WHERE wordId > :wordId 
+        AND CASE 
+            WHEN :wordId BETWEEN 1 AND 600 THEN wordId BETWEEN 1 AND 600
+            WHEN :wordId BETWEEN 1000 AND 1049 THEN wordId BETWEEN 1000 AND 1049
+            WHEN :wordId BETWEEN 2000 AND 2049 THEN wordId BETWEEN 2000 AND 2049
+            WHEN :wordId BETWEEN 3000 AND 3049 THEN wordId BETWEEN 3000 AND 3049
+            ELSE 1=1
+        END
+        ORDER BY wordId ASC LIMIT :limit
+        """
     )
     suspend fun getNextWords(wordId: Int, limit: Int): List<WordBasic>
 }

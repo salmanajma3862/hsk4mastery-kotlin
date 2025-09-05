@@ -36,12 +36,9 @@ fun WordPill(
         modifier = modifier
             .clickable { onClick() }
             .padding(4.dp)
-            .fillMaxWidth() // allow pill to take full row width if needed
-            .widthIn(min = 140.dp)
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(horizontal = 14.dp, vertical = 10.dp)
         ) {
             Text(
@@ -50,8 +47,7 @@ fun WordPill(
                 color = Color(0xFF0F172A),
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.widthIn(max = 72.dp)
+                overflow = TextOverflow.Ellipsis
             )
             Spacer(Modifier.width(8.dp))
             Text(
@@ -59,8 +55,7 @@ fun WordPill(
                 style = MaterialTheme.typography.labelMedium,
                 color = Color(0xFF4F46E5),
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.widthIn(max = 140.dp)
+                overflow = TextOverflow.Ellipsis
             )
             Spacer(Modifier.width(8.dp))
             Text(
@@ -69,8 +64,7 @@ fun WordPill(
                 color = Color(0xFF475569),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                fontSize = 12.sp,
-                modifier = Modifier.weight(1f, fill = true)
+                fontSize = 12.sp
             )
         }
     }
