@@ -33,6 +33,7 @@ data class PracticeUiState(
     val isLoading: Boolean = false,
     val activeExampleTranslation: String? = null,
     val selectedLevel: Int = 1,
+    val noConfidentWordsMessage: String? = null,
 )
 
 @HiltViewModel
@@ -49,12 +50,24 @@ class PracticeViewModel @Inject constructor(
     }
 
     fun fetchNewPuzzle() {
-        _uiState.update { it.copy(isLoading = true, isCorrect = null) }
+        _uiState.update { it.copy(isLoading = true, isCorrect = null, noConfidentWordsMessage = null) }
         viewModelScope.launch {
             val level = _uiState.value.selectedLevel
-            val word = try { wordRepository.getRandomPracticeWord(level) } catch (_: Throwable) { null }
+            val word = try { wordRepository.getRandomConfidentPracticeWord(level) } catch (_: Throwable) { null }
             if (word == null) {
-                _uiState.update { it.copy(isLoading = false) }
+                val levelName = when (level) {
+                    1 -> "HSK 1"
+                    2 -> "HSK 2"
+                    3 -> "HSK 3" 
+                    4 -> "HSK 4"
+                    else -> "HSK $level"
+                }
+                _uiState.update { 
+                    it.copy(
+                        isLoading = false, 
+                        noConfidentWordsMessage = "No confident words found in $levelName. Learn some words, mark them as confident, and then practice them!"
+                    ) 
+                }
                 return@launch
             }
             val (tokens, translation) = parseRandomExampleTokens(word.fullData)
@@ -68,6 +81,7 @@ class PracticeViewModel @Inject constructor(
                     isCorrect = null,
                     isLoading = false,
                     activeExampleTranslation = translation,
+                    noConfidentWordsMessage = null,
                 )
             }
         }

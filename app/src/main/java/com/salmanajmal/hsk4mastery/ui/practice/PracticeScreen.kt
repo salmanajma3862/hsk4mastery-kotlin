@@ -44,6 +44,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceToken
 import com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceTokenModel
@@ -87,6 +88,34 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
         }
     ) { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
+            // Show message if no confident words are available
+            state.noConfidentWordsMessage?.let { msg ->
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                        .padding(32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = msg,
+                        color = Color(0xFF6B7280),
+                        fontSize = 16.sp,
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        lineHeight = 24.sp
+                    )
+                    Spacer(Modifier.height(16.dp))
+                    Button(
+                        onClick = { viewModel.fetchNewPuzzle() },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6366F1))
+                    ) {
+                        Text("Try Again", color = Color.White, fontWeight = FontWeight.Bold)
+                    }
+                }
+                return@Surface
+            }
+
         Column(modifier = Modifier.fillMaxSize().verticalScroll(scroll).padding(top = 8.dp).padding(padding)) {
             // Header
             Column(Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {

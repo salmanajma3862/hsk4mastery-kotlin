@@ -98,6 +98,17 @@ class WordRepositoryImpl @Inject constructor(
         return dao.getRandomWordByLevel(minId, maxId)
     }
 
+    override suspend fun getRandomConfidentPracticeWord(level: Int): WordEntity? {
+        val (minId, maxId) = when (level) {
+            1 -> 1000 to 1999
+            2 -> 2000 to 2999
+            3 -> 3000 to 3999
+            4 -> 1 to 602
+            else -> 1000 to 1999
+        }
+        return dao.getRandomConfidentWordByLevel(minId, maxId)
+    }
+
     override fun getProgressStats(): Flow<ProgressStats> = flow {
         val raw = dao.getProgressStatsInternal()
         val mastered = raw?.mastered ?: 0

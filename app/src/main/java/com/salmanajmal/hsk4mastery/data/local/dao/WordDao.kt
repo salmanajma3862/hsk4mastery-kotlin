@@ -114,6 +114,15 @@ interface WordDao {
     @Query("SELECT * FROM words WHERE wordId >= :minId AND wordId <= :maxId ORDER BY RANDOM() LIMIT 1")
     suspend fun getRandomWordByLevel(minId: Int, maxId: Int): WordEntity?
 
+    // Random confident word by HSK level range (comfortLevel = 3)
+    @Query("""
+        SELECT w.* FROM words w
+        INNER JOIN user_word_progress p ON p.word_id = w._id
+        WHERE w.wordId >= :minId AND w.wordId <= :maxId AND p.comfortLevel = 3
+        ORDER BY RANDOM() LIMIT 1
+    """)
+    suspend fun getRandomConfidentWordByLevel(minId: Int, maxId: Int): WordEntity?
+
     // updateWordComfort
     @Transaction
     suspend fun updateWordComfort(wordId: String, comfortLevel: Int) {
