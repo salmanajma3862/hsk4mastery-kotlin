@@ -6,13 +6,13 @@ package com.salmanajmal.hsk4mastery.ui.progress
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.salmanajmal.hsk4mastery.ui.progress.components.StatCard
+import com.salmanajmal.hsk4mastery.ui.progress.components.HskLevelProgressBar
 
 @Composable
 fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
@@ -36,37 +37,104 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
 
     Scaffold() { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-            Column(modifier = Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
-            // Simple stable header replacing experimental TopAppBar
-            Text("My Progress", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
-            androidx.compose.foundation.layout.Spacer(modifier = Modifier.padding(6.dp))
-            if (state.isLoading) {
-                CircularProgressIndicator()
-                return@Column
-            }
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+                    .padding(28.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                item {
+                    // Header matching ReviewDashboardScreen style
+                    Text(
+                        text = "My Progress",
+                        style = MaterialTheme.typography.titleLarge.copy(color = Color(0xFF1E293B))
+                    )
+                    androidx.compose.foundation.layout.Spacer(Modifier.padding(top = 16.dp))
+                }
+                
+                if (state.isLoading) {
+                    item {
+                        CircularProgressIndicator()
+                    }
+                    return@LazyColumn
+                }
 
-            val stats = state.stats
-            if (stats != null) {
-                val itemsList = listOf(
-                    Triple("Mastered", stats.mastered, Color(0xFFE0F2FE)),
-                    Triple("Reviewed", stats.reviewed, Color(0xFFF1F5F9)),
-                    Triple("Learning", stats.learning, Color(0xFFEFF6FF)),
-                    Triple("Unseen", stats.unseen, Color(0xFFFFF7ED)),
-                )
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    items(itemsList) { (label, value, color) ->
-                        StatCard(label = label, value = value, color = color)
+                // HSK Level Progress Section (removed duplicate title)
+                if (state.hskLevelProgress.isNotEmpty()) {
+                    items(state.hskLevelProgress) { levelProgress ->
+                        HskLevelProgressBar(
+                            levelProgress = levelProgress,
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     }
                 }
-            } else {
-                Text("No stats available", color = Color(0xFF64748B))
-            }
+
+                // Overall Statistics Section
+                val stats = state.stats
+                if (stats != null) {
+                    
+                    item {
+                        val itemsList = listOf(
+                            Triple("Mastered", stats.mastered, Color(0xFFE0F2FE)),
+                            Triple("Reviewed", stats.reviewed, Color(0xFFF1F5F9)),
+                            Triple("Learning", stats.learning, Color(0xFFEFF6FF)),
+                            Triple("Unseen", stats.unseen, Color(0xFFFFF7ED)),
+                        )
+                        
+                        // Use regular Column instead of nested LazyVerticalGrid
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(12.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            // First row
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                StatCard(
+                                    label = itemsList[0].first,
+                                    value = itemsList[0].second,
+                                    color = itemsList[0].third,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                StatCard(
+                                    label = itemsList[1].first,
+                                    value = itemsList[1].second,
+                                    color = itemsList[1].third,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                            // Second row
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                StatCard(
+                                    label = itemsList[2].first,
+                                    value = itemsList[2].second,
+                                    color = itemsList[2].third,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                StatCard(
+                                    label = itemsList[3].first,
+                                    value = itemsList[3].second,
+                                    color = itemsList[3].third,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    item {
+                        Text("No stats available", color = Color(0xFF64748B))
+                    }
+                }
+                
+                // Bottom padding to prevent content being hidden by bottom tabs
+                item {
+                    androidx.compose.foundation.layout.Spacer(Modifier.padding(bottom = 24.dp))
+                }
             }
         }
     }

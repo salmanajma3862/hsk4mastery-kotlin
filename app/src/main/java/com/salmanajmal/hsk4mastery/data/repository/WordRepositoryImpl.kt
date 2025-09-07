@@ -119,7 +119,32 @@ class WordRepositoryImpl @Inject constructor(
         val seen = learning + mastered + reviewed
         val unseen = (total - seen).coerceAtLeast(0)
         emit(ProgressStats(learning = learning, reviewed = reviewed, mastered = mastered, unseen = unseen))
-    }.flowOn(Dispatchers.IO)
+    }
+
+    override suspend fun getHskLevelProgress(): List<HskLevelProgress> {
+        return try {
+            val levelData = listOf(
+                Triple(1, 1000 to 1149, 150),
+                Triple(2, 2000 to 2149, 150), 
+                Triple(3, 3000 to 3299, 300),
+                Triple(4, 1 to 600, 600)
+            )
+            
+            levelData.map { (level, range, totalCount) ->
+                val (minId, maxId) = range
+                val confidentCount = try {
+                    dao.getConfidentWordCountByLevel(minId, maxId)
+                } catch (e: Exception) {
+                    0 // Return 0 if query fails
+                }
+                val percentage = if (totalCount > 0) (confidentCount.toFloat() / totalCount) * 100f else 0f
+                HskLevelProgress(level, confidentCount, totalCount, percentage)
+            }
+        } catch (e: Exception) {
+            // Return empty list if the entire operation fails
+            emptyList()
+        }
+    }
 
     override fun getReviewDashboardData(): Flow<ReviewDashboardData> {
         val nowFlow = flow { emit(System.currentTimeMillis()) }

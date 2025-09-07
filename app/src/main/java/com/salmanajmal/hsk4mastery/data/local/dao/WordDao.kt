@@ -123,6 +123,14 @@ interface WordDao {
     """)
     suspend fun getRandomConfidentWordByLevel(minId: Int, maxId: Int): WordEntity?
 
+    // Count confident words by HSK level (comfortLevel = 3)
+    @Query("""
+        SELECT COUNT(*) FROM words w
+        INNER JOIN user_word_progress p ON p.word_id = w._id
+        WHERE w.wordId >= :minId AND w.wordId <= :maxId AND p.comfortLevel = 3
+    """)
+    suspend fun getConfidentWordCountByLevel(minId: Int, maxId: Int): Int
+
     // updateWordComfort
     @Transaction
     suspend fun updateWordComfort(wordId: String, comfortLevel: Int) {

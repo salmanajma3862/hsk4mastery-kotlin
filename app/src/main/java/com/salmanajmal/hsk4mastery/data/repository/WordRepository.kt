@@ -20,6 +20,7 @@ interface WordRepository {
 
     // Progress & stats
     fun getProgressStats(): Flow<ProgressStats>
+    suspend fun getHskLevelProgress(): List<HskLevelProgress>
 
     // Review dashboard
     fun getReviewDashboardData(): Flow<ReviewDashboardData>
@@ -45,5 +46,12 @@ data class ReviewDashboardData(
 data class NeighboringWords(
     val previous: List<WordBasic>,
     val next: List<WordBasic>,
+)
+
+data class HskLevelProgress(
+    val level: Int,
+    val confidentCount: Int,
+    val totalCount: Int,
+    val percentage: Float
 )
  

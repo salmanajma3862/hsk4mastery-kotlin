@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.salmanajmal.hsk4mastery.data.repository.ProgressStats
 import com.salmanajmal.hsk4mastery.data.repository.WordRepository
+import com.salmanajmal.hsk4mastery.data.repository.HskLevelProgress
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Job
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 
 data class ProgressUiState(
     val stats: ProgressStats? = null,
+    val hskLevelProgress: List<HskLevelProgress> = emptyList(),
     val isLoading: Boolean = true,
 )
 
@@ -33,8 +35,21 @@ class ProgressViewModel @Inject constructor(
         if (fetchJob?.isActive == true) return
         _uiState.update { it.copy(isLoading = true) }
         fetchJob = viewModelScope.launch {
+            // Fetch both regular progress stats and HSK level progress
+            val hskProgress = try { 
+                wordRepository.getHskLevelProgress() 
+            } catch (_: Throwable) { 
+                emptyList() 
+            }
+            
             wordRepository.getProgressStats().collectLatest { stats ->
-                _uiState.update { it.copy(stats = stats, isLoading = false) }
+                _uiState.update { 
+                    it.copy(
+                        stats = stats, 
+                        hskLevelProgress = hskProgress,
+                        isLoading = false
+                    ) 
+                }
             }
         }
     }
