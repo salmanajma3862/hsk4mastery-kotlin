@@ -21,11 +21,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.salmanajmal.hsk4mastery.ui.review.ReviewDashboardScreen
-import com.salmanajmal.hsk4mastery.ui.splash.SplashScreen
 import com.salmanajmal.hsk4mastery.ui.wordlist.WordListScreen
 
 object Routes {
-    const val Splash = "splash"
     const val WordList = "word_list"
     const val WordDetail = "word_detail/{wordId}"
     const val ReviewDashboard = "review_dashboard"
@@ -49,8 +47,8 @@ fun AppNavigation() {
             val currentRoute = navBackStackEntry?.destination?.route
             val showBottomBar = when (currentRoute) {
                 Routes.WordList, Routes.ReviewDashboard, Routes.Practice, Routes.Progress -> true
-                // Hide on detail, active review, and splash screens
-                Routes.WordDetail, Routes.ActiveReview, Routes.Splash -> false
+                // Hide on detail and active review screens
+                Routes.WordDetail, Routes.ActiveReview -> false
                 else -> false
             }
             if (showBottomBar) {
@@ -85,18 +83,9 @@ fun AppNavigation() {
         // Individual screens should manage their own content padding (e.g. WordList adds bottom padding)
         NavHost(
             navController = navController,
-            startDestination = Routes.Splash,
+            startDestination = Routes.WordList,
             modifier = Modifier
         ) {
-            composable(Routes.Splash) {
-                SplashScreen(
-                    onSplashComplete = {
-                        navController.navigate(Routes.WordList) {
-                            popUpTo(Routes.Splash) { inclusive = true }
-                        }
-                    }
-                )
-            }
             composable(Routes.WordList) {
                 WordListScreen(onWordClick = { id ->
                     navController.navigate("word_detail/${id}")

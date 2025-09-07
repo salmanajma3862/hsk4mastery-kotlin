@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Splash Screen Theme -->
+    <style name="Theme.HSK4Mastery.Splash" parent="Theme.HSK4Mastery">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 
     <style name="Theme.HSK4Mastery" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

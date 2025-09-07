@@ -16,7 +16,7 @@
             android:name="com.salmanajmal.hsk4mastery.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.HSK4Mastery">
+            android:theme="@style/Theme.HSK4Mastery.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
