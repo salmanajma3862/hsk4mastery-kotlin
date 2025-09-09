@@ -18,6 +18,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -36,24 +38,24 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
     val state by viewModel.uiState.collectAsState()
     LaunchedEffect(Unit) { viewModel.fetchStats() }
 
-    Scaffold() { padding ->
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                modifier = Modifier.statusBarsPadding(),
+                title = { Text("Progress") },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White)
+            )
+        }
+    ) { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding)
-                    .statusBarsPadding()
-                    .padding(28.dp),
+                    .padding(horizontal = 16.dp, vertical = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                item {
-                    // Header matching ReviewDashboardScreen style
-                    Text(
-                        text = "My Progress",
-                        style = MaterialTheme.typography.titleLarge.copy(color = Color(0xFF1E293B))
-                    )
-                    androidx.compose.foundation.layout.Spacer(Modifier.padding(top = 16.dp))
-                }
+                // Header removed to match compact TopAppBar layout
                 
                 if (state.isLoading) {
                     item {

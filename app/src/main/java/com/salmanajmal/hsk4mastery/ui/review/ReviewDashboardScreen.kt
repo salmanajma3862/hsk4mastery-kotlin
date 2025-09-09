@@ -18,6 +18,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -31,6 +34,7 @@ import com.salmanajmal.hsk4mastery.ui.review.components.ReviewDeckCard
 import androidx.navigation.NavController
 import com.salmanajmal.hsk4mastery.ui.navigation.Routes
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReviewDashboardScreen(
     viewModel: ReviewDashboardViewModel = hiltViewModel(),
@@ -38,9 +42,17 @@ fun ReviewDashboardScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val ctx = LocalContext.current
 
-    Scaffold { padding ->
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                modifier = Modifier.statusBarsPadding(),
+                title = { Text("Review") },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White)
+            )
+        }
+    ) { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-            Box(modifier = Modifier.fillMaxSize().padding(padding).statusBarsPadding()) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             if (uiState.isLoading) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -54,13 +66,6 @@ fun ReviewDashboardScreen(
             } else {
                 val data = uiState.dashboardData
                 LazyColumn(contentPadding = PaddingValues(16.dp)) {
-                    item {
-                        Text(
-                            text = "Review Dashboard",
-                            style = MaterialTheme.typography.titleLarge.copy(color = Color(0xFF1E293B))
-                        )
-                        Spacer(Modifier.padding(top = 16.dp))
-                    }
 
                     // Struggling Words
                     if (!data?.strugglingWords.isNullOrEmpty()) {
@@ -154,6 +159,7 @@ fun ReviewDashboardScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReviewDashboardScreenForNav(
     navController: NavController,
@@ -163,9 +169,17 @@ fun ReviewDashboardScreenForNav(
     val ctx = LocalContext.current
 
     // Delegate to the existing UI but with navigation-enabled onClicks
-    Scaffold { padding ->
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                modifier = Modifier.statusBarsPadding(),
+                title = { Text("Review") },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White)
+            )
+        }
+    ) { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-            Box(modifier = Modifier.fillMaxSize().padding(padding).statusBarsPadding()) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding)) {
             if (uiState.isLoading) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -179,13 +193,6 @@ fun ReviewDashboardScreenForNav(
             } else {
                 val data = uiState.dashboardData
                 LazyColumn(contentPadding = PaddingValues(16.dp)) {
-                    item {
-                        Text(
-                            text = "Review Dashboard",
-                            style = MaterialTheme.typography.titleLarge.copy(color = Color(0xFF1E293B))
-                        )
-                        Spacer(Modifier.padding(top = 16.dp))
-                    }
 
                     if (!data?.strugglingWords.isNullOrEmpty()) {
                         item {
