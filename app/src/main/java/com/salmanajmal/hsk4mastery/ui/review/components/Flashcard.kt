@@ -65,7 +65,8 @@ fun Flashcard(
         // We use a Box to fill the card and center the content
         Box(
             modifier = Modifier
-                .fillMaxSize() // Use fillMaxSize to ensure content alignment works correctly
+                .fillMaxWidth()
+                .height(300.dp) // Fixed height to allow space for buttons below
                 .padding(20.dp),
             contentAlignment = Alignment.Center
         ) {

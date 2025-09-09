@@ -126,13 +126,14 @@ fun ActiveReviewScreen(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                Spacer(Modifier.padding(top = 20.dp))
+                Spacer(Modifier.padding(top = 24.dp))
+                
                 if (uiState.isFlipped) {
                     Text(
                         text = "How did you do?",
                         style = MaterialTheme.typography.titleMedium.copy(color = Color(0xFF1E293B))
                     )
-                    Spacer(Modifier.padding(top = 12.dp))
+                    Spacer(Modifier.padding(top = 16.dp))
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                         GradientButton(
                             colors = listOf(Color(0xFFEF4444), Color(0xFFDC2626)),
@@ -153,6 +154,18 @@ fun ActiveReviewScreen(
                             modifier = Modifier.weight(1f)
                         )
                     }
+                } else {
+                    // Show instruction text when not flipped
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Tap the card to see the answer",
+                            style = MaterialTheme.typography.bodyLarge.copy(color = Color(0xFF64748B)),
+                            modifier = Modifier.padding(vertical = 32.dp)
+                        )
+                    }
                 }
             }
         }
@@ -166,20 +179,18 @@ private fun GradientButton(
     text: String,
     modifier: Modifier = Modifier,
 ) {
-    androidx.compose.material3.Button(
+    Button(
         onClick = onClick,
         modifier = modifier,
-        shape = RoundedCornerShape(8.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+        shape = RoundedCornerShape(12.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = colors.first()),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(brush = Brush.linearGradient(colors), shape = RoundedCornerShape(8.dp))
-                .padding(vertical = 12.dp, horizontal = 16.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = text, color = Color.White)
-        }
+        Text(
+            text = text, 
+            color = Color.White,
+            style = MaterialTheme.typography.labelLarge,
+            modifier = Modifier.padding(vertical = 4.dp)
+        )
     }
 }
