@@ -255,34 +255,6 @@ fun WordDetailScreen(
                             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.End,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                                        listOf(0.5f, 0.75f, 1.0f).forEach { speed ->
-                                            val isSelected = state.audioSpeed == speed
-                                            Box(
-                                                modifier = Modifier
-                                                    .background(
-                                                        if (isSelected) Color(0xFF6366F1) else Color(0xFFF1F5F9),
-                                                        RoundedCornerShape(8.dp)
-                                                    )
-                                                    .clickable { viewModel.onAudioSpeedChange(speed) }
-                                                    .padding(vertical = 6.dp, horizontal = 12.dp)
-                                            ) {
-                                                Text(
-                                                    text = "${speed}x",
-                                                    color = if (isSelected) Color.White else Color(0xFF64748B),
-                                                    fontWeight = FontWeight.W600,
-                                                    fontSize = 12.sp
-                                                )
-                                            }
-                                        }
-                                    }
-                                }
-
                                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                                     state.parsed.examples.forEachIndexed { idx, ex ->
                                         Column(
@@ -351,6 +323,36 @@ fun WordDetailScreen(
                                                     .height(1.dp)
                                                     .background(Color(0xFFF1F5F9))
                                             )
+                                        }
+                                    }
+                                }
+
+                                // Compact speed control at the bottom-right
+                                Spacer(Modifier.height(8.dp))
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.End,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                                        listOf(0.5f, 0.75f, 1.0f).forEach { speed ->
+                                            val isSelected = state.audioSpeed == speed
+                                            Box(
+                                                modifier = Modifier
+                                                    .background(
+                                                        if (isSelected) Color(0xFF6366F1) else Color(0xFFF1F5F9),
+                                                        RoundedCornerShape(6.dp)
+                                                    )
+                                                    .clickable { viewModel.onAudioSpeedChange(speed) }
+                                                    .padding(vertical = 4.dp, horizontal = 8.dp)
+                                            ) {
+                                                Text(
+                                                    text = "${speed}x",
+                                                    color = if (isSelected) Color.White else Color(0xFF64748B),
+                                                    fontWeight = FontWeight.W600,
+                                                    fontSize = 11.sp
+                                                )
+                                            }
                                         }
                                     }
                                 }
