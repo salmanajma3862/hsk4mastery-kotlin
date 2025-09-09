@@ -4,7 +4,8 @@
     <style name="Theme.HSK4Mastery.Splash" parent="Theme.HSK4Mastery">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
+    <!-- Do not hide the status bar; let edge-to-edge control system bars -->
+    <item name="postSplashScreenTheme">@style/Theme.HSK4Mastery</item>
     </style>
 
     <style name="Theme.HSK4Mastery" parent="android:Theme.Material.Light.NoActionBar" />

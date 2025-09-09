@@ -41,6 +41,7 @@ fun WordListScreen(
     Scaffold(
         topBar = {
             TopAppBar(
+                modifier = Modifier.statusBarsPadding(),
                 title = {
                     // Dynamic title reflecting selected level
                     Text(text = "HSK${uiState.selectedLevel} Vocabulary")

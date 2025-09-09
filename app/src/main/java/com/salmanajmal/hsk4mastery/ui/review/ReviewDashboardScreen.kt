@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
@@ -39,7 +40,7 @@ fun ReviewDashboardScreen(
 
     Scaffold { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-            Box(modifier = Modifier.fillMaxSize().padding(padding)) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding).statusBarsPadding()) {
             if (uiState.isLoading) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -164,7 +165,7 @@ fun ReviewDashboardScreenForNav(
     // Delegate to the existing UI but with navigation-enabled onClicks
     Scaffold { padding ->
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-            Box(modifier = Modifier.fillMaxSize().padding(padding)) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding).statusBarsPadding()) {
             if (uiState.isLoading) {
                 Column(
                     modifier = Modifier.fillMaxSize(),

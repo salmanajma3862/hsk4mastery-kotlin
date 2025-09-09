@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.salmanajmal.hsk4mastery.ui.progress.components.StatCard
 import com.salmanajmal.hsk4mastery.ui.progress.components.HskLevelProgressBar
@@ -41,6 +42,7 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding)
+                    .statusBarsPadding()
                     .padding(28.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
