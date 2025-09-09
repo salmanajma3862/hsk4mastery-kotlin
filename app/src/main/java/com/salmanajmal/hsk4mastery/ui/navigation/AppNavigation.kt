@@ -1,5 +1,7 @@
 package com.salmanajmal.hsk4mastery.ui.navigation
 
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
@@ -11,9 +13,13 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -36,10 +42,10 @@ object Routes {
 fun AppNavigation() {
     val navController = rememberNavController()
     val items = listOf(
-        Routes.WordList to "Vocabulary",
-        Routes.ReviewDashboard to "Review",
-        Routes.Practice to "Practice",
-        Routes.Progress to "Progress",
+        Routes.WordList,
+        Routes.ReviewDashboard,
+        Routes.Practice,
+        Routes.Progress,
     )
     Scaffold(
         bottomBar = {
@@ -52,28 +58,36 @@ fun AppNavigation() {
                 else -> false
             }
             if (showBottomBar) {
-                NavigationBar {
-                    items.forEach { (route, label) ->
-                        val selected = currentRoute == route
-                        NavigationBarItem(
-                            selected = selected,
-                            onClick = {
-                                navController.navigate(route) {
-                                    popUpTo(navController.graph.startDestinationId) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            },
-                            icon = {
-                                when (route) {
-                                    Routes.ReviewDashboard -> Icon(imageVector = Icons.Default.Repeat, contentDescription = "Review")
-                                    Routes.Practice -> Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Practice")
-                                    Routes.Progress -> Icon(imageVector = Icons.Default.TrendingUp, contentDescription = "Progress")
-                                    else -> Icon(imageVector = Icons.Default.List, contentDescription = "Words")
-                                }
-                            },
-                            label = { Text(label) }
-                        )
+                Column {
+                    Divider(color = Color(0xFFE5E7EB), thickness = 1.dp)
+                    NavigationBar(
+                        modifier = Modifier.height(120.dp),
+                        containerColor = Color(0xFFF9FAFB),
+                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    ) {
+                        items.forEach { route ->
+                            val selected = currentRoute == route
+                            NavigationBarItem(
+                                selected = selected,
+                                onClick = {
+                                    navController.navigate(route) {
+                                        popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                },
+                                icon = {
+                                    when (route) {
+                                        Routes.ReviewDashboard -> Icon(imageVector = Icons.Default.Repeat, contentDescription = "Review", modifier = Modifier.height(22.dp))
+                                        Routes.Practice -> Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Practice", modifier = Modifier.height(22.dp))
+                                        Routes.Progress -> Icon(imageVector = Icons.Default.TrendingUp, contentDescription = "Progress", modifier = Modifier.height(22.dp))
+                                        else -> Icon(imageVector = Icons.Default.List, contentDescription = "Words", modifier = Modifier.height(22.dp))
+                                    }
+                                },
+                                alwaysShowLabel = false,
+                                label = null
+                            )
+                        }
                     }
                 }
             }
