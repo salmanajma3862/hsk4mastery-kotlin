@@ -1,10 +1,19 @@
 package com.salmanajmal.hsk4mastery.ui.listening
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.with
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.FastForward
+import androidx.compose.material.icons.filled.FastRewind
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
@@ -13,85 +22,194 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun ListeningScreen(viewModel: ListeningViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Top
-    ) {
-        LevelPicker(
-            selected = uiState.selectedLevel,
-            onSelect = { viewModel.onLevelSelected(it) }
-        )
-        Spacer(Modifier.height(12.dp))
-        RangeInputs(
-            start = uiState.startId,
-            end = uiState.endId,
-            onStartChange = viewModel::onStartIdChanged,
-            onEndChange = viewModel::onEndIdChanged,
-            onBuild = { viewModel.buildPlaylist() }
-        )
-        Spacer(Modifier.height(12.dp))
-    // Mode selection is hidden for now; default behavior is used
-    Spacer(Modifier.height(24.dp))
+    AnimatedContent(
+        targetState = uiState.screenState,
+        transitionSpec = { fadeIn(tween(200)) with fadeOut(tween(200)) }, label = "listening_state"
+    ) { state ->
+        when (state) {
+            ScreenState.SETUP -> SetupUI(ui = uiState, viewModel = viewModel)
+            ScreenState.PLAYING -> PlayingUI(ui = uiState, viewModel = viewModel)
+        }
+    }
+}
 
-        // Play / Pause control
-        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-            FilledIconButton(onClick = { viewModel.onPlayPauseTapped() }, modifier = Modifier.size(96.dp)) {
-                if (uiState.isPlaying) {
-                    Icon(Icons.Default.Pause, contentDescription = "Pause")
-                } else {
-                    Icon(Icons.Default.PlayArrow, contentDescription = "Play")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: ListeningViewModel) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Listening Practice") },
+                actions = {
+                    LevelPicker(selected = ui.selectedLevel, onSelect = viewModel::onLevelSelected)
+                }
+            )
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = { viewModel.startPlayback() },
+                modifier = Modifier
+                    .navigationBarsPadding()
+                    .offset(y = (-24).dp) // lift above bottom tabs if present
+            ) {
+                Icon(Icons.Default.PlayArrow, contentDescription = null)
+                Spacer(Modifier.width(8.dp))
+                Text("Play")
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 96.dp) // leave space for FAB + bottom tabs
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(Modifier.height(16.dp))
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text("Build a Playlist", style = MaterialTheme.typography.titleLarge)
+
+                    OutlinedTextField(
+                        value = ui.startId,
+                        onValueChange = viewModel::onStartIdChanged,
+                        label = { Text("Start Word ID") },
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    )
+                    OutlinedTextField(
+                        value = ui.endId,
+                        onValueChange = viewModel::onEndIdChanged,
+                        label = { Text("End Word ID") },
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    )
+
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        AssistChip(onClick = { viewModel.onPresetSelected(PresetType.FIRST_50) }, label = { Text("First 50") })
+                        AssistChip(onClick = { viewModel.onPresetSelected(PresetType.NEXT_50) }, label = { Text("Next 50") })
+                        AssistChip(onClick = { viewModel.onPresetSelected(PresetType.RANDOM_20) }, label = { Text("Random 20") })
+                    }
+
+                    ui.error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+
+                    Spacer(Modifier.height(8.dp))
+                    Button(
+                        onClick = { viewModel.startPlayback() },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Icon(Icons.Default.PlayArrow, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Play")
+                    }
                 }
             }
+            Spacer(Modifier.height(12.dp))
         }
-        Spacer(Modifier.height(24.dp))
+    }
+}
 
-        // Current word display
-        if (uiState.playlist.isNotEmpty()) {
-            val current = uiState.playlist.getOrNull(uiState.currentTrackIndex)
-            Text(
-                text = current?.hanzi ?: "",
-                style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: ListeningViewModel) {
+    val current = ui.playlist.getOrNull(ui.currentTrackIndex)
+    val dynamicTitle = buildString {
+        append("HSK ")
+        append(ui.selectedLevel)
+        append(": ")
+        append("Words ")
+        append(ui.startId)
+        append("-")
+        append(ui.endId)
+    }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(dynamicTitle) },
+                actions = {
+                    IconButton(onClick = { viewModel.stopPlayback() }) {
+                        Icon(Icons.Default.Close, contentDescription = "Stop")
+                    }
+                }
             )
         }
-        Spacer(Modifier.height(12.dp))
-
-        // Progress indicator
-        if (uiState.playlist.isNotEmpty()) {
-            val progress = (uiState.currentTrackIndex + 1).toFloat() / uiState.playlist.size.toFloat()
-            LinearProgressIndicator(progress = progress, modifier = Modifier.fillMaxWidth())
-        }
-
-        uiState.error?.let { err ->
-            Spacer(Modifier.height(12.dp))
-            Text(text = err, color = MaterialTheme.colorScheme.error)
-        }
-
-        Spacer(Modifier.height(18.dp))
-        Text("Playlist (${uiState.playlist.size})", style = MaterialTheme.typography.titleMedium)
-        Spacer(Modifier.height(8.dp))
-        LazyColumn(modifier = Modifier.fillMaxWidth().weight(1f)) {
-            items(uiState.playlist.size) { idx ->
-                val w = uiState.playlist[idx]
-                Row(
+    ) { padding ->
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Card(Modifier.fillMaxWidth().weight(1f)) {
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .background(if (idx == uiState.currentTrackIndex) Color(0xFFE0F2FE) else Color.Transparent)
-                        .padding(vertical = 6.dp, horizontal = 4.dp),
+                        .fillMaxSize()
+                        .padding(24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(current?.hanzi ?: "", style = MaterialTheme.typography.displayMedium, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                        Spacer(Modifier.height(8.dp))
+                        Text(current?.pinyin ?: "", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
+                        Spacer(Modifier.height(8.dp))
+                        Text(current?.meaning ?: "", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                    }
+
+                    val progress = if (ui.playlist.isNotEmpty()) (ui.currentTrackIndex + 1f) / ui.playlist.size.toFloat() else 0f
+                    LinearProgressIndicator(
+                        progress = progress,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+
+            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(w.wordId?.toString() ?: "-", modifier = Modifier.width(60.dp))
-                    Text(w.hanzi, modifier = Modifier.width(80.dp), fontWeight = FontWeight.SemiBold)
-                    Text(w.meaning, modifier = Modifier.weight(1f))
+                    IconButton(onClick = { viewModel.onPrevious() }) {
+                        Icon(Icons.Default.FastRewind, contentDescription = "Previous")
+                    }
+                    FilledIconButton(onClick = { viewModel.onPlayPauseTapped() }, modifier = Modifier.size(72.dp)) {
+                        if (ui.isPlaying) Icon(Icons.Default.Pause, contentDescription = "Pause")
+                        else Icon(Icons.Default.PlayArrow, contentDescription = "Play")
+                    }
+                    IconButton(onClick = { viewModel.onNext() }) {
+                        Icon(Icons.Default.FastForward, contentDescription = "Next")
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+
+                // Speed segmented controls
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    val speeds = listOf(0.5f, 0.75f, 1.0f)
+                    speeds.forEach { s ->
+                        val selected = ui.playbackSpeed == s
+                        FilterChip(
+                            selected = selected,
+                            onClick = { viewModel.onSpeedSelected(s) },
+                            label = { Text("${s}x") }
+                        )
+                    }
                 }
             }
         }
@@ -103,7 +221,7 @@ private fun LevelPicker(selected: Int, onSelect: (Int) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Box {
         OutlinedButton(onClick = { expanded = true }) {
-            Text("HSK Level $selected")
+            Text("HSK $selected")
         }
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             (1..4).forEach { level ->
@@ -115,24 +233,3 @@ private fun LevelPicker(selected: Int, onSelect: (Int) -> Unit) {
         }
     }
 }
-
-@Composable
-private fun RangeInputs(start: String, end: String, onStartChange: (String) -> Unit, onEndChange: (String) -> Unit, onBuild: () -> Unit) {
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedTextField(
-            value = start,
-            onValueChange = onStartChange,
-            label = { Text("Start ID") },
-            modifier = Modifier.weight(1f)
-        )
-        OutlinedTextField(
-            value = end,
-            onValueChange = onEndChange,
-            label = { Text("End ID") },
-            modifier = Modifier.weight(1f)
-        )
-        Button(onClick = onBuild, modifier = Modifier.align(Alignment.CenterVertically)) { Text("Load") }
-    }
-}
-
-// ModeButtons removed: Only a single default listening mode is exposed in the UI for now.

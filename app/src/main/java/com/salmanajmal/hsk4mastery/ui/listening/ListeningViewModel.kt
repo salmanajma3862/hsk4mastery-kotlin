@@ -17,6 +17,10 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+enum class ScreenState { SETUP, PLAYING }
+
+enum class PresetType { FIRST_50, NEXT_50, RANDOM_20 }
+
 @HiltViewModel
 class ListeningViewModel @Inject constructor(
     private val wordRepository: WordRepository,
@@ -24,7 +28,7 @@ class ListeningViewModel @Inject constructor(
     private val audioAssetService: AudioAssetService,
 ) : ViewModel() {
 
-    data class UiState(
+    data class ListeningUiState(
         val playlist: List<WordEntity> = emptyList(),
         val currentTrackIndex: Int = 0,
         val isPlaying: Boolean = false,
@@ -32,11 +36,13 @@ class ListeningViewModel @Inject constructor(
         val selectedLevel: Int = 1,
         val startId: String = "1000",
         val endId: String = "1005",
+        val playbackSpeed: Float = 1.0f,
+        val screenState: ScreenState = ScreenState.SETUP,
         val error: String? = null,
     )
 
-    private val _uiState = MutableStateFlow(UiState())
-    val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(ListeningUiState())
+    val uiState: StateFlow<ListeningUiState> = _uiState.asStateFlow()
 
     private var playbackJob: Job? = null
     private var stopRequested = false
@@ -56,7 +62,57 @@ class ListeningViewModel @Inject constructor(
     fun onEndIdChanged(value: String) { _uiState.update { it.copy(endId = value) } }
     fun onModeSelected(mode: ListeningMode) { _uiState.update { it.copy(selectedMode = mode) } }
 
-    fun buildPlaylist() {
+    fun onPresetSelected(preset: PresetType) {
+        val (levelStart, levelEnd) = when (_uiState.value.selectedLevel) {
+            1 -> 1000 to 1149
+            2 -> 2000 to 2149
+            3 -> 3000 to 3299
+            4 -> 1 to 600
+            else -> 1000 to 1149
+        }
+        when (preset) {
+            PresetType.FIRST_50 -> {
+                val s = levelStart
+                val e = (levelStart + 49).coerceAtMost(levelEnd)
+                _uiState.update { it.copy(startId = s.toString(), endId = e.toString()) }
+            }
+            PresetType.NEXT_50 -> {
+                val s = (levelStart + 50).coerceAtMost(levelEnd)
+                val e = (s + 49).coerceAtMost(levelEnd)
+                _uiState.update { it.copy(startId = s.toString(), endId = e.toString()) }
+            }
+            PresetType.RANDOM_20 -> {
+                val window = 20
+                val s = (levelStart..(levelEnd - (window - 1))).random()
+                val e = (s + (window - 1)).coerceAtMost(levelEnd)
+                _uiState.update { it.copy(startId = s.toString(), endId = e.toString()) }
+            }
+        }
+    }
+
+    fun onSpeedSelected(speed: Float) {
+        _uiState.update { it.copy(playbackSpeed = speed) }
+        audioPlayer.setSpeed(speed)
+    }
+
+    fun onPlayPauseTapped() {
+        val current = _uiState.value
+        when (current.screenState) {
+            ScreenState.SETUP -> {
+                startPlayback()
+            }
+            ScreenState.PLAYING -> {
+                if (current.isPlaying) {
+                    pausePlayback()
+                } else {
+                    // resume
+                    startPlaybackLoop()
+                }
+            }
+        }
+    }
+
+    fun startPlayback() {
         viewModelScope.launch {
             val start = _uiState.value.startId.toIntOrNull()
             val end = _uiState.value.endId.toIntOrNull()
@@ -64,27 +120,43 @@ class ListeningViewModel @Inject constructor(
                 _uiState.update { it.copy(error = "Invalid range") }
                 return@launch
             }
-            // Reuse repository seeding range function: we only have WordBasic flow; need details so map IDs
+
             val basics = wordRepository.getAllWords(start, end).first()
             val detailed = basics.mapNotNull { b -> wordRepository.getWordDetails(b.id).first() }
-            _uiState.update { it.copy(playlist = detailed, currentTrackIndex = 0, error = null) }
+            if (detailed.isEmpty()) {
+                _uiState.update { it.copy(error = "No words found for range") }
+                return@launch
+            }
+            _uiState.update { it.copy(playlist = detailed, currentTrackIndex = 0, error = null, screenState = ScreenState.PLAYING) }
+            startPlaybackLoop()
         }
     }
 
-    fun onPlayPauseTapped() {
-        val current = _uiState.value
-        if (current.isPlaying) {
-            stopPlayback()
-        } else {
-            if (current.playlist.isEmpty()) buildPlaylist() // ensure playlist
-            startPlaybackLoop()
+    fun stopPlayback() {
+        stopRequested = true
+        try { audioPlayer.stop() } catch (_: Throwable) {}
+        playbackJob?.cancel()
+        _uiState.update {
+            it.copy(
+                isPlaying = false,
+                playlist = emptyList(),
+                currentTrackIndex = 0,
+                screenState = ScreenState.SETUP
+            )
         }
+    }
+
+    private fun pausePlayback() {
+        stopRequested = true
+        try { audioPlayer.stop() } catch (_: Throwable) {}
+        playbackJob?.cancel()
+        _uiState.update { it.copy(isPlaying = false) }
     }
 
     private fun startPlaybackLoop() {
         if (playbackJob?.isActive == true) return
         stopRequested = false
-        _uiState.update { it.copy(isPlaying = true) }
+        _uiState.update { it.copy(isPlaying = true, screenState = ScreenState.PLAYING) }
         playbackJob = viewModelScope.launch {
             while (!stopRequested) {
                 val state = _uiState.value
@@ -108,7 +180,7 @@ class ListeningViewModel @Inject constructor(
     private suspend fun playForMode(word: WordEntity, mode: ListeningMode) {
         when (mode) {
             ListeningMode.IMMERSION -> {
-                val currentSpeed = 1.0f
+                val currentSpeed = _uiState.value.playbackSpeed
                 // 1) Chinese Word
                 audioPlayer.play(AudioType.CHINESE_WORD, filename = "${word.hanzi}.mp3", speed = currentSpeed)
                 delay(3000)
@@ -124,31 +196,46 @@ class ListeningViewModel @Inject constructor(
             }
             ListeningMode.QUIZ -> {
                 // Word only then sentence reveal
-                audioPlayer.play(AudioType.CHINESE_WORD, filename = "${word.hanzi}.mp3")
+                val currentSpeed = _uiState.value.playbackSpeed
+                audioPlayer.play(AudioType.CHINESE_WORD, filename = "${word.hanzi}.mp3", speed = currentSpeed)
                 delay(1800)
                 // silent recall window
                 delay(1500)
-                audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3")
+                audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3", speed = currentSpeed)
                 delay(2500)
             }
             ListeningMode.DICTATION -> {
+                val currentSpeed = _uiState.value.playbackSpeed
                 // Sentence only, longer gap for writing
-                audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3")
+                audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3", speed = currentSpeed)
                 delay(4000)
             }
         }
     }
 
-    private fun stopPlayback() {
-        stopRequested = true
-        audioPlayer.stop()
-        playbackJob?.cancel()
-        _uiState.update { it.copy(isPlaying = false) }
-    }
-
     override fun onCleared() {
         super.onCleared()
         stopPlayback()
+    }
+
+    fun onPrevious() {
+        val state = _uiState.value
+        if (state.playlist.isEmpty()) return
+        val newIndex = if (state.currentTrackIndex == 0) state.playlist.lastIndex else state.currentTrackIndex - 1
+        _uiState.update { it.copy(currentTrackIndex = newIndex) }
+        viewModelScope.launch {
+            try { playForMode(state.playlist[newIndex], state.selectedMode) } catch (_: Throwable) {}
+        }
+    }
+
+    fun onNext() {
+        val state = _uiState.value
+        if (state.playlist.isEmpty()) return
+        val newIndex = if (state.currentTrackIndex >= state.playlist.lastIndex) 0 else state.currentTrackIndex + 1
+        _uiState.update { it.copy(currentTrackIndex = newIndex) }
+        viewModelScope.launch {
+            try { playForMode(state.playlist[newIndex], state.selectedMode) } catch (_: Throwable) {}
+        }
     }
 }
 
