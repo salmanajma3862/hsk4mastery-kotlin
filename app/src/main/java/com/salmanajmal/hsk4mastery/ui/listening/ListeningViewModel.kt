@@ -108,20 +108,19 @@ class ListeningViewModel @Inject constructor(
     private suspend fun playForMode(word: WordEntity, mode: ListeningMode) {
         when (mode) {
             ListeningMode.IMMERSION -> {
-                // 1) Chinese word pronunciation
-                audioPlayer.play(AudioType.CHINESE_WORD, filename = "${word.hanzi}.mp3")
-                delay(1200)
-                // 2) Chinese sentence
-                audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3")
-                delay(2500)
-                // 3) English meaning
-                audioPlayer.play(AudioType.ENGLISH_MEANING, filename = "${word.hanzi}_en.mp3")
-                delay(1600)
-                // 4) English translation of sentence
-                audioPlayer.play(AudioType.ENGLISH_TRANSLATION, filename = "${word.hanzi}_en_ex1.mp3")
-                delay(2000)
-                // Pause before next
-                delay(600)
+                val currentSpeed = 1.0f
+                // 1) Chinese Word
+                audioPlayer.play(AudioType.CHINESE_WORD, filename = "${word.hanzi}.mp3", speed = currentSpeed)
+                delay(3000)
+                // 2) English Meaning
+                audioPlayer.play(AudioType.ENGLISH_MEANING, filename = "${word.hanzi}_en.mp3", speed = currentSpeed)
+                delay(3000)
+                // 3) Chinese Example Sentence
+                audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3", speed = currentSpeed)
+                delay(3000)
+                // 4) English Sentence Translation
+                audioPlayer.play(AudioType.ENGLISH_TRANSLATION, filename = "${word.hanzi}_en_ex1.mp3", speed = currentSpeed)
+                delay(3000)
             }
             ListeningMode.QUIZ -> {
                 // Word only then sentence reveal
