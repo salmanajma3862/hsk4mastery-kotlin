@@ -31,7 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.salmanajmal.hsk4mastery.ui.progress.components.StatCard
+import com.salmanajmal.hsk4mastery.ui.progress.components.OverallStatsCard
 import com.salmanajmal.hsk4mastery.ui.progress.components.HskLevelProgressBar
+import com.salmanajmal.hsk4mastery.ui.progress.components.HskLevelsProgressCard
 
 @Composable
 fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
@@ -65,11 +67,11 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
                     return@LazyColumn
                 }
 
-                // HSK Level Progress Section (removed duplicate title)
+                // HSK Level Progress Section: Single card with all levels
                 if (state.hskLevelProgress.isNotEmpty()) {
-                    items(state.hskLevelProgress) { levelProgress ->
-                        HskLevelProgressBar(
-                            levelProgress = levelProgress,
+                    item {
+                        HskLevelsProgressCard(
+                            levels = state.hskLevelProgress,
                             modifier = Modifier.fillMaxWidth()
                         )
                     }
@@ -78,57 +80,14 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
                 // Overall Statistics Section
                 val stats = state.stats
                 if (stats != null) {
-                    
                     item {
-                        val itemsList = listOf(
-                            Triple("Mastered", stats.mastered, Color(0xFFE0F2FE)),
-                            Triple("Reviewed", stats.reviewed, Color(0xFFF1F5F9)),
-                            Triple("Learning", stats.learning, Color(0xFFEFF6FF)),
-                            Triple("Unseen", stats.unseen, Color(0xFFFFF7ED)),
-                        )
-                        
-                        // Use regular Column instead of nested LazyVerticalGrid
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(12.dp),
+                        OverallStatsCard(
+                            mastered = stats.mastered,
+                            reviewed = stats.reviewed,
+                            learning = stats.learning,
+                            unseen = stats.unseen,
                             modifier = Modifier.fillMaxWidth()
-                        ) {
-                            // First row
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                StatCard(
-                                    label = itemsList[0].first,
-                                    value = itemsList[0].second,
-                                    color = itemsList[0].third,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                StatCard(
-                                    label = itemsList[1].first,
-                                    value = itemsList[1].second,
-                                    color = itemsList[1].third,
-                                    modifier = Modifier.weight(1f)
-                                )
-                            }
-                            // Second row
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                StatCard(
-                                    label = itemsList[2].first,
-                                    value = itemsList[2].second,
-                                    color = itemsList[2].third,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                StatCard(
-                                    label = itemsList[3].first,
-                                    value = itemsList[3].second,
-                                    color = itemsList[3].third,
-                                    modifier = Modifier.weight(1f)
-                                )
-                            }
-                        }
+                        )
                     }
                 } else {
                     item {
