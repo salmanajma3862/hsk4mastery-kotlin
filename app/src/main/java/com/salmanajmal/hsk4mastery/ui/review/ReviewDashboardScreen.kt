@@ -65,7 +65,7 @@ fun ReviewDashboardScreen(
                 }
             } else {
                 val data = uiState.dashboardData
-                LazyColumn(contentPadding = PaddingValues(16.dp)) {
+                LazyColumn(contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 220.dp)) {
 
                     // Struggling Words
                     if (!data?.strugglingWords.isNullOrEmpty()) {
@@ -192,7 +192,7 @@ fun ReviewDashboardScreenForNav(
                 }
             } else {
                 val data = uiState.dashboardData
-                LazyColumn(contentPadding = PaddingValues(16.dp)) {
+                LazyColumn(contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 160.dp)) {
 
                     if (!data?.strugglingWords.isNullOrEmpty()) {
                         item {

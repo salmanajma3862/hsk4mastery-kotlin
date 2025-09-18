@@ -53,6 +53,7 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
                     .fillMaxSize()
                     .padding(padding)
                     .padding(horizontal = 16.dp, vertical = 16.dp),
+                contentPadding = PaddingValues(bottom = 220.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // Header removed to match compact TopAppBar layout
@@ -135,10 +136,7 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
                     }
                 }
                 
-                // Bottom padding to prevent content being hidden by bottom tabs
-                item {
-                    androidx.compose.foundation.layout.Spacer(Modifier.padding(bottom = 24.dp))
-                }
+                // Bottom padding is handled by contentPadding above
             }
         }
     }

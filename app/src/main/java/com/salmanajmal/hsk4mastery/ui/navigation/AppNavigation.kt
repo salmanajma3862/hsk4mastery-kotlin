@@ -48,8 +48,9 @@ fun AppNavigation() {
         Routes.WordList,
         Routes.ReviewDashboard,
         Routes.Practice,
-        Routes.Progress,
+        // Move Progress after Listening by ordering Listening first, then Progress
         Routes.Listening,
+        Routes.Progress,
     )
     Scaffold(
         bottomBar = {
@@ -71,6 +72,14 @@ fun AppNavigation() {
                     ) {
                         items.forEach { route ->
                             val selected = currentRoute == route
+                            val labelText = when (route) {
+                                Routes.WordList -> "Vocab"
+                                Routes.ReviewDashboard -> "Review"
+                                Routes.Practice -> "Practice"
+                                Routes.Listening -> "Listen"
+                                Routes.Progress -> "Progress"
+                                else -> ""
+                            }
                             NavigationBarItem(
                                 selected = selected,
                                 onClick = {
@@ -89,8 +98,9 @@ fun AppNavigation() {
                                         else -> Icon(imageVector = Icons.Default.List, contentDescription = "Words", modifier = Modifier.height(22.dp))
                                     }
                                 },
-                                alwaysShowLabel = false,
-                                label = null
+                                // Show labels for all tabs
+                                alwaysShowLabel = true,
+                                label = { Text(labelText) }
                             )
                         }
                     }
