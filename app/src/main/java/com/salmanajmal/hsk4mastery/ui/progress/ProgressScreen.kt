@@ -53,9 +53,8 @@ fun ProgressScreen(viewModel: ProgressViewModel = hiltViewModel()) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(padding)
-                    .padding(horizontal = 16.dp, vertical = 16.dp),
-                contentPadding = PaddingValues(bottom = 220.dp),
+                    .padding(padding),
+                contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 220.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // Header removed to match compact TopAppBar layout
