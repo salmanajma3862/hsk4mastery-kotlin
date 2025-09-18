@@ -39,8 +39,8 @@ fun ListeningScreen(viewModel: ListeningViewModel = hiltViewModel()) {
             onBuild = { viewModel.buildPlaylist() }
         )
         Spacer(Modifier.height(12.dp))
-        ModeButtons(selected = uiState.selectedMode, onSelect = viewModel::onModeSelected)
-        Spacer(Modifier.height(24.dp))
+    // Mode selection is hidden for now; default behavior is used
+    Spacer(Modifier.height(24.dp))
 
         // Play / Pause control
         Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
@@ -135,16 +135,4 @@ private fun RangeInputs(start: String, end: String, onStartChange: (String) -> U
     }
 }
 
-@Composable
-private fun ModeButtons(selected: ListeningMode, onSelect: (ListeningMode) -> Unit) {
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-        ListeningMode.values().forEach { mode ->
-            val active = mode == selected
-            FilterChip(
-                selected = active,
-                onClick = { onSelect(mode) },
-                label = { Text(mode.name) }
-            )
-        }
-    }
-}
+// ModeButtons removed: Only a single default listening mode is exposed in the UI for now.
