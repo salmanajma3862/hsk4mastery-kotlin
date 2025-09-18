@@ -27,6 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.TopAppBarDefaults
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -50,9 +53,11 @@ private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listenin
     Scaffold(
         topBar = {
             TopAppBar(
+                modifier = Modifier.statusBarsPadding(),
                 title = { Text("Listening Practice") },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White),
                 actions = {
-                    LevelPicker(selected = ui.selectedLevel, onSelect = viewModel::onLevelSelected)
+                    LevelPickerAction(selected = ui.selectedLevel, onSelect = viewModel::onLevelSelected)
                 }
             )
         },
@@ -70,6 +75,7 @@ private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listenin
         },
         floatingActionButtonPosition = FabPosition.Center
     ) { padding ->
+        Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -121,6 +127,7 @@ private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listenin
             }
             Spacer(Modifier.height(12.dp))
         }
+        }
     }
 }
 
@@ -140,7 +147,9 @@ private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listen
     Scaffold(
         topBar = {
             TopAppBar(
+                modifier = Modifier.statusBarsPadding(),
                 title = { Text(dynamicTitle) },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White),
                 actions = {
                     IconButton(onClick = { viewModel.stopPlayback() }) {
                         Icon(Icons.Default.Close, contentDescription = "Stop")
@@ -149,6 +158,7 @@ private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listen
             )
         }
     ) { padding ->
+        Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
         Column(
             Modifier
                 .fillMaxSize()
@@ -213,15 +223,17 @@ private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listen
                 }
             }
         }
+        }
     }
 }
 
 @Composable
-private fun LevelPicker(selected: Int, onSelect: (Int) -> Unit) {
+private fun LevelPickerAction(selected: Int, onSelect: (Int) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
-    Box {
-        OutlinedButton(onClick = { expanded = true }) {
-            Text("HSK $selected")
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(text = "HSK $selected")
+        IconButton(onClick = { expanded = true }) {
+            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "Select Level")
         }
         DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
             (1..4).forEach { level ->
