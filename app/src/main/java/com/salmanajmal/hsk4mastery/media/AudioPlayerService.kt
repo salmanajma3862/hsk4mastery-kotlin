@@ -48,15 +48,11 @@ class AudioPlayerService @Inject constructor(
     }
 
     /**
-     * Play an MP3 file bundled in the APK under app/src/main/assets/audio/{words|sentences}/...
-     * @param filename File name including extension (e.g., "中国.mp3" or "中国_ex1.mp3")
-     * @param isSentence Whether to look under the sentences subfolder (true) or words (false)
-     * @param speed Playback speed
+     * Core low-level playback: plays a file within a resolved asset path.
+     * @param fullAssetPath relative path inside assets folder (e.g. audio/words/我.mp3)
      */
     @Synchronized
-    fun play(filename: String, isSentence: Boolean, speed: Float) {
-        val subfolder = if (isSentence) "sentences" else "words"
-        val fullAssetPath = "audio/$subfolder/$filename"
+    private fun playInternal(fullAssetPath: String, speed: Float) {
         try {
             val p = ensurePlayer()
             // 1) PAUSE & STOP: Ensure playback is halted and state is reset
@@ -91,12 +87,73 @@ class AudioPlayerService @Inject constructor(
         }
     }
 
+    /**
+     * New descriptive play method that selects the correct asset subfolder based on [audioType]
+     * and expects [filename] to be the final file name (e.g., "我们.mp3", "我们_ex1.mp3", "我们_en.mp3").
+     *
+     * Asset layout (relative to src/main/assets or packaged assets):
+     * - Chinese Word:        audio/words/{hanzi}.mp3
+     * - Chinese Sentence:    audio/sentences/{hanzi}_ex1.mp3
+     * - English Meaning:     audio/en_meanings/{hanzi}_en.mp3
+     * - English Translation: audio/en_translations/{hanzi}_en_ex1.mp3
+     */
+    fun play(audioType: AudioType, filename: String, speed: Float = 1.0f) {
+        val clean = filename.trim().removePrefix("/").replace("\\", "/")
+        val folder = when (audioType) {
+            AudioType.CHINESE_WORD -> "audio/words"
+            AudioType.CHINESE_SENTENCE -> "audio/sentences"
+            AudioType.ENGLISH_MEANING -> "audio/en_meanings"
+            AudioType.ENGLISH_TRANSLATION -> "audio/en_translations"
+        }
+        val full = if (clean.startsWith("audio/")) clean else "$folder/$clean"
+        playInternal(full, speed)
+    }
+
+    /**
+     * Backward-compatible overload. Prefer using the AudioType-based variant.
+     */
+    @Deprecated("Use play(AudioType, filename, speed) instead")
+    fun play(filename: String, isSentence: Boolean = false, speed: Float = 1.0f) {
+        val clean = filename.trim().removePrefix("/").replace("\\", "/")
+        val lower = clean.lowercase()
+        val inferredType = when {
+            // English specific patterns
+            lower.contains("/en_meanings/") || lower.endsWith("_en.mp3") -> AudioType.ENGLISH_MEANING
+            lower.contains("/en_translations/") || lower.contains("_en_ex") -> AudioType.ENGLISH_TRANSLATION
+            // Sentence patterns
+            isSentence || lower.contains("/sentences/") || lower.contains("_ex") -> AudioType.CHINESE_SENTENCE
+            else -> AudioType.CHINESE_WORD
+        }
+        play(inferredType, clean, speed)
+    }
+
     fun playWord(hanzi: String, speed: Float = 1.0f) {
-        play("${hanzi}.mp3", isSentence = false, speed = speed)
+        // Delegate to new API for consistency
+        play(AudioType.CHINESE_WORD, filename = "$hanzi.mp3", speed = speed)
     }
 
     fun playSentence(hanzi: String, exampleIndex1Based: Int = 1, speed: Float = 1.0f) {
-        play("${hanzi}_ex${exampleIndex1Based}.mp3", isSentence = true, speed = speed)
+        play(AudioType.CHINESE_SENTENCE, filename = "${hanzi}_ex${exampleIndex1Based}.mp3", speed = speed)
+    }
+
+    fun playMeaning(hanzi: String, language: String = "en", speed: Float = 1.0f) {
+        if (language.lowercase() == "en") {
+            // New folder and naming scheme for English meanings
+            play(AudioType.ENGLISH_MEANING, filename = "${hanzi}_en.mp3", speed = speed)
+        } else {
+            // Preserve old zh path if ever used
+            playInternal("audio/meanings/${hanzi}.mp3", speed)
+        }
+    }
+
+    fun playTranslation(hanzi: String, exampleIndex1Based: Int = 1, language: String = "en", speed: Float = 1.0f) {
+        if (language.lowercase() == "en") {
+            // New folder and naming scheme for English translations
+            play(AudioType.ENGLISH_TRANSLATION, filename = "${hanzi}_en_ex${exampleIndex1Based}.mp3", speed = speed)
+        } else {
+            // Preserve old zh path if ever used
+            playInternal("audio/translations/${hanzi}_ex${exampleIndex1Based}.mp3", speed)
+        }
     }
 
     fun stop() {

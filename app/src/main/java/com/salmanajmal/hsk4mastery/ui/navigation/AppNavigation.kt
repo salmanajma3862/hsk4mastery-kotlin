@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Repeat
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.TrendingUp
+import androidx.compose.material.icons.filled.Headphones
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -28,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.salmanajmal.hsk4mastery.ui.review.ReviewDashboardScreen
 import com.salmanajmal.hsk4mastery.ui.wordlist.WordListScreen
+import com.salmanajmal.hsk4mastery.ui.listening.ListeningScreen
 
 object Routes {
     const val WordList = "word_list"
@@ -36,6 +38,7 @@ object Routes {
     const val ActiveReview = "active_review/{wordIds}"
     const val Practice = "practice"
     const val Progress = "progress"
+    const val Listening = "listening"
 }
 
 @Composable
@@ -46,13 +49,14 @@ fun AppNavigation() {
         Routes.ReviewDashboard,
         Routes.Practice,
         Routes.Progress,
+        Routes.Listening,
     )
     Scaffold(
         bottomBar = {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
             val showBottomBar = when (currentRoute) {
-                Routes.WordList, Routes.ReviewDashboard, Routes.Practice, Routes.Progress -> true
+                Routes.WordList, Routes.ReviewDashboard, Routes.Practice, Routes.Progress, Routes.Listening -> true
                 // Hide on detail and active review screens
                 Routes.WordDetail, Routes.ActiveReview -> false
                 else -> false
@@ -81,6 +85,7 @@ fun AppNavigation() {
                                         Routes.ReviewDashboard -> Icon(imageVector = Icons.Default.Repeat, contentDescription = "Review", modifier = Modifier.height(22.dp))
                                         Routes.Practice -> Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Practice", modifier = Modifier.height(22.dp))
                                         Routes.Progress -> Icon(imageVector = Icons.Default.TrendingUp, contentDescription = "Progress", modifier = Modifier.height(22.dp))
+                                        Routes.Listening -> Icon(imageVector = Icons.Default.Headphones, contentDescription = "Listening", modifier = Modifier.height(22.dp))
                                         else -> Icon(imageVector = Icons.Default.List, contentDescription = "Words", modifier = Modifier.height(22.dp))
                                     }
                                 },
@@ -125,6 +130,9 @@ fun AppNavigation() {
             }
             composable(Routes.Progress) {
                 com.salmanajmal.hsk4mastery.ui.progress.ProgressScreen()
+            }
+            composable(Routes.Listening) {
+                ListeningScreen()
             }
         }
     }
