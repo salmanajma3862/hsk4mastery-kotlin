@@ -60,20 +60,7 @@ private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listenin
                     LevelPickerAction(selected = ui.selectedLevel, onSelect = viewModel::onLevelSelected)
                 }
             )
-        },
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = { viewModel.startPlayback() },
-                modifier = Modifier
-                    .navigationBarsPadding()
-                    .offset(y = (-24).dp) // lift above bottom tabs if present
-            ) {
-                Icon(Icons.Default.PlayArrow, contentDescription = null)
-                Spacer(Modifier.width(8.dp))
-                Text("Play")
-            }
-        },
-        floatingActionButtonPosition = FabPosition.Center
+        }
     ) { padding ->
         Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
         Column(
@@ -81,13 +68,16 @@ private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listenin
                 .fillMaxSize()
                 .padding(padding)
                 .padding(horizontal = 16.dp)
-                .padding(bottom = 96.dp) // leave space for FAB + bottom tabs
+                .padding(bottom = 24.dp)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(Modifier.height(16.dp))
-            Card(modifier = Modifier.fillMaxWidth()) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = Color(0xFFEFF2FF))
+            ) {
                 Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text("Build a Playlist", style = MaterialTheme.typography.titleLarge)
 
@@ -117,7 +107,11 @@ private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listenin
                     Spacer(Modifier.height(8.dp))
                     Button(
                         onClick = { viewModel.startPlayback() },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF6366F1), // match 'Due for Review' primary
+                            contentColor = Color.White
+                        )
                     ) {
                         Icon(Icons.Default.PlayArrow, contentDescription = null)
                         Spacer(Modifier.width(8.dp))
