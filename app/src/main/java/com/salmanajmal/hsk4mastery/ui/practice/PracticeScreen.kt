@@ -62,28 +62,30 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
         topBar = {
             TopAppBar(
                 modifier = Modifier.statusBarsPadding(),
-                title = { Text(text = "HSK ${state.selectedLevel} Practice") },
+                title = { Text(text = "Practice") },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White),
                 actions = {
+                    // Level picker showing "HSK {level}" with dropdown
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        // Level picker action identical to WordListScreen
+                        Text(text = "HSK ${state.selectedLevel}")
                         IconButton(onClick = { isMenuExpanded = !isMenuExpanded }) {
                             Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "Select HSK level")
                         }
-                        DropdownMenu(expanded = isMenuExpanded, onDismissRequest = { isMenuExpanded = false }) {
-                            DropdownMenuItem(text = { Text("HSK 1") }, onClick = {
-                                viewModel.onLevelSelected(1); isMenuExpanded = false
-                            })
-                            DropdownMenuItem(text = { Text("HSK 2") }, onClick = {
-                                viewModel.onLevelSelected(2); isMenuExpanded = false
-                            })
-                            DropdownMenuItem(text = { Text("HSK 3") }, onClick = {
-                                viewModel.onLevelSelected(3); isMenuExpanded = false
-                            })
-                            DropdownMenuItem(text = { Text("HSK 4") }, onClick = {
-                                viewModel.onLevelSelected(4); isMenuExpanded = false
-                            })
-                        }
+                    }
+                    // Dropdown menu
+                    DropdownMenu(expanded = isMenuExpanded, onDismissRequest = { isMenuExpanded = false }) {
+                        DropdownMenuItem(text = { Text("HSK 1") }, onClick = {
+                            viewModel.onLevelSelected(1); isMenuExpanded = false
+                        })
+                        DropdownMenuItem(text = { Text("HSK 2") }, onClick = {
+                            viewModel.onLevelSelected(2); isMenuExpanded = false
+                        })
+                        DropdownMenuItem(text = { Text("HSK 3") }, onClick = {
+                            viewModel.onLevelSelected(3); isMenuExpanded = false
+                        })
+                        DropdownMenuItem(text = { Text("HSK 4") }, onClick = {
+                            viewModel.onLevelSelected(4); isMenuExpanded = false
+                        })
                     }
                 }
             )
