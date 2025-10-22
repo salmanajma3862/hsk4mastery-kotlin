@@ -221,21 +221,33 @@ class ListeningViewModel @Inject constructor(
     fun onPrevious() {
         val state = _uiState.value
         if (state.playlist.isEmpty()) return
+        
+        // Stop current playback to prevent overlapping audio
+        stopRequested = true
+        try { audioPlayer.stop() } catch (_: Throwable) {}
+        playbackJob?.cancel()
+        
         val newIndex = if (state.currentTrackIndex == 0) state.playlist.lastIndex else state.currentTrackIndex - 1
         _uiState.update { it.copy(currentTrackIndex = newIndex) }
-        viewModelScope.launch {
-            try { playForMode(state.playlist[newIndex], state.selectedMode) } catch (_: Throwable) {}
-        }
+        
+        // Restart playback loop from new index
+        startPlaybackLoop()
     }
 
     fun onNext() {
         val state = _uiState.value
         if (state.playlist.isEmpty()) return
+        
+        // Stop current playback to prevent overlapping audio
+        stopRequested = true
+        try { audioPlayer.stop() } catch (_: Throwable) {}
+        playbackJob?.cancel()
+        
         val newIndex = if (state.currentTrackIndex >= state.playlist.lastIndex) 0 else state.currentTrackIndex + 1
         _uiState.update { it.copy(currentTrackIndex = newIndex) }
-        viewModelScope.launch {
-            try { playForMode(state.playlist[newIndex], state.selectedMode) } catch (_: Throwable) {}
-        }
+        
+        // Restart playback loop from new index
+        startPlaybackLoop()
     }
 }
 
