@@ -5,7 +5,7 @@
     
     <!-- Logo in center -->
     <item android:gravity="center">
-        <bitmap android:src="@drawable/hsk4mastery_logo"
+        <bitmap android:src="@drawable/hsk4_logo"
             android:gravity="center" />
     </item>
 </layer-list>
