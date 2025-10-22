@@ -4,6 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -119,25 +122,18 @@ fun WordListItem(
                 }
             }
 
-            // Confident pill shown at center-right when comfortLevel == 3
+            // Confident checkmark icon shown at center-right when comfortLevel == 3
             if (word.comfortLevel == 3) {
                 Box(
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
                         .padding(end = 12.dp)
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .background(Color(0xFF10B981), RoundedCornerShape(8.dp))
-                            .padding(horizontal = 6.dp, vertical = 2.dp)
-                    ) {
-                        Text(
-                            text = "Confident",
-                            color = Color.White,
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Medium
-                        )
-                    }
+                    Icon(
+                        imageVector = Icons.Filled.CheckCircle,
+                        contentDescription = "Confident",
+                        tint = Color(0xFF2E7D32)
+                    )
                 }
             }
         }
