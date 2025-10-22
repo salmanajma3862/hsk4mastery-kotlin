@@ -43,17 +43,20 @@ fun WordListScreen(
             TopAppBar(
                 modifier = Modifier.statusBarsPadding(),
                 title = {
-                    // Dynamic title reflecting selected level
-                    Text(text = "HSK${uiState.selectedLevel} Vocabulary")
+                    Text(text = "Vocabulary")
                 },
                 // match the list Surface background so header appears seamless
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White),
                 actions = {
-                    // Dropdown anchored to the top-right action icon
-                    Box {
+                    // Level picker showing "HSK {level}" with dropdown
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(text = "HSK ${uiState.selectedLevel}")
                         IconButton(onClick = { isMenuExpanded = !isMenuExpanded }) {
                             Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "Select HSK level")
                         }
+                    }
+                    // Dropdown anchored to the top-right action
+                    Box {
                         DropdownMenu(
                             expanded = isMenuExpanded,
                             onDismissRequest = { isMenuExpanded = false }
