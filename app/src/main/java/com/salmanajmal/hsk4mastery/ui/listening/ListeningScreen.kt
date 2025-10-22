@@ -129,6 +129,27 @@ private fun SetupUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listenin
 @Composable
 private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: ListeningViewModel) {
     val current = ui.playlist.getOrNull(ui.currentTrackIndex)
+    
+    // Parse sentence data from fullData JSON
+    val sentenceData = remember(current) {
+        current?.let { word ->
+            try {
+                val json = org.json.JSONObject(word.fullData)
+                val examplesArray = json.optJSONArray("examples")
+                if (examplesArray != null && examplesArray.length() > 0) {
+                    val firstExample = examplesArray.getJSONObject(0)
+                    Triple(
+                        firstExample.optString("hanzi", ""),
+                        firstExample.optString("pinyin", ""),
+                        firstExample.optString("translation", "")
+                    )
+                } else null
+            } catch (_: Throwable) {
+                null
+            }
+        }
+    }
+    
     val dynamicTitle = buildString {
         append("HSK ")
         append(ui.selectedLevel)
@@ -169,11 +190,31 @@ private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listen
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(current?.hanzi ?: "", style = MaterialTheme.typography.displayMedium, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-                        Spacer(Modifier.height(8.dp))
-                        Text(current?.pinyin ?: "", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
-                        Spacer(Modifier.height(8.dp))
-                        Text(current?.meaning ?: "", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                        // Display content based on current segment
+                        if (ui.currentSegment == PlaybackSegment.WORD) {
+                            // Show word content
+                            Text(current?.hanzi ?: "", style = MaterialTheme.typography.displayMedium, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                            Spacer(Modifier.height(8.dp))
+                            Text(current?.pinyin ?: "", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
+                            Spacer(Modifier.height(8.dp))
+                            Text(current?.meaning ?: "", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                        } else {
+                            // Show sentence content
+                            sentenceData?.let { (hanzi, pinyin, translation) ->
+                                Text(hanzi, style = MaterialTheme.typography.displaySmall, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                                Spacer(Modifier.height(8.dp))
+                                Text(pinyin, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary, textAlign = TextAlign.Center)
+                                Spacer(Modifier.height(8.dp))
+                                Text(translation, style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                            } ?: run {
+                                // Fallback if no sentence data
+                                Text(current?.hanzi ?: "", style = MaterialTheme.typography.displayMedium, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+                                Spacer(Modifier.height(8.dp))
+                                Text(current?.pinyin ?: "", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
+                                Spacer(Modifier.height(8.dp))
+                                Text(current?.meaning ?: "", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                            }
+                        }
                     }
 
                     val progress = if (ui.playlist.isNotEmpty()) (ui.currentTrackIndex + 1f) / ui.playlist.size.toFloat() else 0f

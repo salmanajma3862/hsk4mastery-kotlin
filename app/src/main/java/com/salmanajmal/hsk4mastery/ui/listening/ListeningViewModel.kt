@@ -21,6 +21,8 @@ enum class ScreenState { SETUP, PLAYING }
 
 enum class PresetType { FIRST_50, NEXT_50, RANDOM_20 }
 
+enum class PlaybackSegment { WORD, SENTENCE }
+
 @HiltViewModel
 class ListeningViewModel @Inject constructor(
     private val wordRepository: WordRepository,
@@ -39,6 +41,7 @@ class ListeningViewModel @Inject constructor(
         val playbackSpeed: Float = 1.0f,
         val screenState: ScreenState = ScreenState.SETUP,
         val error: String? = null,
+        val currentSegment: PlaybackSegment = PlaybackSegment.WORD,
     )
 
     private val _uiState = MutableStateFlow(ListeningUiState())
@@ -181,32 +184,37 @@ class ListeningViewModel @Inject constructor(
         when (mode) {
             ListeningMode.IMMERSION -> {
                 val currentSpeed = _uiState.value.playbackSpeed
-                // 1) Chinese Word
+                // 1) Chinese Word - show word content
+                _uiState.update { it.copy(currentSegment = PlaybackSegment.WORD) }
                 audioPlayer.play(AudioType.CHINESE_WORD, filename = "${word.hanzi}.mp3", speed = currentSpeed)
                 delay(3000)
-                // 2) English Meaning
+                // 2) English Meaning - keep showing word content
                 audioPlayer.play(AudioType.ENGLISH_MEANING, filename = "${word.hanzi}_en.mp3", speed = currentSpeed)
                 delay(3000)
-                // 3) Chinese Example Sentence
+                // 3) Chinese Example Sentence - switch to sentence content
+                _uiState.update { it.copy(currentSegment = PlaybackSegment.SENTENCE) }
                 audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3", speed = currentSpeed)
                 delay(3000)
-                // 4) English Sentence Translation
+                // 4) English Sentence Translation - keep showing sentence content
                 audioPlayer.play(AudioType.ENGLISH_TRANSLATION, filename = "${word.hanzi}_en_ex1.mp3", speed = currentSpeed)
                 delay(3000)
             }
             ListeningMode.QUIZ -> {
                 // Word only then sentence reveal
                 val currentSpeed = _uiState.value.playbackSpeed
+                _uiState.update { it.copy(currentSegment = PlaybackSegment.WORD) }
                 audioPlayer.play(AudioType.CHINESE_WORD, filename = "${word.hanzi}.mp3", speed = currentSpeed)
                 delay(1800)
                 // silent recall window
                 delay(1500)
+                _uiState.update { it.copy(currentSegment = PlaybackSegment.SENTENCE) }
                 audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3", speed = currentSpeed)
                 delay(2500)
             }
             ListeningMode.DICTATION -> {
                 val currentSpeed = _uiState.value.playbackSpeed
                 // Sentence only, longer gap for writing
+                _uiState.update { it.copy(currentSegment = PlaybackSegment.SENTENCE) }
                 audioPlayer.play(AudioType.CHINESE_SENTENCE, filename = "${word.hanzi}_ex1.mp3", speed = currentSpeed)
                 delay(4000)
             }
@@ -228,7 +236,7 @@ class ListeningViewModel @Inject constructor(
         playbackJob?.cancel()
         
         val newIndex = if (state.currentTrackIndex == 0) state.playlist.lastIndex else state.currentTrackIndex - 1
-        _uiState.update { it.copy(currentTrackIndex = newIndex) }
+        _uiState.update { it.copy(currentTrackIndex = newIndex, currentSegment = PlaybackSegment.WORD) }
         
         // Restart playback loop from new index
         startPlaybackLoop()
@@ -244,7 +252,7 @@ class ListeningViewModel @Inject constructor(
         playbackJob?.cancel()
         
         val newIndex = if (state.currentTrackIndex >= state.playlist.lastIndex) 0 else state.currentTrackIndex + 1
-        _uiState.update { it.copy(currentTrackIndex = newIndex) }
+        _uiState.update { it.copy(currentTrackIndex = newIndex, currentSegment = PlaybackSegment.WORD) }
         
         // Restart playback loop from new index
         startPlaybackLoop()
