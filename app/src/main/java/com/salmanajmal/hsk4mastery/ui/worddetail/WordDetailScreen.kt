@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -27,6 +28,8 @@ import com.salmanajmal.hsk4mastery.ui.worddetail.components.HandwritingCanvas
 import com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceToken
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.shadow
@@ -115,6 +118,9 @@ fun WordDetailScreen(
 
             // Selected token dialog state
             var dialogToken: com.salmanajmal.hsk4mastery.ui.worddetail.components.SentenceTokenModel? by remember { mutableStateOf(null) }
+            
+            // Collapsible Writing Practice state (default collapsed)
+            var isWritingExpanded by rememberSaveable { mutableStateOf(false) }
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
@@ -363,14 +369,27 @@ fun WordDetailScreen(
 
                 // Writing Practice
                 item("writing-practice") {
-                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Text(
                             text = "Practice Writing",
                             color = Color(0xFF1E293B),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.W700,
-                            modifier = Modifier.padding(vertical = 4.dp)
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(bottom = 12.dp)
                         )
+                        IconButton(onClick = { isWritingExpanded = !isWritingExpanded }) {
+                            val icon = if (isWritingExpanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore
+                            val desc = if (isWritingExpanded) "Collapse" else "Expand"
+                            Icon(imageVector = icon, contentDescription = desc, tint = Color(0xFF1E293B))
+                        }
+                    }
+                    if (isWritingExpanded) {
                         HandwritingCanvas(character = word.hanzi)
                     }
                 }
@@ -428,56 +447,6 @@ fun WordDetailScreen(
                         }
                     }
                 }
-
-                // Nearby Words (moved from floating overlay to end section)
-                val neighbors = state.neighboringWords
-                if (neighbors != null && (neighbors.previous.isNotEmpty() || neighbors.next.isNotEmpty())) {
-                    item("neighbors-header") {
-                        Text(
-                            text = "Nearby Words",
-                            color = Color(0xFF1E293B),
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.W700,
-                            modifier = Modifier.padding(vertical = 4.dp)
-                        )
-                    }
-                    item("neighbors-row") {
-                        // Only show one previous and one next word
-                        val previousWord = neighbors.previous.firstOrNull()
-                        val nextWord = neighbors.next.firstOrNull()
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(12.dp)
-                        ) {
-                            // Previous word pill
-                            if (previousWord != null) {
-                                WordPill(
-                                    word = previousWord,
-                                    onClick = {
-                                        navController.navigate("word_detail/${previousWord.id}")
-                                    },
-                                    modifier = Modifier.weight(1f)
-                                )
-                            } else {
-                                Spacer(modifier = Modifier.weight(1f))
-                            }
-                            
-                            // Next word pill
-                            if (nextWord != null) {
-                                WordPill(
-                                    word = nextWord,
-                                    onClick = {
-                                        navController.navigate("word_detail/${nextWord.id}")
-                                    },
-                                    modifier = Modifier.weight(1f)
-                                )
-                            } else {
-                                Spacer(modifier = Modifier.weight(1f))
-                            }
-                        }
-                    }
-                }
             }
 
             // Token detail dialog
@@ -497,8 +466,6 @@ fun WordDetailScreen(
                     }
                 )
             }
-
-            // Floating overlay removed; neighboring words now shown as a section at the end
         }
     }
 }
