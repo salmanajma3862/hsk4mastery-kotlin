@@ -160,7 +160,7 @@ private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listen
                 .padding(16.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Card(Modifier.fillMaxWidth().weight(1f)) {
+            Card(Modifier.fillMaxWidth().weight(1f).padding(bottom = 20.dp)) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -193,7 +193,7 @@ private fun PlayingUI(ui: ListeningViewModel.ListeningUiState, viewModel: Listen
                     IconButton(onClick = { viewModel.onPrevious() }) {
                         Icon(Icons.Default.FastRewind, contentDescription = "Previous")
                     }
-                    FilledIconButton(onClick = { viewModel.onPlayPauseTapped() }, modifier = Modifier.size(72.dp)) {
+                    FilledIconButton(onClick = { viewModel.onPlayPauseTapped() }, modifier = Modifier.size(64.dp)) {
                         if (ui.isPlaying) Icon(Icons.Default.Pause, contentDescription = "Pause")
                         else Icon(Icons.Default.PlayArrow, contentDescription = "Play")
                     }
