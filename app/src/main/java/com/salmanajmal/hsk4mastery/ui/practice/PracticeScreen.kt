@@ -160,7 +160,7 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
             }
 
             // Answer area
-            Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+            Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp).padding(bottom = 120.dp)) {
                 Text("Your Answer", style = MaterialTheme.typography.titleSmall.copy(color = Color(0xFF334155), fontWeight = FontWeight.SemiBold))
                 if (state.userAttempt.isEmpty()) {
                     Text("Tap words to build the sentence", color = Color(0xFF94a3b8))
@@ -193,7 +193,7 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
                     onClick = { viewModel.checkAnswer() },
                     enabled = state.originalTokens.isNotEmpty() && state.userAttempt.isNotEmpty(),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0EA5E9))
-                ) { Text("Check Answer", color = Color.White, fontWeight = FontWeight.Bold) }
+                ) { Text("Check", color = Color.White, fontWeight = FontWeight.Bold) }
 
                 Button(
                     onClick = { viewModel.onReset() },
@@ -211,10 +211,10 @@ fun PracticeScreen(viewModel: PracticeViewModel = hiltViewModel()) {
             if (state.isCorrect != null) {
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                     if (state.isCorrect == true) {
-                        Text("Correct!", color = Color(0xFF16A34A), fontWeight = FontWeight.Bold)
+                        Text("That's Correct!", color = Color(0xFF16A34A), fontWeight = FontWeight.Bold)
                         // Optional: could display pinyin/translation if we tracked it here
                     } else {
-                        Text("Try Again", color = Color(0xFFDC2626), fontWeight = FontWeight.Bold)
+                        Text("Wrong. Try Again", color = Color(0xFFDC2626), fontWeight = FontWeight.Bold)
                     }
                 }
                 Spacer(Modifier.height(10.dp))
